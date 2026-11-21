@@ -1,5 +1,7 @@
 # Impacto científico dos programas de pós-graduação em Computação no Brasil
 
+**🔗 Dashboard interativo:** https://dinhovco.github.io/MO438_Redes_complexas/ · **Mapa:** https://dinhovco.github.io/MO438_Redes_complexas/mapa.html · **Relatório:** [`relatorio_final/main.pdf`](relatorio_final/main.pdf)
+
 Projeto da disciplina **MO438 — Redes Complexas** (UNICAMP, 2026). Estuda o impacto científico dos 87 programas de pós-graduação da área de **Computação** avaliados pela CAPES (Quadrienal 2025), com redes de **coautoria** e de **citação** construídas a partir da **OpenAlex** (publicações de 2018 a 2024).
 
 Perguntas de pesquisa:
@@ -11,7 +13,7 @@ Perguntas de pesquisa:
 
 Relatório final: `relatorio_final/main.pdf` (fonte LaTeX na mesma pasta).
 
-Dashboard com as principais conclusões: https://dinhovco.github.io/MO438_Redes_complexas/ (código em `docs/`, gerado por `analise_final/11_dashboard.py`).
+O dashboard reúne as principais conclusões; o código está em `docs/`, gerado por `analise_final/11_dashboard.py`.
 
 ## Redes
 
