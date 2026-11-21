@@ -1,0 +1,284 @@
+\documentclass[12pt]{projeto}
+
+\input{conf}
+
+\newcommand{\figdir}{../rede_coautoria/analise_final/figures}
+\newcommand{\tabdir}{../rede_coautoria/analise_final/tables}
+
+\begin{document}
+\renewcommand{\tablename}{Tabela}
+\renewcommand{\figurename}{Figura}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+% Deixa as figuras dividirem a página com o texto, em vez de irem para páginas só de figuras
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.6}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+
+\noindent\textbf{Resumo.} Este trabalho avalia o impacto científico dos 87 programas de pós-graduação da área de Computação avaliados pela CAPES, com redes construídas a partir de 84\,676 publicações de 2018 a 2024 coletadas na OpenAlex. Montamos a rede de coautoria (108\,251 autores) e a rede de citação entre publicações, e agregamos esta última por autor, por comunidade de coautoria e por instituição. As comunidades (Louvain, $Q = 0{,}92$ contra $0{,}20$ no modelo de configuração) são temáticas e atravessam instituições, enquanto o vínculo direto de coautoria é sobretudo local (69\% das arestas na mesma instituição). Dois terços das citações ficam dentro da própria comunidade, 20 vezes o esperado. O PageRank de citação concorda com citações e índice $h$ ($\rho = 0{,}72$), mas os tops divergem. Normalizado pelo tamanho, o impacto por artigo não depende do tamanho do grupo; e a nota CAPES acompanha volume e consolidação ($\rho = 0{,}84$ com o número de publicações) muito mais que impacto por artigo ($\rho = 0{,}23$ a $0{,}40$). Código e dados: \url{https://github.com/DinhoVCO/redes_complexas}.
+
+\section{Introdução}
+
+A CAPES avalia a pós-graduação brasileira a cada quatro anos e atribui a cada programa uma nota de 1 a 7, com peso grande para a produção intelectual dos docentes. Na área de Computação, a Avaliação Quadrienal 2025~\cite{capes2025} cobriu 87 programas em 75 instituições. Os indicadores bibliométricos mais usados, como o total de citações e o índice $h$, olham para pesquisadores e artigos isolados e somam volume. Eles não mostram como a pesquisa se organiza: quem trabalha com quem, se os grupos seguem as fronteiras das instituições e para onde flui a influência. Também favorecem os grupos e programas maiores, que acumulam mais publicações e, por isso, mais citações.
+
+Este trabalho usa redes complexas para medir o impacto científico desses programas levando em conta essa estrutura. O problema tem três partes: identificar os grupos de pesquisa a partir da colaboração, localizar onde está a influência entre publicações, pesquisadores e grupos, e comparar o impacto dos grupos de forma justa, isto é, independente do seu tamanho. Para isso, construímos a rede de coautoria e a rede de citação a partir de 84\,676 publicações de 2018 a 2024 da OpenAlex, ligadas aos programas pelos dados da CAPES. A rede de citação foi agregada por autor, por comunidade de coautoria e por instituição. Sobre essas redes aplicamos detecção de comunidades, medidas de centralidade e métricas de impacto normalizadas, e comparamos os resultados com a nota CAPES dos programas.
+
+Os resultados mostram que a colaboração em Computação no Brasil forma um mundo pequeno, organizado em comunidades temáticas que atravessam instituições, embora a maior parte das coautorias aconteça dentro da própria instituição. A citação também fica concentrada dentro dos grupos. O PageRank de citação acompanha os indicadores tradicionais, mas destaca pesquisadores diferentes nos primeiros lugares. Quando o tamanho é levado em conta, grupos grandes não são mais citados por artigo, e a nota CAPES acompanha mais o volume e a consolidação dos programas do que o impacto por artigo. O código, as redes em GraphML e os resultados estão no repositório\footnote{\url{https://github.com/DinhoVCO/redes_complexas}}.
+
+\section{Objetivos e perguntas de pesquisa}
+
+\textbf{Objetivo geral.} Avaliar o impacto científico dos programas de pós-graduação em Computação no Brasil por meio de redes complexas de colaboração e de citação.
+
+\textbf{Objetivos específicos:}
+\begin{enumerate}
+\item[(i)] construir a rede de coautoria dos pesquisadores ligados aos programas;
+\item[(ii)] construir a rede de citação entre publicações e agregá-la ao nível de autores e de grupos;
+\item[(iii)] aplicar e comparar algoritmos de detecção de comunidades e avaliar sua correspondência com instituições e programas;
+\item[(iv)] identificar publicações, pesquisadores e grupos de maior influência por centralidade, e comparar o impacto dos grupos com métricas normalizadas pelo tamanho.
+\end{enumerate}
+
+\textbf{Perguntas.} \textbf{P1}: as comunidades de coautoria correspondem às instituições ou as atravessam? \textbf{P2}: os pesquisadores mais centrais coincidem com os de maior impacto bibliométrico tradicional? \textbf{P3}: normalizado pelo tamanho, os grupos maiores são os mais influentes? \textbf{P4}: o impacto medido na rede acompanha a nota CAPES dos programas?
+
+\section{Dados e escopo}
+
+\textbf{Escopo.} Os 87 programas da área COMPUTAÇÃO na Quadrienal 2025, em 75 instituições (IES), e as publicações de 2018 a 2024 (o período da avaliação, mais 2018).
+
+\textbf{Mapeamento das IES.} Cada IES foi buscada na OpenAlex~\cite{openalex}. Seis casos foram corrigidos à mão: o match automático da FURG apontava para a UFRGS, o da USP-São Carlos para o Instituto de Química (o ICMC não existe como entidade na OpenAlex) e quatro campi ou faculdades não tinham entidade própria. Resultado: 74 de 75 IES mapeadas (falta a UNIFACCAMP).
+
+\textbf{Coleta.} O corpus une duas consultas à OpenAlex, ambas de 2018 a 2024. A primeira traz as publicações com algum autor afiliado a uma IES do escopo e com tópico principal no campo \emph{Computer Science} (53\,419 publicações); o filtro de afiliação usa a hierarquia (\emph{lineage}) das instituições, que inclui subunidades como o IBILCE na UNESP. A segunda traz todas as publicações, de qualquer campo, dos docentes dos programas. Os docentes vêm dos dados abertos da CAPES (2\,491 nos 87 programas) e foram identificados na OpenAlex por nome e IES (91,4\%; 93,2\% dos permanentes). Ela cobre a parte da produção dos docentes que a OpenAlex classifica fora de CS (engenharia, medicina, matemática), sem trazer departamentos inteiros de outras áreas. O corpus tem \textbf{84\,676 publicações}. Chamamos de \emph{publicações} todos os registros (\emph{works}) da OpenAlex: trabalhos em eventos (43\%), artigos (38\%), dissertações e teses (8\%) e outros tipos (11\%).
+
+\textbf{Completude.} Cruzamos o corpus com os 59\,831 artigos e trabalhos em anais que os docentes declararam à CAPES: ele contém 87,6\% dos DOIs de artigos e 91,6\% dos DOIs de trabalhos em anais. Dos 1\,640 DOIs de artigos ausentes, 935 são publicações fora de CS de docentes sem perfil identificado; os demais têm outro ano na OpenAlex (340) ou não estão nela (332).
+
+\textbf{Desambiguação.} A OpenAlex às vezes divide uma pessoa em vários perfis. Antes de criar as arestas, juntamos os perfis de cada docente num só vértice: 688 docentes tinham mais de um perfil, e os 1\,030 perfis extras foram absorvidos pelo vértice do respectivo docente.
+
+\section{Redes e análise inicial}
+
+A partir do corpus foram construídas duas redes. Na \textbf{coautoria} (não dirigida), os vértices são autores e o peso de uma aresta é o número de publicações em comum. Na \textbf{citação entre publicações} (dirigida), há uma aresta $A \to B$ se a publicação $A$ cita a publicação $B$ e as duas estão no corpus. A Tabela~\ref{tab:metricas} reúne suas métricas topológicas.
+
+A coautoria é esparsa, com grau médio 14,3 e agrupamento alto (0,78), e tem uma componente gigante com 87\% dos autores; as outras 6\,456 componentes são pequenas. Dentro da componente gigante, a distância média é de 5,46 passos. A rede de citações entre publicações é muito mais esparsa: cada publicação recebe, em média, 1,2 citação de outra publicação do corpus, porque a maior parte das referências (1,9 milhão) aponta para fora do recorte, e a maior componente fortemente conexa tem só 10 publicações. Com tão poucas citações internas por artigo, essa rede não permite interpretar influência entre pesquisadores e grupos. Por isso ela foi agregada por autor, comunidade e instituição (Seções~5 e~6).
+
+\input{\tabdir/tab_metricas_redes}
+
+\section{Metodologia e algoritmos}
+
+A Figura~\ref{fig:diagrama} resume as redes e como cada uma deriva da anterior. Usamos NetworkX e, nos cálculos pesados, igraph.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{\figdir/report_network_diagram.png}
+\caption{Redes construídas. A citação entre autores, comunidades e IES é agregada a partir da rede de citação entre publicações.}
+\label{fig:diagrama}
+\end{figure}
+
+\textbf{Citação entre autores.} Há uma aresta $a \to b$ se alguma publicação de $a$ cita alguma publicação de $b$. Cada citação entre publicações $u \to v$ gera os pares (autor de $u$, autor de $v$). O peso inteiro conta esses pares; o peso \textbf{fracionário}, usado como principal, soma $1/(n_u n_v)$, de modo que cada citação vale 1 e artigos com muitos autores não inflam as arestas. Laços $a \to a$ (autocitação) são descartados e contados.
+
+\textbf{Citação entre grupos.} A rede de autores é agregada por comunidade (só as com pelo menos 10 membros) e por IES principal do autor (a IES do escopo mais frequente nas suas publicações). O laço $X \to X$ é a citação interna do grupo; comparamos a fração interna observada com a esperada se os alvos fossem sorteados proporcionalmente às forças de entrada, o que equivale à modularidade dirigida.
+
+\textbf{Comunidades.} Na componente gigante da coautoria (94\,179 autores, ponderada) comparamos Louvain~\cite{blondel2008}, rodado com 50 sementes, Leiden~\cite{traag2019}, Fast-Greedy~\cite{clauset2004}, Label Propagation~\cite{raghavan2007} e Fluid Communities~\cite{pares2017}. Num subgrafo reduzido, a coautoria entre os docentes de USP, UFPE e UTFPR (320 vértices), comparamos os mesmos algoritmos e o Girvan--Newman~\cite{girvan2002}, com a curva de modularidade por nº de comunidades. A significância de $Q$ foi testada contra 10 grafos do modelo de configuração. A partição principal é a do Louvain com a semente de maior $Q$. A concordância com as IES e entre algoritmos foi medida com NMI e ARI, sempre com uma linha de base de rótulos embaralhados.
+
+\textbf{Centralidade.} Na coautoria, seis medidas: grau, grau médio dos vizinhos, $k$-core, proximidade, intermediação e autovetor. A proximidade e a intermediação foram estimadas a partir de 1\,000 vértices de origem sorteados. Nas redes de citação: PageRank~\cite{brin1998} (passeio aleatório com amortecimento 0,85; como $A \to B$ significa que $A$ cita $B$, o PageRank premia quem é citado) e HITS~\cite{kleinberg1999}. Validação (P2): Spearman e Kendall contra citações totais e índice $h$ no corpus, e Jaccard dos top 50, só com autores afiliados ao escopo.
+
+\textbf{Impacto normalizado (P3).} Para cada grupo, cada publicação conta uma vez, mesmo com vários autores do grupo. Medimos citações por membro, por publicação e por docente, e três métricas que controlam ano e campo: o MNCS (citações divididas pela média do corpus no mesmo ano~\cite{waltman2011}), o FWCI da OpenAlex (normalizado por campo, tipo e ano; presente em 85\% das publicações) e a fração das publicações entre as 10\% mais citadas do ano. Como duas publicações extremas (SciPy 1.0, com 53\,670 citações, e Astropy, com 13\,011) dominavam grupos pequenos, reportamos também versões robustas: citações por membro sem a publicação mais citada e FWCI mediano.
+
+\textbf{Programas e CAPES (P4).} O impacto de cada programa é medido nas publicações dos seus docentes identificados, só nos anos em que estão no programa. Em 82 programas há dados suficientes (pelo menos 5 docentes, cobertura de 50\% e 30 publicações), e a cobertura mediana de docentes é de 94\%.
+
+\section{Resultados}
+
+\subsection{Estrutura das redes}
+
+A Tabela~\ref{tab:propriedades} reúne as propriedades estruturais das redes. A coautoria é um \textbf{mundo pequeno}~\cite{watts1998}: a distância média (5,46) é próxima da de um grafo aleatório com os mesmos graus (3,90), mas a clusterização é 400 vezes maior ($\sigma \approx 263$ contra o modelo de configuração). Pelo \textbf{paradoxo da amizade}, 87\% dos autores têm coautores com mais coautores que eles. A coautoria é assortativa por grau (0,15), como esperado em redes sociais, e as redes de citação são quase neutras.
+
+\input{\tabdir/tab_propriedades}
+
+As distribuições têm \textbf{cauda pesada} (Figura~\ref{fig:powerlaw}). Com o método de Clauset et al.~\cite{clauset2009}, as citações globais seguem uma lei de potência com $\alpha = 2{,}57$ a partir de 72 citações, empatada com a lognormal e muito melhor que a exponencial. É o efeito Mateus da ciência, compatível com conexão preferencial. Já o grau na coautoria tem um corte em $k \approx 100$, causado pelos artigos com dezenas de autores, e é melhor descrito por uma lognormal ou por uma lei de potência truncada.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{\figdir/structural_powerlaw.png}
+\caption{CCDF das caudas com os ajustes de lei de potência e lognormal: grau na coautoria, grau de entrada na citação entre autores e citações globais das publicações.}
+\label{fig:powerlaw}
+\end{figure}
+
+\subsection{Rede de citação entre autores}
+
+A agregação por autor produz 979\,561 arestas entre 108\,251 autores (grau médio 9,0, contra 1,2 na rede de publicações). Ela cria ciclos que não existiam: a maior componente fortemente conexa passa de 10 publicações para 28\,735 autores (26,5\%), e a reciprocidade sobe de 0,005 para 0,235 (0,004 no modelo nulo). Entre os 2\,276 docentes, 86,6\% estão numa só componente forte, com reciprocidade de 0,34. Há muita autocitação: 69\% das citações entre publicações têm algum autor em comum, embora só 6,7\% dos pares autor--autor sejam laços $a \to a$. Além disso, 30,6\% das arestas (53\% do peso fracionário) ligam autores que também são coautores.
+
+\subsection{Comunidades (P1)}
+
+A Tabela~\ref{tab:algoritmos} compara os algoritmos. Louvain e Leiden chegam a $Q \approx 0{,}92$, com cerca de 120 comunidades, e concordam entre si (NMI 0,83, ARI 0,66). O Louvain é estável entre sementes ($Q = 0{,}9223 \pm 0{,}0004$). Fast-Greedy forma comunidades maiores, e o Label Propagation fragmenta a rede em quase 5\,000 grupos. Os valores de $Q$ estão muito acima do modelo de configuração ($0{,}201 \pm 0{,}002$; $z \approx 327$), então a estrutura de grupos não é efeito só dos graus. No subgrafo de docentes, o Girvan--Newman atinge o máximo de $Q$ (0,675) com 23 comunidades (Figura~\ref{fig:comunidades}, à esquerda), abaixo do Louvain e do Leiden, que levam milissegundos contra 44~s.
+
+\input{\tabdir/tab_algoritmos}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{\figdir/communities_gn_modularity.png}
+\end{minipage}\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{\figdir/communities_size_ccdf.png}
+\end{minipage}
+\caption{Esquerda: curva $Q \times$ nº de comunidades do Girvan--Newman no subgrafo de docentes. Direita: distribuição dos tamanhos das comunidades na componente gigante, por algoritmo.}
+\label{fig:comunidades}
+\end{figure}
+
+\textbf{As comunidades são temáticas e interinstitucionais.} A concordância com a IES principal é moderada (NMI 0,41 contra 0,02 com rótulos embaralhados; ARI 0,12). A IES dominante reúne, em média ponderada, só 35\% dos membros de cada comunidade, e a comunidade mediana tem autores de 22 IES. As maiores comunidades correspondem a áreas (Figura~\ref{fig:mapa}): C0 é engenharia de software (USP, UFPA, PUC-Rio), C3 são redes veiculares e IoT (UFOP, UFRN, UFMG) e C13 é hardware e microeletrônica (UFRGS, PUCRS, UFPel). As exceções institucionais são poucas: UnB (75\% da sua comunidade), UNICAMP (45\%) e UFMG (38\%). Em contraste, \textbf{o vínculo direto é local}: 69\% das arestas de coautoria ligam autores da mesma IES, contra 2,8\% esperados pelos graus (assortatividade nominal 0,68). As comunidades, portanto, juntam núcleos institucionais densos que trabalham no mesmo tema; o Apêndice~A mostra, em mapas do Brasil, a coautoria e a citação entre instituições e onde estão os membros das maiores comunidades.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{\figdir/report_community_map.png}
+\caption{As 30 maiores comunidades de coautoria. Área proporcional ao número de membros, cor pelo FWCI mediano das publicações, espessura da aresta pelo número de coautorias entre grupos; rótulo com a IES dominante.}
+\label{fig:mapa}
+\end{figure}
+
+\textbf{Vínculos fortes e fracos.} A previsão de Granovetter~\cite{granovetter1973}, de que laços mais fortes têm vizinhanças mais sobrepostas, não se confirma pelo peso ($\rho = -0{,}20$; $-0{,}06$ só com publicações de até 10 autores). Na coautoria cada artigo forma um clique, então mesmo um vínculo de uma só publicação tem a vizinhança muito compartilhada. Já a parte estrutural se confirma (Figura~\ref{fig:granovetter}): as arestas entre comunidades têm sobreposição de 0,11, contra 0,63 dentro delas. Removendo primeiro as arestas de menor sobreposição, a componente gigante se desfaz com 30--35\% das arestas removidas; removendo primeiro as de maior sobreposição, ela quase não muda. As pontes entre grupos são, portanto, vínculos de vizinhança pouco compartilhada, e não de poucas coautorias.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{\figdir/structural_granovetter.png}
+\caption{Granovetter na coautoria: sobreposição de vizinhança por peso da aresta, dentro e entre comunidades, e fração na maior componente ao remover arestas fracas ou fortes primeiro.}
+\label{fig:granovetter}
+\end{figure}
+
+\subsection{Citação entre grupos}
+
+Na rede de 240 comunidades, \textbf{66,7\% do peso das citações fica dentro da própria comunidade}, contra 3,3\% esperados pelas forças (20 vezes mais; modularidade dirigida de 0,63). Entre IES, a fração interna é de 47,5\%, contra 3,1\% esperados. A comunidade temática explica a citação melhor que a instituição: entre pares com as duas informações, 65,5\% das citações ficam na mesma comunidade e 48\% na mesma IES. O heatmap (Figura~\ref{fig:heatmap}) mostra a diagonal dominante e uma coluna clara: a comunidade C0 (engenharia de software) é citada por quase todas e lidera o PageRank entre grupos (0,082), seguida por C8 (informática na educação), C3 e C1 (IoT). Entre as IES, o PageRank é liderado por USP, UNICAMP, UFMG, UFPE e UFRGS.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{\figdir/community_citation_heatmap.png}
+\caption{Fração das citações de cada comunidade (linha) dirigidas a cada outra (coluna), entre as 20 maiores; escala logarítmica. Rótulo: tópico dominante e IES dominante.}
+\label{fig:heatmap}
+\end{figure}
+
+\subsection{Centralidade e influência (P2)}
+
+Na coautoria (Figura~\ref{fig:centralidade}, à direita), grau e $k$-core são quase redundantes ($\rho = 0{,}96$), proximidade e autovetor andam juntas (0,78) e a intermediação traz informação própria. O autovetor se \textbf{localiza} num clique: o topo é ocupado por autores de artigos com cerca de 180 coautores, e não por pesquisadores centrais. Por isso é a medida que menos concorda com as citações. A intermediação destaca docentes que colaboram com muitas áreas (André de Carvalho/USP, João Paulo Gomes/UFC), mas correlaciona mais com o número de publicações (0,81) que com citações (0,57): mede atividade e colaboração, não impacto.
+
+\input{\tabdir/tab_centralidade}
+
+O \textbf{PageRank de citação} é a centralidade que melhor acompanha o impacto tradicional ($\rho = 0{,}72$ com citações totais e $0{,}73$ com o índice $h$; Tabela~\ref{tab:centralidade} e Figura~\ref{fig:centralidade}, à esquerda). A força de entrada é quase idêntica a ele (0,98). O HITS concentra a autoridade num grupo IME/UFF que se cita muito, efeito típico de comunidades densas. Mas os \textbf{tops divergem}: o Jaccard dos top 50 fica em no máximo 0,27. O top por citações totais é dominado por coautores ocasionais de SciPy e Astropy, com uma só publicação no corpus ($h = 1$); o índice $h$ e o PageRank são mais robustos, e os dois são liderados por Victor Hugo C. de Albuquerque (UNIFOR).
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}{0.47\textwidth}
+\centering
+\includegraphics[width=\textwidth]{\figdir/report_pagerank_citations.png}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{\figdir/centrality_spearman_coauthorship.png}
+\end{minipage}
+\caption{Esquerda: PageRank na citação entre autores $\times$ citações totais (autores do escopo). Direita: correlação de Spearman entre as seis centralidades na coautoria.}
+\label{fig:centralidade}
+\end{figure}
+
+Nas \textbf{publicações}, o impacto interno e o global são parecidos no geral (Spearman PageRank $\times$ citações globais = 0,62), mas os tops quase não se sobrepõem (Jaccard top 50 = 0,06; Tabela~\ref{tab:toppub}). Só 36,5\% das publicações recebem alguma citação do próprio corpus. O topo interno tem publicações do contexto nacional (o livro \emph{Engenharia de Software}, BERTimbau, ferramentas de ensino de programação), enquanto o topo global tem software científico internacional.
+
+\input{\tabdir/tab_top_publicacoes}
+
+\subsection{Impacto normalizado dos grupos (P3)}
+
+A Figura~\ref{fig:tamanho} e a Tabela~\ref{tab:tamanho} mostram o efeito do tamanho. O tamanho da comunidade explica as citações totais ($\rho = 0{,}86$), mas, dentro da componente gigante, \textbf{não explica o impacto por artigo}: MNCS ($\rho = -0{,}01$; $p = 0{,}90$), FWCI mediano (0,00), citações por publicação (0,04) e fração no top 10\% ($-0{,}05$). A métrica de citações por membro ainda correlaciona com o tamanho (0,55), porque mistura impacto e produtividade: publicações por membro também cresce com o tamanho (0,64). As 119 comunidades fora da componente gigante (grupos isolados) têm impacto bem menor: a mediana do FWCI médio é 0,44 nelas e 1,20 nas comunidades da componente gigante.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{\figdir/group_impact_size.png}
+\caption{Tamanho da comunidade $\times$ citações totais, citações por membro (sem a publicação mais citada) e FWCI mediano, para as 240 comunidades com pelo menos 10 membros.}
+\label{fig:tamanho}
+\end{figure}
+
+\input{\tabdir/tab_impacto_tamanho}
+
+Os rankings mudam muito (Tabela~\ref{tab:impacto} e Figura~\ref{fig:ranking}). Nenhuma das 10 comunidades com mais citações totais está no top 10 por FWCI mediano ou por fração no top 10\%, e só 5 seguem no top 10 por membro. No ranking normalizado aparecem grupos médios: otimização (USP, C34), filtragem adaptativa (UFU, C70), câncer e imagens médicas (USP, C73/C77; UNICAMP, C55), \emph{topic modeling} (UFG, C78). A primeira posição (C115, 31 membros) mostra o limite do FWCI em grupos pequenos de áreas pouco citadas: FWCI mediano alto com quase nenhuma publicação no top 10\%. A concentração do impacto cai com o tamanho: quanto menor o grupo, maior a fração das citações que vem de uma só publicação ($\rho = -0{,}82$).
+
+\input{\tabdir/tab_impacto_ranking}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{\figdir/group_impact_ranking.png}
+\caption{Posição de cada comunidade (com pelo menos 50 publicações) no ranking absoluto e nos rankings normalizados. Pontos acima da diagonal sobem com a normalização.}
+\label{fig:ranking}
+\end{figure}
+
+\subsection{Programas e nota CAPES (P4)}
+
+A Tabela~\ref{tab:capes} e a Figura~\ref{fig:capes} comparam o impacto dos 82 programas com a nota CAPES. \textbf{A nota acompanha volume e consolidação muito mais que impacto por artigo.} Ela correlaciona com o número de publicações (0,84), com o índice $h$ mediano dos docentes (0,72) e com publicações por docente (0,67), e bem menos com FWCI mediano (0,40), citações por publicação (0,28), MNCS (0,23) e fração no top 10\% (0,23). Da nota 3 à nota 7, as citações por docente quadruplicam (135 para 540), mas o FWCI mediano só vai de 0,36 a 0,50. Há programas de nota baixa com impacto por artigo alto, como UTFPR (nota 3; FWCI mediano 1,50 e 33\% das publicações no top 10\%) e UNIFOR (nota 4; 1,13 e 32\%), embora com poucos docentes (10 a 17). Agregando por IES, o quadro é o mesmo (nota máxima $\times$ FWCI mediano: $\rho = 0{,}48$; $\times$ MNCS: $0{,}25$).
+
+\input{\tabdir/tab_capes}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{\figdir/capes_program_impact.png}
+\caption{Impacto dos programas (publicações dos seus docentes) $\times$ nota CAPES: citações por docente, FWCI mediano e fração das publicações no top 10\% do ano. Em vermelho, a mediana por nota.}
+\label{fig:capes}
+\end{figure}
+
+\section{Discussão}
+
+A Tabela~\ref{tab:objetivos} mostra como cada objetivo foi cumprido.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Objetivos do projeto, como foram cumpridos e onde estão no relatório.}
+\label{tab:objetivos}
+\begin{tabular}{p{3.6cm}p{9.2cm}p{1.6cm}}
+\hline
+Objetivo & Como foi cumprido & Seção \\
+\hline
+Geral: impacto dos programas por redes & Redes de coautoria e citação (publicação, autor, comunidade, IES), impacto normalizado por grupo e comparação com a nota CAPES de 82 programas & 4--6 \\
+(i) Rede de coautoria & 108\,251 autores, 774\,165 arestas; IES corrigidas, união com publicações dos docentes (completude de 88--92\% dos DOIs CAPES) e mescla de perfis & 3, 4 \\
+(ii) Citação agregada por autor e grupo & Rede autor$\to$autor com peso fracionário (979\,561 arestas) e redes entre 240 comunidades e 72 IES & 5, 6.2, 6.4 \\
+(iii) Comunidades $\times$ IES & Seis algoritmos em duas escalas, $Q$ contra modelo nulo, NMI/ARI com IES e programa (P1) & 6.3 \\
+(iv) Influência e impacto normalizado & Seis centralidades na coautoria, PageRank e HITS validados contra citações e índice $h$ (P2); impacto por membro, por publicação, MNCS e FWCI, com Spearman contra o tamanho (P3) e a nota CAPES (P4) & 6.5--6.7 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Respostas.} \textbf{P1:} as comunidades não reproduzem as instituições. Elas são temáticas e reúnem em mediana 22 IES, embora o vínculo direto de coautoria seja local (69\% na mesma IES). A citação segue a mesma lógica: fica no grupo temático mais do que na instituição. \textbf{P2:} em parte. O PageRank de citação concorda com citações e índice $h$ no conjunto ($\rho \approx 0{,}72$), mas os tops diferem, e o PageRank é menos sensível a publicações isoladas muito citadas. \textbf{P3:} não. Grupos maiores acumulam mais citações, mas não são mais citados por artigo. A normalização revela grupos médios de alto impacto, e a métrica por membro precisa ser lida junto com a produtividade. \textbf{P4:} parcialmente. A nota CAPES acompanha o volume e a consolidação dos programas, e só fracamente o impacto por artigo.
+
+\textbf{Limitações.} (1) A primeira consulta usa a afiliação à IES como proxy do programa; a segunda cobre os docentes, mas não os alunos. (2) Só os perfis de docentes foram desambiguados; o casamento por nome pode juntar homônimos da mesma IES, risco reduzido pela exigência de IES e pelo descarte de perfis ambíguos. (3) Só citações internas ao corpus formam arestas (1,9 milhão de referências apontam para fora). (4) O FWCI é instável em grupos pequenos de áreas pouco citadas. (5) As comunidades não foram validadas contra grupos de pesquisa declarados (Diretório do CNPq), que seriam uma referência melhor que a IES.
+
+\section{Conclusão}
+
+A agregação da rede de citações por autor e por grupo foi o passo que tornou a análise interpretável: ela revelou ciclos, reciprocidade e uma forte homofilia temática de citação. A colaboração brasileira em Computação é um mundo pequeno organizado em grupos temáticos que atravessam instituições, sobre núcleos institucionais densos. Normalizado pelo tamanho, o impacto por artigo não favorece os grupos grandes, e a avaliação CAPES premia mais o volume que o impacto por artigo. Como trabalho futuro: validar as comunidades com os grupos do CNPq, acompanhar a evolução das comunidades no tempo e usar a rede de citações para estudar a difusão de conhecimento entre grupos.
+
+\section*{Referências}
+\estilobibliografico{plain}
+\bibliografia{referencias}
+
+\clearpage
+\section*{Apêndice A: Mapas de colaboração, citação e comunidades por instituição}
+\label{ap:mapas}
+
+Os mapas deste apêndice posicionam cada IES pelas coordenadas da sua sede na OpenAlex (o ponto da UNESP foi movido para o campus de São José do Rio Preto, onde está o programa), com o contorno das UFs da malha do IBGE. Os autores não têm localização própria: cada um conta na IES do escopo onde mais publica. A USP aparece em São Paulo, mas reúne os campi de São Paulo, São Carlos e Ribeirão Preto, como na rede. No eixo São Paulo--Rio--Minas, onde está metade das IES, um recorte ampliado evita a sobreposição. Uma versão interativa, com todas as ligações e as 15 maiores comunidades, está no repositório (\texttt{analise\_final/mapas/mapa\_interativo.html}).
+
+A Figura~\ref{fig:mapa-coautoria} mostra a coautoria entre instituições. As ligações mais fortes formam um eixo litorâneo do Sul ao Nordeste, com o Sudeste ao centro, e algumas IES do Norte (UFPA, UFAM) ligadas diretamente a ele. Lembrando que 69\% das arestas de coautoria ficam dentro da própria IES, o mapa mostra só a parte da colaboração que cruza instituições. A citação entre instituições (Figura~\ref{fig:mapa-citacao}) é mais difusa: quase todas as IES citam as do Sudeste, mesmo sem coautoria direta com elas.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{\figdir/map_ies_coauthorship.png}
+\caption{Coautoria entre IES: área do círculo proporcional ao número de autores; linhas são as 150 maiores ligações, com espessura pelo número de pares de coautores entre as duas IES.}
+\label{fig:mapa-coautoria}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{\figdir/map_ies_citation.png}
+\caption{Citação entre IES (peso fracionário, somando os dois sentidos): área do círculo proporcional ao número de autores; linhas são as 150 maiores ligações.}
+\label{fig:mapa-citacao}
+\end{figure}
+
+A Figura~\ref{fig:mapa-comunidades} mostra onde estão os membros das seis maiores comunidades de coautoria. Ela ilustra a resposta à P1 (Seção~6.3): as comunidades são temáticas e se espalham pelo país. A de engenharia de software (C0) tem membros em 68 IES de todas as regiões, com núcleos na USP, PUC-Rio e UFPA; a de IoT (C1) se concentra no Nordeste (UFC, IFCE, UFPI), mas chega ao Sul; a de redes veiculares (C3) liga UFRN, UFMG e UFOP.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[angle=90,width=\textwidth]{\figdir/map_communities.png}
+\caption{Membros das seis maiores comunidades de coautoria por IES (área proporcional aos membros; em cinza, IES sem membros da comunidade).}
+\label{fig:mapa-comunidades}
+\end{figure}
+\end{document}

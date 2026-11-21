@@ -1,0 +1,328 @@
+{
+  "definicao": {
+    "aresta": "a -> b: alguma obra de a cita alguma obra de b (ambas no corpus)",
+    "weight": "nº de pares (obra citante, obra citada)",
+    "weight_frac": "soma de 1/(n_autores_citante * n_autores_citado)",
+    "autocitacao": "laços a -> a descartados"
+  },
+  "autocitacao": {
+    "citacoes_entre_publicacoes": 101117,
+    "citacoes_sem_autores": 458,
+    "citacoes_publicacao_com_autor_em_comum": 69927,
+    "frac_citacoes_publicacao_com_autor_em_comum": 0.6915454374635324,
+    "pares_autor_gerados": 2491441,
+    "pares_autocitacao_descartados": 166053,
+    "frac_pares_autocitacao": 0.06664938082017595,
+    "frac_peso_fracionario_autocitacao": 0.1101575763456803
+  },
+  "rede_publicacoes": {
+    "n_vertices": 84676,
+    "n_arestas": 101117,
+    "grau_medio_saida": 1.1941636355047476,
+    "densidade": 1.410290682615586e-05,
+    "n_isolados": 34645,
+    "frac_isolados": 0.40914781047758514,
+    "n_componentes_fracas": 37599,
+    "maior_componente_fraca": 40538,
+    "frac_maior_componente_fraca": 0.4787425008266805,
+    "n_componentes_fortes_nao_triviais": 210,
+    "maior_componente_forte": 10,
+    "frac_maior_componente_forte": 0.00011809721762955265,
+    "reciprocidade": 0.005043662292196169
+  },
+  "rede_autores": {
+    "n_vertices": 108251,
+    "n_arestas": 979561,
+    "grau_medio_saida": 9.048978762320901,
+    "densidade": 8.359333729626699e-05,
+    "n_isolados": 47315,
+    "frac_isolados": 0.4370860315378149,
+    "n_componentes_fracas": 47499,
+    "maior_componente_fraca": 59986,
+    "frac_maior_componente_fraca": 0.5541380680086097,
+    "n_componentes_fortes_nao_triviais": 231,
+    "maior_componente_forte": 28735,
+    "frac_maior_componente_forte": 0.26544789424578064,
+    "reciprocidade": 0.2349133948779096
+  },
+  "rede_autores_afiliacao_escopo": {
+    "n_vertices": 62905,
+    "n_arestas": 507924,
+    "grau_medio_saida": 8.074461489547732,
+    "densidade": 0.00012836165410065703,
+    "n_isolados": 24119,
+    "frac_isolados": 0.383419442015738,
+    "n_componentes_fracas": 24295,
+    "maior_componente_fraca": 38101,
+    "frac_maior_componente_fraca": 0.6056911215324696,
+    "n_componentes_fortes_nao_triviais": 190,
+    "maior_componente_forte": 19776,
+    "frac_maior_componente_forte": 0.3143788252126222,
+    "reciprocidade": 0.2635827407249903
+  },
+  "rede_autores_docentes_capes": {
+    "n_vertices": 2276,
+    "n_arestas": 40863,
+    "grau_medio_saida": 17.953866432337435,
+    "densidade": 0.007891809420807663,
+    "n_isolados": 97,
+    "frac_isolados": 0.04261862917398945,
+    "n_componentes_fracas": 101,
+    "maior_componente_fraca": 2173,
+    "frac_maior_componente_fraca": 0.9547451669595782,
+    "n_componentes_fortes_nao_triviais": 11,
+    "maior_componente_forte": 1970,
+    "frac_maior_componente_forte": 0.8655536028119508,
+    "reciprocidade": 0.3416293468418863
+  },
+  "sobreposicao_coautoria": {
+    "frac_arestas_entre_coautores": 0.3062014514665243,
+    "frac_weight_entre_coautores": 0.5759838788193626,
+    "frac_weight_frac_entre_coautores": 0.5324327429446362
+  },
+  "graus_e_forcas": {
+    "grau_entrada": {
+      "media": 9.048978762320901,
+      "mediana": 0.0,
+      "p99": 119.0,
+      "max": 1192.0
+    },
+    "grau_saida": {
+      "media": 9.048978762320901,
+      "mediana": 0.0,
+      "p99": 110.0,
+      "max": 758.0
+    },
+    "forca_entrada": {
+      "media": 21.481445898883152,
+      "mediana": 0.0,
+      "p99": 335.0,
+      "max": 10784.0
+    },
+    "forca_entrada_frac": {
+      "media": 0.8274349500789829,
+      "mediana": 0.0,
+      "p99": 14.530202500000005,
+      "max": 324.5730080000001
+    },
+    "peso_aresta": {
+      "media": 2.3739083119887376,
+      "max": 1677.0,
+      "frac_peso_1": 0.6757588348249879
+    }
+  },
+  "mais_citados_weight": [
+    {
+      "author_id": "A5052816913",
+      "nome": "Marcos dos Santos",
+      "ies_principal": "IME",
+      "docente_capes": true,
+      "weight": 10784
+    },
+    {
+      "author_id": "A5076661347",
+      "nome": "Carlos Francısco Sımões Gomes",
+      "ies_principal": "UFF",
+      "docente_capes": false,
+      "weight": 9566
+    },
+    {
+      "author_id": "A5000117859",
+      "nome": "Igor Pınheıro de Araújo Costa",
+      "ies_principal": "UFF",
+      "docente_capes": false,
+      "weight": 7289
+    },
+    {
+      "author_id": "A5060681422",
+      "nome": "Miguel Ângelo Lellis Moreira",
+      "ies_principal": "UFF",
+      "docente_capes": false,
+      "weight": 6049
+    },
+    {
+      "author_id": "A5037372511",
+      "nome": "Lisandro Lovisolo",
+      "ies_principal": "",
+      "docente_capes": false,
+      "weight": 5552
+    },
+    {
+      "author_id": "A5071526705",
+      "nome": "Karla Figueiredo",
+      "ies_principal": "PUC-RIO",
+      "docente_capes": false,
+      "weight": 5526
+    },
+    {
+      "author_id": "A5055950045",
+      "nome": "Roberto Velho",
+      "ies_principal": "UFRGS",
+      "docente_capes": false,
+      "weight": 5491
+    },
+    {
+      "author_id": "A5041827028",
+      "nome": "Adriano Cortês",
+      "ies_principal": "UFRJ",
+      "docente_capes": true,
+      "weight": 5490
+    },
+    {
+      "author_id": "A5045059178",
+      "nome": "Marcos Vinicius dos Santos Issa",
+      "ies_principal": "",
+      "docente_capes": false,
+      "weight": 5486
+    },
+    {
+      "author_id": "A5008879386",
+      "nome": "Américo Cunha",
+      "ies_principal": "",
+      "docente_capes": false,
+      "weight": 5486
+    },
+    {
+      "author_id": "A5017233187",
+      "nome": "Luiz Felipe Silveira Coelho",
+      "ies_principal": "UFRJ",
+      "docente_capes": false,
+      "weight": 5486
+    },
+    {
+      "author_id": "A5018412599",
+      "nome": "Michel Tosin",
+      "ies_principal": "",
+      "docente_capes": false,
+      "weight": 5486
+    },
+    {
+      "author_id": "A5023794364",
+      "nome": "Julio Basilio",
+      "ies_principal": "",
+      "docente_capes": false,
+      "weight": 5486
+    },
+    {
+      "author_id": "A5031637088",
+      "nome": "Leonardo de la Roca",
+      "ies_principal": "",
+      "docente_capes": false,
+      "weight": 5486
+    },
+    {
+      "author_id": "A5006586739",
+      "nome": "Malú Grave",
+      "ies_principal": "UFRJ",
+      "docente_capes": false,
+      "weight": 5486
+    }
+  ],
+  "mais_citados_weight_frac": [
+    {
+      "author_id": "A5052816913",
+      "nome": "Marcos dos Santos",
+      "ies_principal": "IME",
+      "docente_capes": true,
+      "weight_frac": 324.573
+    },
+    {
+      "author_id": "A5076661347",
+      "nome": "Carlos Francısco Sımões Gomes",
+      "ies_principal": "UFF",
+      "docente_capes": false,
+      "weight_frac": 257.811
+    },
+    {
+      "author_id": "A5110386931",
+      "nome": "Jair Cavalcanti Leite",
+      "ies_principal": "UFRN",
+      "docente_capes": false,
+      "weight_frac": 194.825
+    },
+    {
+      "author_id": "A5000117859",
+      "nome": "Igor Pınheıro de Araújo Costa",
+      "ies_principal": "UFF",
+      "docente_capes": false,
+      "weight_frac": 187.122
+    },
+    {
+      "author_id": "A5006855037",
+      "nome": "Seiji Isotani",
+      "ies_principal": "USP",
+      "docente_capes": true,
+      "weight_frac": 168.073
+    },
+    {
+      "author_id": "A5065297243",
+      "nome": "Giancarlo Guizzardi",
+      "ies_principal": "UFES",
+      "docente_capes": true,
+      "weight_frac": 155.266
+    },
+    {
+      "author_id": "A5059533665",
+      "nome": "Adiel Teixeira de Almeida",
+      "ies_principal": "UFPE",
+      "docente_capes": true,
+      "weight_frac": 154.816
+    },
+    {
+      "author_id": "A5045093520",
+      "nome": "Victor Hugo C. de Albuquerque",
+      "ies_principal": "UNIFOR",
+      "docente_capes": true,
+      "weight_frac": 154.282
+    },
+    {
+      "author_id": "A5060681422",
+      "nome": "Miguel Ângelo Lellis Moreira",
+      "ies_principal": "UFF",
+      "docente_capes": false,
+      "weight_frac": 150.13
+    },
+    {
+      "author_id": "A5087970571",
+      "nome": "Roberto Lotufo",
+      "ies_principal": "UNICAMP",
+      "docente_capes": false,
+      "weight_frac": 143.574
+    },
+    {
+      "author_id": "A5030647281",
+      "nome": "Rodrigo Frassetto Nogueira",
+      "ies_principal": "UNICAMP",
+      "docente_capes": false,
+      "weight_frac": 140.136
+    },
+    {
+      "author_id": "A5006530614",
+      "nome": "Rodrigo Pereira dos Santos",
+      "ies_principal": "UNIRIO",
+      "docente_capes": true,
+      "weight_frac": 136.355
+    },
+    {
+      "author_id": "A5072791484",
+      "nome": "Jorge Luís Victória Barbosa",
+      "ies_principal": "UNISINOS",
+      "docente_capes": true,
+      "weight_frac": 131.148
+    },
+    {
+      "author_id": "A5000905065",
+      "nome": "Edna Dias Canedo",
+      "ies_principal": "UNB",
+      "docente_capes": true,
+      "weight_frac": 128.536
+    },
+    {
+      "author_id": "A5076640892",
+      "nome": "Antônio A. F. Loureiro",
+      "ies_principal": "UFMG",
+      "docente_capes": true,
+      "weight_frac": 126.31
+    }
+  ]
+}

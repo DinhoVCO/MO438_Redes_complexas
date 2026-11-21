@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa da Computação</title>
+<!-- Gerado por analise_final/09_maps.py a partir de template_mapa.html; não editar o arquivo gerado -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-0: #f4f3f0;
+    --surface-1: #fcfcfb;
+    --land: #e6e5e0;
+    --land-border: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #77766f;
+    --rule: #dcdbd5;
+    --series-coautoria: #2a78d6;
+    --series-citacao: #eb6834;
+    --muted-mark: #b9b8b2;
+    --focus: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-0: #121211;
+      --surface-1: #1a1a19;
+      --land: #2a2a28;
+      --land-border: #1a1a19;
+      --text-primary: #f0efec;
+      --text-secondary: #c3c2b7;
+      --text-muted: #9a998f;
+      --rule: #3a3a37;
+      --series-coautoria: #3987e5;
+      --series-citacao: #d95926;
+      --muted-mark: #5c5b56;
+      --focus: #3987e5;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --land: #2a2a28;
+    --land-border: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #9a998f;
+    --rule: #3a3a37;
+    --series-coautoria: #3987e5;
+    --series-citacao: #d95926;
+    --muted-mark: #5c5b56;
+    --focus: #3987e5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface-0);
+    color: var(--text-primary);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .lede { color: var(--text-secondary); margin: 0 0 20px; max-width: 70ch; }
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end;
+    margin-bottom: 12px;
+  }
+  .control { display: flex; flex-direction: column; gap: 4px; }
+  .control > span { font-size: 0.8rem; color: var(--text-secondary); }
+  .segmented { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .segmented button {
+    font: inherit; padding: 6px 14px; border: 0; background: var(--surface-1);
+    color: var(--text-secondary); cursor: pointer;
+  }
+  .segmented button[aria-pressed="true"] { background: var(--text-primary); color: var(--surface-1); }
+  select, input[type="range"] { font: inherit; }
+  select {
+    padding: 6px 10px; border: 1px solid var(--rule); border-radius: 8px;
+    background: var(--surface-1); color: var(--text-primary); max-width: 100%;
+  }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .layout { display: grid; grid-template-columns: 1fr 300px; gap: 16px; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+  #map {
+    height: 640px; border-radius: 12px; border: 1px solid var(--rule);
+    background: var(--surface-1);
+  }
+  @media (max-width: 600px) { #map { height: 460px; } }
+  .panel {
+    background: var(--surface-1); border: 1px solid var(--rule); border-radius: 12px;
+    padding: 16px; font-size: 0.9rem;
+  }
+  .panel h2 { font-size: 1rem; margin: 0 0 8px; }
+  .panel p { margin: 0 0 10px; color: var(--text-secondary); }
+  .legend-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; color: var(--text-secondary); }
+  .swatch-line { width: 28px; height: 3px; border-radius: 2px; }
+  .swatch-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--surface-1); box-shadow: 0 0 0 1px var(--rule); }
+  .stat { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--rule); }
+  .stat:last-child { border-bottom: 0; }
+  .stat b { font-variant-numeric: tabular-nums; }
+  .leaflet-container { font: inherit; background: var(--surface-1); }
+  .leaflet-tooltip {
+    background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--rule);
+    border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.12); padding: 8px 10px; font-size: 0.85rem;
+  }
+  .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { display: none; }
+  .tt-title { font-weight: 600; }
+  .tt-sub { color: var(--text-secondary); margin-bottom: 4px; }
+  .tt-row { display: flex; justify-content: space-between; gap: 16px; font-variant-numeric: tabular-nums; }
+  .tt-row span:first-child { color: var(--text-secondary); }
+  .ies-label { color: var(--text-primary); font-size: 11px; font-weight: 600; text-shadow: 0 0 3px var(--surface-1), 0 0 3px var(--surface-1); white-space: nowrap; }
+  details { margin-top: 24px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .table-wrap { overflow-x: auto; margin-top: 8px; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.85rem; background: var(--surface-1); }
+  th, td { padding: 6px 10px; border-bottom: 1px solid var(--rule); text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
+  th { color: var(--text-secondary); font-weight: 600; cursor: pointer; user-select: none; }
+  td { font-variant-numeric: tabular-nums; }
+  .note { color: var(--text-muted); font-size: 0.8rem; margin-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Colaboração e citação na pós-graduação em Computação</h1>
+  <p class="lede">Cada círculo é uma instituição (IES) dos 87 programas de Computação avaliados pela CAPES, posicionada na sua cidade. Os autores contam na IES onde mais publicam (2018–2024, OpenAlex).</p>
+
+  <div class="controls">
+    <div class="control">
+      <span>Rede</span>
+      <div class="segmented" role="group" aria-label="Rede">
+        <button type="button" data-net="coautoria" aria-pressed="true">Coautoria</button>
+        <button type="button" data-net="citacao" aria-pressed="false">Citação</button>
+      </div>
+    </div>
+    <label class="control">
+      <span>Comunidade de coautoria</span>
+      <select id="community"><option value="">Todas as IES</option></select>
+    </label>
+    <label class="control">
+      <span>Ligações mostradas: <b id="nEdgesLabel">150</b></span>
+      <input id="nEdges" type="range" min="25" max="600" step="25" value="150">
+    </label>
+  </div>
+
+  <div class="layout">
+    <div id="map" role="img" aria-label="Mapa do Brasil com as instituições e as ligações entre elas"></div>
+    <aside class="panel" id="panel"></aside>
+  </div>
+
+  <details>
+    <summary>Tabela das instituições</summary>
+    <div class="table-wrap"><table id="table"><thead></thead><tbody></tbody></table></div>
+  </details>
+  <p class="note">Fontes: OpenAlex (publicações, autores, coordenadas das instituições), CAPES (Avaliação Quadrienal 2025) e IBGE (malha das UFs). IES da mesma cidade foram afastadas um pouco para não se sobreporem.</p>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const fmtInt = v => v == null ? "—" : Math.round(v).toLocaleString("pt-BR");
+const fmtDec = (v, d = 2) => v == null ? "—" : v.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmtPct = v => v == null ? "—" : (100 * v).toLocaleString("pt-BR", { maximumFractionDigits: 0 }) + "%";
+
+const state = { net: "coautoria", community: "", nEdges: 150 };
+const iesBy = Object.fromEntries(DATA.ies.map(d => [d.ies_principal, d]));
+const lbl = k => (iesBy[k] && iesBy[k].rotulo) || k;
+const communityBy = Object.fromEntries(DATA.comunidades.map(c => [String(c.id), c]));
+
+// Mapa sem camada de ladrilhos: só o contorno das UFs, para funcionar sem servidor de mapas
+const map = L.map("map", { zoomSnap: 0.25, attributionControl: false, preferCanvas: false });
+const ufLayer = L.geoJSON(DATA.ufs, { interactive: false, style: () => ({ color: css("--land-border"), weight: 1, fillColor: css("--land"), fillOpacity: 1 }) }).addTo(map);
+map.fitBounds(ufLayer.getBounds(), { padding: [10, 10] });
+const edgeLayer = L.layerGroup().addTo(map);
+const nodeLayer = L.layerGroup().addTo(map);
+const labelLayer = L.layerGroup().addTo(map);
+
+const radius = n => 2.5 + Math.sqrt(Math.max(n, 0)) * 0.42;
+
+function seriesColor() { return state.net === "coautoria" ? css("--series-coautoria") : css("--series-citacao"); }
+
+function edgesForNet() {
+  if (state.net === "coautoria") {
+    return DATA.coautoria.map(([a, b, w]) => ({ a, b, w, tip: `<div class="tt-title">${lbl(a)} — ${lbl(b)}</div><div class="tt-row"><span>Pares de coautores</span><b>${fmtInt(w)}</b></div>` }));
+  }
+  // Citação: junta os dois sentidos num traço e mostra cada sentido na dica
+  const pair = new Map();
+  for (const [a, b, w] of DATA.citacao) {
+    const key = a < b ? a + "|" + b : b + "|" + a;
+    const e = pair.get(key) || { a: a < b ? a : b, b: a < b ? b : a, ab: 0, ba: 0 };
+    if (a === e.a) e.ab += w; else e.ba += w;
+    pair.set(key, e);
+  }
+  return [...pair.values()].map(e => ({
+    a: e.a, b: e.b, w: e.ab + e.ba,
+    tip: `<div class="tt-title">${lbl(e.a)} ⇄ ${lbl(e.b)}</div><div class="tt-row"><span>${lbl(e.a)} → ${lbl(e.b)}</span><b>${fmtDec(e.ab, 1)}</b></div><div class="tt-row"><span>${lbl(e.b)} → ${lbl(e.a)}</span><b>${fmtDec(e.ba, 1)}</b></div><div class="tt-sub">citações (peso fracionário)</div>`,
+  }));
+}
+
+function nodeTip(d, members) {
+  let html = `<div class="tt-title">${d.rotulo}</div><div class="tt-sub">${d.nome}${d.cidade ? " · " + d.cidade : ""}</div>`;
+  if (members != null) html += `<div class="tt-row"><span>Membros da comunidade</span><b>${fmtInt(members)}</b></div>`;
+  html += `<div class="tt-row"><span>Autores</span><b>${fmtInt(d.n_autores)}</b></div>`
+    + `<div class="tt-row"><span>Docentes CAPES</span><b>${fmtInt(d.n_docentes_capes)}</b></div>`
+    + `<div class="tt-row"><span>Nota CAPES (máx.)</span><b>${d.nota_maxima ?? "—"}</b></div>`
+    + `<div class="tt-row"><span>FWCI mediano</span><b>${fmtDec(d.fwci_mediano)}</b></div>`
+    + `<div class="tt-row"><span>PageRank (citação)</span><b>${fmtDec(d.pagerank, 4)}</b></div>`
+    + `<div class="tt-row"><span>Coautoria na própria IES</span><b>${fmtPct(d.frac_coautoria_interna)}</b></div>`;
+  return html;
+}
+
+function render() {
+  edgeLayer.clearLayers(); nodeLayer.clearLayers(); labelLayer.clearLayers();
+  const color = seriesColor();
+  const surface = css("--surface-1");
+  const muted = css("--muted-mark");
+  const comm = state.community ? communityBy[state.community] : null;
+
+  const edges = edgesForNet().filter(e => iesBy[e.a] && iesBy[e.b]).sort((x, y) => y.w - x.w).slice(0, state.nEdges);
+  const wmax = Math.max(...edges.map(e => e.w), 1);
+  for (const e of edges.slice().reverse()) {
+    const s = Math.sqrt(e.w / wmax);
+    const inComm = !comm || (comm.membros[e.a] && comm.membros[e.b]);
+    const line = L.polyline([[iesBy[e.a].lat_plot, iesBy[e.a].lon_plot], [iesBy[e.b].lat_plot, iesBy[e.b].lon_plot]], {
+      color: inComm ? color : muted, weight: 0.6 + 6 * s, opacity: comm && !inComm ? 0.12 : 0.18 + 0.5 * s, lineCap: "round",
+    });
+    line.bindTooltip(e.tip, { sticky: true });
+    line.on("mouseover", () => line.setStyle({ opacity: 0.95 })).on("mouseout", () => line.setStyle({ opacity: comm && !inComm ? 0.12 : 0.18 + 0.5 * s }));
+    line.addTo(edgeLayer);
+  }
+
+  const nodes = DATA.ies.slice().sort((x, y) => (comm ? (comm.membros[y.ies_principal] || 0) - (comm.membros[x.ies_principal] || 0) : y.n_autores - x.n_autores));
+  const labelled = new Set(nodes.slice(0, comm ? 8 : 14).map(d => d.ies_principal));
+  for (const d of nodes.slice().reverse()) {
+    const members = comm ? (comm.membros[d.ies_principal] || 0) : null;
+    const active = !comm || members > 0;
+    const r = comm ? (active ? radius(members * 6) : 3) : radius(d.n_autores);
+    const marker = L.circleMarker([d.lat_plot, d.lon_plot], {
+      radius: r, color: surface, weight: 2, fillColor: active ? color : muted, fillOpacity: active ? 0.9 : 0.7,
+    });
+    marker.bindTooltip(nodeTip(d, members), { direction: "top", offset: [0, -r] });
+    marker.addTo(nodeLayer);
+    if (labelled.has(d.ies_principal) && active) {
+      L.marker([d.lat_plot, d.lon_plot], {
+        interactive: false,
+        icon: L.divIcon({ className: "", html: `<span class="ies-label">${d.rotulo}</span>`, iconAnchor: [-r - 2, 6] }),
+      }).addTo(labelLayer);
+    }
+  }
+  renderPanel(comm, edges);
+}
+
+function renderPanel(comm, edges) {
+  const color = seriesColor();
+  const netName = state.net === "coautoria" ? "pares de coautores entre IES" : "citações entre IES (dois sentidos)";
+  let html = `<h2>${comm ? "C" + comm.id + ": " + comm.topico : (state.net === "coautoria" ? "Coautoria" : "Citação")}</h2>`;
+  if (comm) {
+    const entries = Object.entries(comm.membros).sort((a, b) => b[1] - a[1]);
+    const inScope = entries.reduce((s, [, v]) => s + v, 0);
+    html += `<p>Comunidade de ${fmtInt(comm.tamanho)} autores. Os ${fmtInt(inScope)} com IES no escopo estão em ${entries.length} instituições; a área do círculo é proporcional aos membros em cada uma.</p>`;
+    html += entries.slice(0, 8).map(([k, v]) => `<div class="stat"><span>${lbl(k)}</span><b>${fmtInt(v)} (${fmtPct(v / inScope)})</b></div>`).join("");
+  } else {
+    html += state.net === "coautoria"
+      ? `<p>69% das ligações de coautoria ficam dentro da própria IES; o mapa mostra as que cruzam instituições.</p>`
+      : `<p>Passe o cursor numa linha para ver as citações em cada sentido.</p>`;
+    html += edges.slice(0, 6).map(e => `<div class="stat"><span>${lbl(e.a)} – ${lbl(e.b)}</span><b>${state.net === "coautoria" ? fmtInt(e.w) : fmtDec(e.w, 0)}</b></div>`).join("");
+  }
+  html += `<div style="margin-top:12px">`
+    + `<div class="legend-row"><span class="swatch-dot" style="background:${color}"></span>IES (área ∝ ${comm ? "membros" : "autores"})</div>`
+    + `<div class="legend-row"><span class="swatch-line" style="background:${color}"></span>${netName}</div>`
+    + (comm ? `<div class="legend-row"><span class="swatch-dot" style="background:${css("--muted-mark")}"></span>sem membros da comunidade</div>` : "")
+    + `</div>`;
+  document.getElementById("panel").innerHTML = html;
+}
+
+// Controles
+document.querySelectorAll(".segmented button").forEach(btn => btn.addEventListener("click", () => {
+  state.net = btn.dataset.net;
+  document.querySelectorAll(".segmented button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+  render();
+}));
+const select = document.getElementById("community");
+for (const c of DATA.comunidades) {
+  const opt = document.createElement("option");
+  opt.value = c.id; opt.textContent = `C${c.id} · ${c.topico} (${fmtInt(c.tamanho)})`;
+  select.appendChild(opt);
+}
+select.addEventListener("change", () => { state.community = select.value; render(); });
+const slider = document.getElementById("nEdges");
+slider.addEventListener("input", () => { state.nEdges = +slider.value; document.getElementById("nEdgesLabel").textContent = slider.value; render(); });
+
+// Tabela (alternativa acessível ao mapa), ordenável por coluna
+const columns = [
+  ["rotulo", "IES", v => v], ["cidade", "Cidade", v => v || "—"], ["n_autores", "Autores", fmtInt],
+  ["n_docentes_capes", "Docentes", fmtInt], ["nota_maxima", "Nota CAPES", v => v ?? "—"],
+  ["fwci_mediano", "FWCI med.", v => fmtDec(v)], ["pagerank", "PageRank", v => fmtDec(v, 4)],
+  ["frac_coautoria_interna", "Coautoria interna", fmtPct],
+];
+let sortKey = "n_autores", sortDir = -1;
+function renderTable() {
+  const thead = document.querySelector("#table thead"), tbody = document.querySelector("#table tbody");
+  thead.innerHTML = "<tr>" + columns.map(([k, label]) => `<th data-k="${k}" aria-sort="${k === sortKey ? (sortDir < 0 ? "descending" : "ascending") : "none"}">${label}${k === sortKey ? (sortDir < 0 ? " ↓" : " ↑") : ""}</th>`).join("") + "</tr>";
+  const rows = DATA.ies.slice().sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x == null) return 1; if (y == null) return -1;
+    return (x > y ? 1 : x < y ? -1 : 0) * sortDir;
+  });
+  tbody.innerHTML = rows.map(d => "<tr>" + columns.map(([k, , f]) => `<td>${f(d[k])}</td>`).join("") + "</tr>").join("");
+  thead.querySelectorAll("th").forEach(th => th.addEventListener("click", () => {
+    sortDir = th.dataset.k === sortKey ? -sortDir : -1; sortKey = th.dataset.k; renderTable();
+  }));
+}
+
+render();
+renderTable();
+// Repinta ao trocar o tema do sistema
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  ufLayer.setStyle({ color: css("--land-border"), fillColor: css("--land") });
+  render();
+});
+</script>
+</body>
+</html>

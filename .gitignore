@@ -1,0 +1,33 @@
+# Segredos
+rede_coautoria/.env
+**/.env
+
+# Corpus bruto da OpenAlex (~480 MB; ~56 MB em .gz). GitHub recusa arquivos acima de 100 MB.
+# Baixar pelo link do README ou reconstruir com: run_pipeline.py + label_faculty.py + collect_faculty_works.py
+rede_coautoria/data/obras*.jsonl
+rede_coautoria/data/obras*.jsonl.gz
+rede_coautoria/data/coleta_2026-10/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Logs locais
+rede_coautoria/logs/
+
+# Apuntes del curso (descarga local, no van al repositorio)
+notas_mo438/
+
+# Arquivos de compilação LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+relatorio_final/build.txt

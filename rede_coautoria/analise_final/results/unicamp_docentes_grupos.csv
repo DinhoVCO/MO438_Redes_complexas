@@ -1,0 +1,60 @@
+author_id,nome,comunidade,topico_grupo,coautores_docentes_ies,coautores_total,pontes
+A5078032670,Breno Bernard Nicolau de França,0,Software Engineering Techniques and Practices,6,98,5
+A5040866580,Cecília M. F. Rubira,0,Software Engineering Techniques and Practices,4,15,3
+A5111489343,Arnaldo Vieira Moura,0,Software Engineering Techniques and Practices,0,3,0
+A5040576989,Flávio K. Miyazawa,2,Optimization and Packing Problems,6,43,2
+A5036752449,Rafael C. S. Schouery,2,Optimization and Packing Problems,7,32,3
+A5005439993,Eduardo C. Xavier,2,Optimization and Packing Problems,6,28,4
+A5072743877,Orlando Lee,2,Optimization and Packing Problems,1,27,0
+A5036130363,Lehilton L. C. Pedrosa,2,Optimization and Packing Problems,4,24,2
+A5011810058,C.N. Campos,2,Optimization and Packing Problems,1,11,0
+A5025642074,Leandro  Aparecido Villas,3,IoT and Edge/Fog Computing,12,208,8
+A5090424349,Luiz F. Bittencourt,3,IoT and Edge/Fog Computing,9,169,6
+A5081590498,Júlio Cesar dos Reis,3,IoT and Edge/Fog Computing,12,136,7
+A5062676037,Edmundo R. M. Madeira,3,IoT and Edge/Fog Computing,5,113,3
+A5023191435,M. Cecília C. Baranauskas,3,IoT and Edge/Fog Computing,6,92,3
+A5028478887,Allan Mariano De Souza,3,IoT and Edge/Fog Computing,6,56,3
+A5085894599,Emanuel Felipe Duarte,3,IoT and Edge/Fog Computing,4,29,2
+A5079958178,Heiko Hornung,3,IoT and Edge/Fog Computing,2,22,0
+A5010305048,Juliana Freitag Borin,4,IoT and Edge/Fog Computing,3,42,3
+A5035107721,André Santanchè,5,Computational Geometry and Mesh Generation,1,29,1
+A5001511641,Jorge Stolfi,5,Computational Geometry and Mesh Generation,0,7,0
+A5024273591,Paulo Lício de Geus,6,Advanced Malware Detection Techniques,0,33,0
+A5076688244,Leonardo Montecchi,8,Software Testing and Debugging Techniques,5,66,4
+A5101644955,Eliane Martins,8,Software Testing and Debugging Techniques,2,21,0
+A5064838533,Ariadne Maria Brito Rizzoni Carvalho,8,Software Testing and Debugging Techniques,2,14,1
+A5039387826,Nelson L. S. da Fonseca,10,Advanced Optical Network Technologies,9,129,8
+A5032076897,Carlos A. Astudillo,10,Advanced Optical Network Technologies,6,76,5
+A5043147904,Anderson De Rezende Rocha,12,Genome Rearrangement Algorithms,11,304,2
+A5065725754,Hélio Pedrini,12,Genome Rearrangement Algorithms,10,292,2
+A5087058987,Ricardo da Silva Torres,12,Genome Rearrangement Algorithms,14,257,6
+A5057680257,Sandra Avila,12,Genome Rearrangement Algorithms,7,165,0
+A5020557476,Diego F. Aranha,12,Genome Rearrangement Algorithms,7,132,2
+A5040178299,Edson Borin,12,Genome Rearrangement Algorithms,10,112,6
+A5067675731,Guido Costa Souza De Araujo,12,Genome Rearrangement Algorithms,5,98,1
+A5011531387,Esther Luna Colombini,12,Genome Rearrangement Algorithms,4,94,2
+A5042140271,Zanoni Dias,12,Genome Rearrangement Algorithms,6,72,1
+A5066663156,Hervé Yviquel,12,Genome Rearrangement Algorithms,2,44,0
+A5040849996,Julio López,12,Genome Rearrangement Algorithms,2,34,0
+A5005416520,Cid C. de Souza,12,Genome Rearrangement Algorithms,5,30,1
+A5077598713,Ricardo Dahab,12,Genome Rearrangement Algorithms,4,29,1
+A5062966441,Hilder V. L. Pereira,12,Genome Rearrangement Algorithms,0,23,0
+A5080024357,Pedro J. de Rezende,12,Genome Rearrangement Algorithms,2,22,1
+A5002484344,Jacques Wainer,12,Genome Rearrangement Algorithms,6,21,3
+A5113663047,Siome Klein Goldenstein,12,Genome Rearrangement Algorithms,5,18,1
+A5049169709,João Meidânis,12,Genome Rearrangement Algorithms,1,9,0
+A5107434972,Sandro Rigo,12,Genome Rearrangement Algorithms,2,8,0
+A5017489211,Mario Lúcio Côrtes,12,Genome Rearrangement Algorithms,3,6,0
+A5111976340,Ricardo de Oliveira Anido,12,Genome Rearrangement Algorithms,1,5,0
+A5090038371,Didier Augusto Vega Oliveros,14,Complex Network Analysis Techniques,2,52,2
+A5089361135,Everton Gomede,14,Complex Network Analysis Techniques,0,6,0
+A5059488979,Fábio Luiz Usberti,31,Vehicle Routing Optimization Methods,3,135,3
+A5005402339,Rodolfo Azevedo,32,Low-power high-performance VLSI design,6,89,4
+A5091197122,Lucas Wanner,32,Low-power high-performance VLSI design,2,31,1
+A5021027388,Islene Calciolari Garcia,32,Low-power high-performance VLSI design,5,17,4
+A5000356136,Marcos M. Raimundo,34,Advanced Multi-Objective Optimization Algorithms,1,18,1
+A5015267493,Alexandre X. Falcão,41,Medical Image Segmentation Techniques,2,254,2
+A5034874196,Guilherme Pimentel Telles,44,Algorithms and Data Compression,1,119,1
+A5024361328,Cláudia Bauzer Medeiros,50,Semantic Web and Ontologies,3,81,3
+A5079620580,Marcelo S. Reis,67,Gene Regulatory Network Analysis,1,73,1
+A5057197847,Gerberth Adín Ramírez Rivera,1830,Handwritten Text Recognition Techniques,0,1,0

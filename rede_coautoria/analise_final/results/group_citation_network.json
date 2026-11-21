@@ -1,0 +1,269 @@
+{
+  "tamanho_minimo_comunidade": 10,
+  "comunidades": {
+    "n_vertices": 240,
+    "n_arestas": 5321,
+    "n_arestas_sem_lacos": 5187,
+    "densidade_sem_lacos": 0.09042887029288703,
+    "cobertura": {
+      "frac_weight_coberto": 0.9895458306312753,
+      "frac_weight_frac_coberto": 0.9588206977727304
+    },
+    "homofilia": {
+      "frac_interna_observada": 0.667265527250012,
+      "frac_interna_esperada": 0.03291442215859786,
+      "modularidade_dirigida": 0.6343511050914141,
+      "razao_observada_esperada": 20.272740139103725
+    },
+    "frac_interna_saida_mediana": 0.6081869109289259,
+    "frac_interna_saida_ponderada": 0.6672655272500121,
+    "top_pagerank": [
+      {
+        "grupo": 0,
+        "tamanho": 5778,
+        "ies_dominante": "USP",
+        "subarea_dominante": "Information Systems",
+        "pagerank": 0.08219369625626849,
+        "citacoes_recebidas_externas": 3141.343600000001
+      },
+      {
+        "grupo": 8,
+        "tamanho": 2361,
+        "ies_dominante": "UFAL",
+        "subarea_dominante": "Information Systems",
+        "pagerank": 0.03773172611874892,
+        "citacoes_recebidas_externas": 1429.139000000002
+      },
+      {
+        "grupo": 3,
+        "tamanho": 2974,
+        "ies_dominante": "UFOP",
+        "subarea_dominante": "Artificial Intelligence",
+        "pagerank": 0.03710396431088397,
+        "citacoes_recebidas_externas": 1426.9797999999987
+      },
+      {
+        "grupo": 1,
+        "tamanho": 4110,
+        "ies_dominante": "UFC",
+        "subarea_dominante": "Information Systems",
+        "pagerank": 0.03368788169851351,
+        "citacoes_recebidas_externas": 1240.8869000000013
+      },
+      {
+        "grupo": 5,
+        "tamanho": 2487,
+        "ies_dominante": "UFMG",
+        "subarea_dominante": "Artificial Intelligence",
+        "pagerank": 0.03237426753116448,
+        "citacoes_recebidas_externas": 1161.252799999999
+      },
+      {
+        "grupo": 6,
+        "tamanho": 2434,
+        "ies_dominante": "UTFPR",
+        "subarea_dominante": "Artificial Intelligence",
+        "pagerank": 0.02721890506224568,
+        "citacoes_recebidas_externas": 970.5070000000007
+      },
+      {
+        "grupo": 4,
+        "tamanho": 2547,
+        "ies_dominante": "UFF",
+        "subarea_dominante": "Computer Networks and Communications",
+        "pagerank": 0.026534464616612494,
+        "citacoes_recebidas_externas": 936.5060999999996
+      },
+      {
+        "grupo": 7,
+        "tamanho": 2415,
+        "ies_dominante": "UNB",
+        "subarea_dominante": "Information Systems",
+        "pagerank": 0.023856458591719455,
+        "citacoes_recebidas_externas": 877.0933000000002
+      },
+      {
+        "grupo": 2,
+        "tamanho": 3231,
+        "ies_dominante": "CEFET-RJ",
+        "subarea_dominante": "Computational Theory and Mathematics",
+        "pagerank": 0.022593691427396093,
+        "citacoes_recebidas_externas": 748.968499999999
+      },
+      {
+        "grupo": 22,
+        "tamanho": 1323,
+        "ies_dominante": "UFRJ",
+        "subarea_dominante": "Computer Networks and Communications",
+        "pagerank": 0.02085040714051663,
+        "citacoes_recebidas_externas": 785.2160000000005
+      }
+    ],
+    "top_recebidas_externas": [
+      {
+        "grupo": 0,
+        "tamanho": 5778,
+        "ies_dominante": "USP",
+        "subarea_dominante": "Information Systems",
+        "citacoes_recebidas_externas": 3141.343600000001
+      },
+      {
+        "grupo": 8,
+        "tamanho": 2361,
+        "ies_dominante": "UFAL",
+        "subarea_dominante": "Information Systems",
+        "citacoes_recebidas_externas": 1429.139000000002
+      },
+      {
+        "grupo": 3,
+        "tamanho": 2974,
+        "ies_dominante": "UFOP",
+        "subarea_dominante": "Artificial Intelligence",
+        "citacoes_recebidas_externas": 1426.9797999999987
+      },
+      {
+        "grupo": 1,
+        "tamanho": 4110,
+        "ies_dominante": "UFC",
+        "subarea_dominante": "Information Systems",
+        "citacoes_recebidas_externas": 1240.8869000000013
+      },
+      {
+        "grupo": 5,
+        "tamanho": 2487,
+        "ies_dominante": "UFMG",
+        "subarea_dominante": "Artificial Intelligence",
+        "citacoes_recebidas_externas": 1161.252799999999
+      },
+      {
+        "grupo": 6,
+        "tamanho": 2434,
+        "ies_dominante": "UTFPR",
+        "subarea_dominante": "Artificial Intelligence",
+        "citacoes_recebidas_externas": 970.5070000000007
+      },
+      {
+        "grupo": 4,
+        "tamanho": 2547,
+        "ies_dominante": "UFF",
+        "subarea_dominante": "Computer Networks and Communications",
+        "citacoes_recebidas_externas": 936.5060999999996
+      },
+      {
+        "grupo": 7,
+        "tamanho": 2415,
+        "ies_dominante": "UNB",
+        "subarea_dominante": "Information Systems",
+        "citacoes_recebidas_externas": 877.0933000000002
+      },
+      {
+        "grupo": 22,
+        "tamanho": 1323,
+        "ies_dominante": "UFRJ",
+        "subarea_dominante": "Computer Networks and Communications",
+        "citacoes_recebidas_externas": 785.2160000000005
+      },
+      {
+        "grupo": 10,
+        "tamanho": 2142,
+        "ies_dominante": "UFES",
+        "subarea_dominante": "Computer Networks and Communications",
+        "citacoes_recebidas_externas": 776.4031000000014
+      }
+    ]
+  },
+  "ies": {
+    "n_vertices": 72,
+    "n_arestas": 4613,
+    "cobertura": {
+      "frac_weight_coberto": 0.5918410174990152,
+      "frac_weight_frac_coberto": 0.7558726961561154
+    },
+    "homofilia": {
+      "frac_interna_observada": 0.4747554949662062,
+      "frac_interna_esperada": 0.03090133229426646,
+      "modularidade_dirigida": 0.4438541626719398,
+      "razao_observada_esperada": 15.363593078939642
+    },
+    "frac_interna_saida_mediana": 0.3962624862289548,
+    "frac_interna_saida_ponderada": 0.4747554949662062,
+    "top_pagerank": [
+      {
+        "grupo": "USP",
+        "n_autores": 6016,
+        "n_docentes_capes": 161,
+        "pagerank": 0.07442740164353258,
+        "citacoes_recebidas_externas": 2922.7802000000006
+      },
+      {
+        "grupo": "UNICAMP",
+        "n_autores": 2590,
+        "n_docentes_capes": 59,
+        "pagerank": 0.0463177257112079,
+        "citacoes_recebidas_externas": 1889.9341000000024
+      },
+      {
+        "grupo": "UFMG",
+        "n_autores": 2445,
+        "n_docentes_capes": 66,
+        "pagerank": 0.04166550124615995,
+        "citacoes_recebidas_externas": 1701.803200000001
+      },
+      {
+        "grupo": "UFPE",
+        "n_autores": 2070,
+        "n_docentes_capes": 98,
+        "pagerank": 0.0398137582154863,
+        "citacoes_recebidas_externas": 1601.8244999999988
+      },
+      {
+        "grupo": "UFRGS",
+        "n_autores": 2117,
+        "n_docentes_capes": 72,
+        "pagerank": 0.039168885078717235,
+        "citacoes_recebidas_externas": 1548.441599999998
+      },
+      {
+        "grupo": "UFF",
+        "n_autores": 1452,
+        "n_docentes_capes": 53,
+        "pagerank": 0.03414814369283532,
+        "citacoes_recebidas_externas": 1350.4690999999987
+      },
+      {
+        "grupo": "UFRJ",
+        "n_autores": 2055,
+        "n_docentes_capes": 82,
+        "pagerank": 0.030017954573990462,
+        "citacoes_recebidas_externas": 1220.6691000000005
+      },
+      {
+        "grupo": "UTFPR",
+        "n_autores": 2178,
+        "n_docentes_capes": 88,
+        "pagerank": 0.026714244964249578,
+        "citacoes_recebidas_externas": 1028.1001999999999
+      },
+      {
+        "grupo": "UFRN",
+        "n_autores": 1478,
+        "n_docentes_capes": 48,
+        "pagerank": 0.022770617596177652,
+        "citacoes_recebidas_externas": 851.9397000000006
+      },
+      {
+        "grupo": "UFPR",
+        "n_autores": 1112,
+        "n_docentes_capes": 43,
+        "pagerank": 0.022479423903549872,
+        "citacoes_recebidas_externas": 846.1408000000004
+      }
+    ]
+  },
+  "mesmo_grupo": {
+    "frac_mesma_comunidade": 0.6550095668080221,
+    "frac_mesma_ies": 0.48029168359559793,
+    "frac_mesma_comunidade_e_ies": 0.4308914367080965,
+    "frac_mesma_comunidade_outra_ies": 0.2241181300999257
+  }
+}

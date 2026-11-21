@@ -1,0 +1,39 @@
+{
+  "coautoria": {
+    "n_vertices": 79458,
+    "n_arestas": 402568,
+    "grau_medio": 10.132850059150746,
+    "clusterizacao_media": 0.7517520775883421,
+    "transitividade": 0.748505716154879,
+    "densidade": 0.00012752620988900595,
+    "n_componentes": 6495,
+    "maior_componente": 58508,
+    "tamanhos_componentes_top10": [
+      58508,
+      173,
+      101,
+      100,
+      98,
+      97,
+      82,
+      78,
+      74,
+      53
+    ],
+    "tamanho_componente": 58508,
+    "distancia_media": 6.737235327259888,
+    "diametro": 25
+  },
+  "citacoes": {
+    "n_vertices": 57300,
+    "n_arestas": 42143,
+    "grau_medio_entrada": 0.7354799301919721,
+    "grau_medio_saida": 0.7354799301919721,
+    "clusterizacao_media": 0.04307014401056182,
+    "transitividade": 0.13162424204143508,
+    "densidade": 1.2835824886856177e-05,
+    "tamanho_componente": 10,
+    "distancia_media": 2.0444444444444443,
+    "diametro": 4
+  }
+}

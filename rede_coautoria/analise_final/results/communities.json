@@ -1,0 +1,1469 @@
+{
+  "componentes": {
+    "n_componentes": 6457,
+    "componente_gigante": 94179,
+    "n_componentes_ge_10_fora_da_gigante": 119
+  },
+  "componente_gigante": {
+    "tabela": {
+      "louvain": {
+        "seed": 49,
+        "q_max": 0.9231932792757583,
+        "q_medio": 0.922344834118559,
+        "q_desvio": 0.0003729259833216212,
+        "q_min": 0.9215568025597067,
+        "nmi_medio_vs_melhor": 0.8369775409030697,
+        "tempo_medio_s": 3.343959805998602,
+        "tempo_s": 3.343959805998602,
+        "q": 0.9231932792757583,
+        "n_comunidades": 122,
+        "maior_comunidade": 5778,
+        "n_comunidades_ge_10": 121
+      },
+      "leiden": {
+        "tempo_s": 9.35838920000242,
+        "q": 0.9258735571246393,
+        "n_comunidades": 124,
+        "maior_comunidade": 4851,
+        "n_comunidades_ge_10": 123
+      },
+      "fastgreedy": {
+        "tempo_s": 179.14413689999492,
+        "q": 0.9032418428569803,
+        "n_comunidades": 143,
+        "maior_comunidade": 8667,
+        "n_comunidades_ge_10": 135
+      },
+      "label_propagation": {
+        "tempo_s": 10.788182299991604,
+        "q": 0.8200376766674722,
+        "n_comunidades": 4867,
+        "maior_comunidade": 725,
+        "n_comunidades_ge_10": 2012
+      },
+      "fluid": {
+        "tempo_s": 137.125254100014,
+        "k": 122,
+        "q": 0.8405354302078945,
+        "n_comunidades": 122,
+        "maior_comunidade": 1698,
+        "n_comunidades_ge_10": 122
+      }
+    },
+    "concordancia": {
+      "louvain x leiden": {
+        "nmi": 0.8319704417040161,
+        "ari": 0.6583030702296983
+      },
+      "louvain x fastgreedy": {
+        "nmi": 0.6421500073308886,
+        "ari": 0.32178129078944456
+      },
+      "louvain x label_propagation": {
+        "nmi": 0.6900998898365591,
+        "ari": 0.0763216638563686
+      },
+      "louvain x fluid": {
+        "nmi": 0.5069508090752828,
+        "ari": 0.13462750994886297
+      },
+      "leiden x fastgreedy": {
+        "nmi": 0.6487256348253337,
+        "ari": 0.31843529115993474
+      },
+      "leiden x label_propagation": {
+        "nmi": 0.6966887096373042,
+        "ari": 0.08550964577009895
+      },
+      "leiden x fluid": {
+        "nmi": 0.5206100264682054,
+        "ari": 0.15136726168016773
+      },
+      "fastgreedy x label_propagation": {
+        "nmi": 0.6272279574783496,
+        "ari": 0.039814000740235805
+      },
+      "fastgreedy x fluid": {
+        "nmi": 0.43697647756230495,
+        "ari": 0.08323656327553358
+      },
+      "label_propagation x fluid": {
+        "nmi": 0.6800942048293338,
+        "ari": 0.10732010743213301
+      }
+    }
+  },
+  "modelo_configuracao": {
+    "q_real_sem_pesos": 0.919530869892746,
+    "q_nulo_medio": 0.20128673989904217,
+    "q_nulo_desvio": 0.0021963527820864502,
+    "z": 327.0167415051601,
+    "n_aleatorizacoes": 10,
+    "trocas_por_aresta": 10
+  },
+  "validacao": {
+    "louvain": {
+      "ies_principal": {
+        "n_rotulados": 52788,
+        "n_rotulos": 72,
+        "nmi": 0.40810959324966156,
+        "ari": 0.12282672563198226,
+        "nmi_embaralhado": 0.018157530368223644,
+        "ari_embaralhado": -2.241091316938835e-05
+      },
+      "programa_capes": {
+        "n_rotulados": 2060,
+        "n_rotulos": 83,
+        "nmi": 0.5437202142984594,
+        "ari": 0.13280316869080322,
+        "nmi_embaralhado": 0.2569122151650415,
+        "ari_embaralhado": -0.0006794631927634684
+      },
+      "pureza_ies": {
+        "n_comunidades_avaliadas": 111,
+        "pureza_media": 0.4563752345804323,
+        "pureza_media_ponderada": 0.35258329858610366,
+        "pureza_mediana": 0.41237113402061853,
+        "n_ies_por_comunidade_mediana": 22.0,
+        "comunidades_para_50pct_da_ies_mediana": 2.0,
+        "comunidades_para_50pct_da_ies_media": 2.4305555555555554
+      }
+    },
+    "leiden": {
+      "ies_principal": {
+        "n_rotulados": 52788,
+        "n_rotulos": 72,
+        "nmi": 0.4285620792033056,
+        "ari": 0.14726877468071722,
+        "nmi_embaralhado": 0.017935848064570405,
+        "ari_embaralhado": 1.751573694113021e-05
+      },
+      "programa_capes": {
+        "n_rotulados": 2060,
+        "n_rotulos": 83,
+        "nmi": 0.5651372548636946,
+        "ari": 0.15693732414404268,
+        "nmi_embaralhado": 0.2579063687208501,
+        "ari_embaralhado": -0.0013114399935717337
+      },
+      "pureza_ies": {
+        "n_comunidades_avaliadas": 110,
+        "pureza_media": 0.4534298985792864,
+        "pureza_media_ponderada": 0.3670773313115997,
+        "pureza_mediana": 0.4176356589147287,
+        "n_ies_por_comunidade_mediana": 24.0,
+        "comunidades_para_50pct_da_ies_mediana": 2.0,
+        "comunidades_para_50pct_da_ies_media": 2.2916666666666665
+      }
+    },
+    "fastgreedy": {
+      "ies_principal": {
+        "n_rotulados": 52788,
+        "n_rotulos": 72,
+        "nmi": 0.34577546363724104,
+        "ari": 0.0841414294736745,
+        "nmi_embaralhado": 0.017126552642445513,
+        "ari_embaralhado": -3.02478077447167e-05
+      },
+      "programa_capes": {
+        "n_rotulados": 2060,
+        "n_rotulos": 83,
+        "nmi": 0.45914054147825173,
+        "ari": 0.08482824017676326,
+        "nmi_embaralhado": 0.20009992094150264,
+        "ari_embaralhado": 0.00029817161620861654
+      },
+      "pureza_ies": {
+        "n_comunidades_avaliadas": 105,
+        "pureza_media": 0.5489130492099973,
+        "pureza_media_ponderada": 0.2846682095837918,
+        "pureza_mediana": 0.4911504424778761,
+        "n_ies_por_comunidade_mediana": 10.0,
+        "comunidades_para_50pct_da_ies_mediana": 2.0,
+        "comunidades_para_50pct_da_ies_media": 2.361111111111111
+      }
+    },
+    "label_propagation": {
+      "ies_principal": {
+        "n_rotulados": 52788,
+        "n_rotulos": 72,
+        "nmi": 0.5713069116424708,
+        "ari": 0.03820760144049317,
+        "nmi_embaralhado": 0.20104342506992756,
+        "ari_embaralhado": -1.0688228081349412e-05
+      },
+      "programa_capes": {
+        "n_rotulados": 2060,
+        "n_rotulos": 83,
+        "nmi": 0.7186109960081076,
+        "ari": 0.06235404601080197,
+        "nmi_embaralhado": 0.6301028036658715,
+        "ari_embaralhado": -0.0001775414989516
+      },
+      "pureza_ies": {
+        "n_comunidades_avaliadas": 1617,
+        "pureza_media": 0.7932214219663895,
+        "pureza_media_ponderada": 0.7520663018264532,
+        "pureza_mediana": 0.8461538461538461,
+        "n_ies_por_comunidade_mediana": 3.0,
+        "comunidades_para_50pct_da_ies_mediana": 7.0,
+        "comunidades_para_50pct_da_ies_media": 11.555555555555555
+      }
+    },
+    "fluid": {
+      "ies_principal": {
+        "n_rotulados": 52788,
+        "n_rotulos": 72,
+        "nmi": 0.37509682416213996,
+        "ari": 0.08076603807950652,
+        "nmi_embaralhado": 0.019683359402607358,
+        "ari_embaralhado": 2.3108140722498134e-05
+      },
+      "programa_capes": {
+        "n_rotulados": 2060,
+        "n_rotulos": 83,
+        "nmi": 0.5552700432595432,
+        "ari": 0.12295147762637013,
+        "nmi_embaralhado": 0.3368174218437331,
+        "ari_embaralhado": -0.0019107061889761005
+      },
+      "pureza_ies": {
+        "n_comunidades_avaliadas": 122,
+        "pureza_media": 0.34386782808918914,
+        "pureza_media_ponderada": 0.33335227703265896,
+        "pureza_mediana": 0.32324299288830455,
+        "n_ies_por_comunidade_mediana": 31.0,
+        "comunidades_para_50pct_da_ies_mediana": 3.0,
+        "comunidades_para_50pct_da_ies_media": 4.222222222222222
+      }
+    }
+  },
+  "subgrafo_docentes": {
+    "ies": [
+      "USP",
+      "UFPE",
+      "UTFPR"
+    ],
+    "n_vertices": 320,
+    "n_arestas": 800,
+    "tabela": {
+      "louvain": {
+        "seed": 30,
+        "q_max": 0.69579453125,
+        "q_medio": 0.688081796875,
+        "q_desvio": 0.004340079258489484,
+        "q_min": 0.6735195312500001,
+        "nmi_medio_vs_melhor": 0.7850336523262249,
+        "tempo_medio_s": 0.004277355999220162,
+        "tempo_s": 0.004277355999220162,
+        "q": 0.69579453125,
+        "n_comunidades": 11,
+        "maior_comunidade": 65,
+        "n_comunidades_ge_10": 10
+      },
+      "leiden": {
+        "tempo_s": 0.008528699981980026,
+        "q": 0.7018609375000001,
+        "n_comunidades": 11,
+        "maior_comunidade": 57,
+        "n_comunidades_ge_10": 10
+      },
+      "fastgreedy": {
+        "tempo_s": 0.003906600002665073,
+        "q": 0.6720484375000001,
+        "n_comunidades": 11,
+        "maior_comunidade": 76,
+        "n_comunidades_ge_10": 9
+      },
+      "label_propagation": {
+        "tempo_s": 0.0021489000064320862,
+        "q": 0.6148679687500003,
+        "n_comunidades": 28,
+        "maior_comunidade": 71,
+        "n_comunidades_ge_10": 10
+      },
+      "fluid": {
+        "tempo_s": 0.06963029998587444,
+        "k": 11,
+        "q": 0.6210835937500001,
+        "n_comunidades": 11,
+        "maior_comunidade": 51,
+        "n_comunidades_ge_10": 11
+      },
+      "girvan_newman": {
+        "q": 0.6754023437499999,
+        "n_comunidades": 23,
+        "tempo_s": 43.50591570002143,
+        "niveis_percorridos": 59
+      }
+    },
+    "concordancia": {
+      "louvain x leiden": {
+        "nmi": 0.8133767053461448,
+        "ari": 0.7504408738267728
+      },
+      "louvain x fastgreedy": {
+        "nmi": 0.6876557293203317,
+        "ari": 0.5475365647981131
+      },
+      "louvain x label_propagation": {
+        "nmi": 0.6673528206377858,
+        "ari": 0.294806676565232
+      },
+      "louvain x fluid": {
+        "nmi": 0.590251512157662,
+        "ari": 0.35281169686896824
+      },
+      "louvain x girvan_newman": {
+        "nmi": 0.7651584298573737,
+        "ari": 0.5320524117424809
+      },
+      "leiden x fastgreedy": {
+        "nmi": 0.690631157746546,
+        "ari": 0.5059173777898784
+      },
+      "leiden x label_propagation": {
+        "nmi": 0.623748185590549,
+        "ari": 0.26068812315990614
+      },
+      "leiden x fluid": {
+        "nmi": 0.6043483538350125,
+        "ari": 0.36181362466581135
+      },
+      "leiden x girvan_newman": {
+        "nmi": 0.7776139029938234,
+        "ari": 0.5462275716699921
+      },
+      "fastgreedy x label_propagation": {
+        "nmi": 0.6440827848390552,
+        "ari": 0.26016285627971925
+      },
+      "fastgreedy x fluid": {
+        "nmi": 0.5409475752871782,
+        "ari": 0.29588315391246356
+      },
+      "fastgreedy x girvan_newman": {
+        "nmi": 0.7173752096757569,
+        "ari": 0.46735950294925704
+      },
+      "label_propagation x fluid": {
+        "nmi": 0.569993002651341,
+        "ari": 0.21236281962528802
+      },
+      "label_propagation x girvan_newman": {
+        "nmi": 0.7458452197784544,
+        "ari": 0.3670762333602097
+      },
+      "fluid x girvan_newman": {
+        "nmi": 0.6466169693266395,
+        "ari": 0.3864763272931541
+      }
+    },
+    "validacao_ies": {
+      "louvain": {
+        "n_rotulados": 320,
+        "n_rotulos": 3,
+        "nmi": 0.4707742595022111,
+        "ari": 0.2790815022690715,
+        "nmi_embaralhado": 0.02006315993194143,
+        "ari_embaralhado": -0.0013818385276309023
+      },
+      "leiden": {
+        "n_rotulados": 320,
+        "n_rotulos": 3,
+        "nmi": 0.4467064326238562,
+        "ari": 0.2506178853524587,
+        "nmi_embaralhado": 0.02643792731058387,
+        "ari_embaralhado": 0.0020719739987299824
+      },
+      "fastgreedy": {
+        "n_rotulados": 320,
+        "n_rotulos": 3,
+        "nmi": 0.37946696664839524,
+        "ari": 0.2548066357267548,
+        "nmi_embaralhado": 0.019415648579423874,
+        "ari_embaralhado": -0.004249027703516487
+      },
+      "label_propagation": {
+        "n_rotulados": 320,
+        "n_rotulos": 3,
+        "nmi": 0.350523044912873,
+        "ari": 0.09081657817256791,
+        "nmi_embaralhado": 0.056159202588504355,
+        "ari_embaralhado": 0.0007298849354199308
+      },
+      "fluid": {
+        "n_rotulados": 320,
+        "n_rotulos": 3,
+        "nmi": 0.33090140304299276,
+        "ari": 0.1632571772846834,
+        "nmi_embaralhado": 0.014369142106150064,
+        "ari_embaralhado": 0.00021052806635991276
+      },
+      "girvan_newman": {
+        "n_rotulados": 320,
+        "n_rotulos": 3,
+        "nmi": 0.4567081105000752,
+        "ari": 0.1734451856107348,
+        "nmi_embaralhado": 0.042400324903062045,
+        "ari_embaralhado": 0.004055947353662834
+      }
+    },
+    "curva_gn": [
+      [
+        2,
+        0.18857421874999997
+      ],
+      [
+        3,
+        0.49458515625000005
+      ],
+      [
+        4,
+        0.5082289062500001
+      ],
+      [
+        5,
+        0.51093515625
+      ],
+      [
+        6,
+        0.513446875
+      ],
+      [
+        7,
+        0.538534375
+      ],
+      [
+        8,
+        0.5444718749999999
+      ],
+      [
+        9,
+        0.545753125
+      ],
+      [
+        10,
+        0.6511742187499999
+      ],
+      [
+        11,
+        0.66959609375
+      ],
+      [
+        12,
+        0.6708226562499999
+      ],
+      [
+        13,
+        0.6697945312499999
+      ],
+      [
+        14,
+        0.6695132812499999
+      ],
+      [
+        15,
+        0.6696070312499999
+      ],
+      [
+        16,
+        0.67162265625
+      ],
+      [
+        17,
+        0.6711101562499998
+      ],
+      [
+        18,
+        0.6708726562499998
+      ],
+      [
+        19,
+        0.67099296875
+      ],
+      [
+        20,
+        0.6688234375
+      ],
+      [
+        21,
+        0.6641203124999998
+      ],
+      [
+        22,
+        0.6720367187499999
+      ],
+      [
+        23,
+        0.6754023437499999
+      ],
+      [
+        24,
+        0.67359921875
+      ],
+      [
+        25,
+        0.67292578125
+      ],
+      [
+        26,
+        0.66658046875
+      ],
+      [
+        27,
+        0.66126953125
+      ],
+      [
+        28,
+        0.6579742187500001
+      ],
+      [
+        29,
+        0.6551453125000001
+      ],
+      [
+        30,
+        0.6515367187500001
+      ],
+      [
+        31,
+        0.64685546875
+      ],
+      [
+        32,
+        0.6446171875000001
+      ],
+      [
+        33,
+        0.6427078125000001
+      ],
+      [
+        34,
+        0.6401562500000001
+      ],
+      [
+        35,
+        0.6377406250000001
+      ],
+      [
+        36,
+        0.6369664062500001
+      ],
+      [
+        37,
+        0.6359851562500001
+      ],
+      [
+        38,
+        0.62697734375
+      ],
+      [
+        39,
+        0.6227648437500001
+      ],
+      [
+        40,
+        0.61860859375
+      ],
+      [
+        41,
+        0.6165867187499999
+      ],
+      [
+        42,
+        0.6133562499999999
+      ],
+      [
+        43,
+        0.6123546874999999
+      ],
+      [
+        44,
+        0.6090171874999999
+      ],
+      [
+        45,
+        0.6047765624999999
+      ],
+      [
+        46,
+        0.6025906249999998
+      ],
+      [
+        47,
+        0.6003484374999998
+      ],
+      [
+        48,
+        0.5993296874999998
+      ],
+      [
+        49,
+        0.5971171874999999
+      ],
+      [
+        50,
+        0.5959999999999998
+      ],
+      [
+        51,
+        0.5948234374999998
+      ],
+      [
+        52,
+        0.5926890624999998
+      ],
+      [
+        53,
+        0.5905054687499998
+      ],
+      [
+        54,
+        0.5893023437499998
+      ],
+      [
+        55,
+        0.5880921874999998
+      ],
+      [
+        56,
+        0.5859507812499998
+      ],
+      [
+        57,
+        0.5848023437499997
+      ],
+      [
+        58,
+        0.5824523437499998
+      ],
+      [
+        59,
+        0.5758093749999998
+      ],
+      [
+        60,
+        0.5723718749999999
+      ]
+    ]
+  },
+  "maiores_comunidades": [
+    {
+      "comunidade": 0,
+      "tamanho": 5778,
+      "n_docentes_capes": 199,
+      "ies": [
+        [
+          "USP",
+          0.096
+        ],
+        [
+          "UFPA",
+          0.078
+        ],
+        [
+          "PUC-RIO",
+          0.068
+        ]
+      ],
+      "subareas": [
+        [
+          "Information Systems",
+          2388
+        ],
+        [
+          "Software",
+          1066
+        ],
+        [
+          "Computer Science Applications",
+          599
+        ]
+      ],
+      "topicos": [
+        [
+          "Software Engineering Techniques and Practices",
+          964
+        ],
+        [
+          "Software Engineering Research",
+          796
+        ],
+        [
+          "Software Testing and Debugging Techniques",
+          494
+        ]
+      ],
+      "autores_centrais": [
+        "Tayana Uchôa Conte",
+        "Alessandro Garcia",
+        "Rodrigo Pereira dos Santos",
+        "Igor Steinmacher",
+        "Marcos Kalinowski"
+      ]
+    },
+    {
+      "comunidade": 1,
+      "tamanho": 4110,
+      "n_docentes_capes": 98,
+      "ies": [
+        [
+          "UFC",
+          0.329
+        ],
+        [
+          "IFCE",
+          0.134
+        ],
+        [
+          "UFPI",
+          0.123
+        ]
+      ],
+      "subareas": [
+        [
+          "Information Systems",
+          579
+        ],
+        [
+          "Artificial Intelligence",
+          523
+        ],
+        [
+          "Computer Networks and Communications",
+          421
+        ]
+      ],
+      "topicos": [
+        [
+          "IoT and Edge/Fog Computing",
+          120
+        ],
+        [
+          "Software Engineering Research",
+          115
+        ],
+        [
+          "Software Engineering Techniques and Practices",
+          80
+        ]
+      ],
+      "autores_centrais": [
+        "Victor Hugo C. de Albuquerque",
+        "Joel J. P. C. Rodrigues",
+        "Pedro P. Rebouças Filho",
+        "Ricardo A. L. Rabêlo",
+        "Rossana M. C. Andrade"
+      ]
+    },
+    {
+      "comunidade": 2,
+      "tamanho": 3231,
+      "n_docentes_capes": 130,
+      "ies": [
+        [
+          "CEFET-RJ",
+          0.175
+        ],
+        [
+          "UFF",
+          0.166
+        ],
+        [
+          "UFRJ",
+          0.113
+        ]
+      ],
+      "subareas": [
+        [
+          "Computational Theory and Mathematics",
+          972
+        ],
+        [
+          "Artificial Intelligence",
+          596
+        ],
+        [
+          "Information Systems",
+          347
+        ]
+      ],
+      "topicos": [
+        [
+          "Advanced Graph Theory Research",
+          497
+        ],
+        [
+          "Complexity and Algorithms in Graphs",
+          249
+        ],
+        [
+          "Vehicle Routing Optimization Methods",
+          177
+        ]
+      ],
+      "autores_centrais": [
+        "Daniel de Oliveira",
+        "Eduardo Ogasawara",
+        "Agma J. M. Traina",
+        "Diego B. Haddad",
+        "André Schneider de Oliveira"
+      ]
+    },
+    {
+      "comunidade": 3,
+      "tamanho": 2974,
+      "n_docentes_capes": 96,
+      "ies": [
+        [
+          "UFOP",
+          0.169
+        ],
+        [
+          "UFRN",
+          0.151
+        ],
+        [
+          "UFMG",
+          0.119
+        ]
+      ],
+      "subareas": [
+        [
+          "Artificial Intelligence",
+          646
+        ],
+        [
+          "Computer Networks and Communications",
+          516
+        ],
+        [
+          "Information Systems",
+          413
+        ]
+      ],
+      "topicos": [
+        [
+          "Vehicular Ad Hoc Networks (VANETs)",
+          183
+        ],
+        [
+          "IoT and Edge/Fog Computing",
+          158
+        ],
+        [
+          "Software-Defined Networks and 5G",
+          120
+        ]
+      ],
+      "autores_centrais": [
+        "Leandro  Aparecido Villas",
+        "Dênis Rosário",
+        "Eduardo Cerqueira",
+        "Antônio A. F. Loureiro",
+        "Gustavo Pessin"
+      ]
+    },
+    {
+      "comunidade": 4,
+      "tamanho": 2547,
+      "n_docentes_capes": 64,
+      "ies": [
+        [
+          "UFF",
+          0.292
+        ],
+        [
+          "UFMT",
+          0.069
+        ],
+        [
+          "USP",
+          0.062
+        ]
+      ],
+      "subareas": [
+        [
+          "Computer Networks and Communications",
+          395
+        ],
+        [
+          "Artificial Intelligence",
+          346
+        ],
+        [
+          "Information Systems",
+          328
+        ]
+      ],
+      "topicos": [
+        [
+          "Teaching and Learning Programming",
+          85
+        ],
+        [
+          "Software-Defined Networks and 5G",
+          74
+        ],
+        [
+          "Network Security and Intrusion Detection",
+          73
+        ]
+      ],
+      "autores_centrais": [
+        "Débora C. Muchaluat-Saade",
+        "José Viterbo",
+        "Esteban Clua",
+        "Célio V. N. Albuquerque",
+        "Aura Conci"
+      ]
+    },
+    {
+      "comunidade": 5,
+      "tamanho": 2487,
+      "n_docentes_capes": 70,
+      "ies": [
+        [
+          "UFMG",
+          0.384
+        ],
+        [
+          "UTFPR",
+          0.121
+        ],
+        [
+          "USP",
+          0.093
+        ]
+      ],
+      "subareas": [
+        [
+          "Artificial Intelligence",
+          724
+        ],
+        [
+          "Information Systems",
+          399
+        ],
+        [
+          "Sociology and Political Science",
+          123
+        ]
+      ],
+      "topicos": [
+        [
+          "Natural Language Processing Techniques",
+          119
+        ],
+        [
+          "Sentiment Analysis and Opinion Mining",
+          109
+        ],
+        [
+          "Misinformation and Its Impacts",
+          100
+        ]
+      ],
+      "autores_centrais": [
+        "Wagner Meira",
+        "Gisele Lobo Pappa",
+        "Jussara Marques Almeida",
+        "Ana Paula Couto da Silva",
+        "Fabrício Benevenuto"
+      ]
+    },
+    {
+      "comunidade": 6,
+      "tamanho": 2434,
+      "n_docentes_capes": 80,
+      "ies": [
+        [
+          "UTFPR",
+          0.235
+        ],
+        [
+          "UFPR",
+          0.18
+        ],
+        [
+          "PUCPR",
+          0.137
+        ]
+      ],
+      "subareas": [
+        [
+          "Artificial Intelligence",
+          443
+        ],
+        [
+          "Information Systems",
+          327
+        ],
+        [
+          "Computer Vision and Pattern Recognition",
+          291
+        ]
+      ],
+      "topicos": [
+        [
+          "Teaching and Learning Programming",
+          108
+        ],
+        [
+          "Educational Games and Gamification",
+          76
+        ],
+        [
+          "Data Stream Mining Techniques",
+          74
+        ]
+      ],
+      "autores_centrais": [
+        "Alceu de Souza Britto",
+        "Luiz S. Oliveira",
+        "Andre Ricardo Abed Gregio",
+        "Yandre M. G. Costa",
+        "André Eugênio Lazzaretti"
+      ]
+    },
+    {
+      "comunidade": 7,
+      "tamanho": 2415,
+      "n_docentes_capes": 57,
+      "ies": [
+        [
+          "UNB",
+          0.749
+        ],
+        [
+          "UFSC",
+          0.058
+        ],
+        [
+          "USP",
+          0.034
+        ]
+      ],
+      "subareas": [
+        [
+          "Information Systems",
+          433
+        ],
+        [
+          "Computer Networks and Communications",
+          302
+        ],
+        [
+          "Computer Vision and Pattern Recognition",
+          253
+        ]
+      ],
+      "topicos": [
+        [
+          "Software Engineering Techniques and Practices",
+          103
+        ],
+        [
+          "Software Engineering Research",
+          74
+        ],
+        [
+          "Network Security and Intrusion Detection",
+          71
+        ]
+      ],
+      "autores_centrais": [
+        "Edna Dias Canedo",
+        "Maristela Terto de Holanda",
+        "Rafael T. de Sousa",
+        "Li Weigang",
+        "Aletéia Araújo"
+      ]
+    },
+    {
+      "comunidade": 8,
+      "tamanho": 2361,
+      "n_docentes_capes": 85,
+      "ies": [
+        [
+          "UFAL",
+          0.13
+        ],
+        [
+          "UFRPE",
+          0.121
+        ],
+        [
+          "UFCG",
+          0.116
+        ]
+      ],
+      "subareas": [
+        [
+          "Information Systems",
+          571
+        ],
+        [
+          "Computer Science Applications",
+          522
+        ],
+        [
+          "Artificial Intelligence",
+          409
+        ]
+      ],
+      "topicos": [
+        [
+          "Teaching and Learning Programming",
+          317
+        ],
+        [
+          "Educational Games and Gamification",
+          262
+        ],
+        [
+          "Software Engineering Techniques and Practices",
+          242
+        ]
+      ],
+      "autores_centrais": [
+        "Seiji Isotani",
+        "Rafael Ferreira Mello",
+        "Ângelo Perkusich",
+        "Ig Ibert Bittencourt",
+        "Elaine Oliveira"
+      ]
+    },
+    {
+      "comunidade": 9,
+      "tamanho": 2172,
+      "n_docentes_capes": 44,
+      "ies": [
+        [
+          "UNISINOS",
+          0.314
+        ],
+        [
+          "UNIVALI",
+          0.141
+        ],
+        [
+          "UFRGS",
+          0.132
+        ]
+      ],
+      "subareas": [
+        [
+          "Artificial Intelligence",
+          361
+        ],
+        [
+          "Information Systems",
+          300
+        ],
+        [
+          "Computer Networks and Communications",
+          191
+        ]
+      ],
+      "topicos": [
+        [
+          "Cloud Computing and Resource Management",
+          63
+        ],
+        [
+          "Metaheuristic Optimization Algorithms Research",
+          62
+        ],
+        [
+          "Software Engineering Techniques and Practices",
+          55
+        ]
+      ],
+      "autores_centrais": [
+        "Jorge Luís Victória Barbosa",
+        "Cristiano André da Costa",
+        "Rodrigo da Rosa Righi",
+        "Valderi Reis Quietinho Leithardt",
+        "Maurício Roberto Veronez"
+      ]
+    },
+    {
+      "comunidade": 10,
+      "tamanho": 2142,
+      "n_docentes_capes": 56,
+      "ies": [
+        [
+          "UFES",
+          0.239
+        ],
+        [
+          "UFRGS",
+          0.1
+        ],
+        [
+          "IFES",
+          0.085
+        ]
+      ],
+      "subareas": [
+        [
+          "Computer Networks and Communications",
+          1123
+        ],
+        [
+          "Electrical and Electronic Engineering",
+          348
+        ],
+        [
+          "Information Systems",
+          257
+        ]
+      ],
+      "topicos": [
+        [
+          "Software-Defined Networks and 5G",
+          540
+        ],
+        [
+          "Advanced Fiber Optic Sensors",
+          149
+        ],
+        [
+          "IoT and Edge/Fog Computing",
+          109
+        ]
+      ],
+      "autores_centrais": [
+        "Anselmo Frizera",
+        "Arnaldo Gomes Leal Junior",
+        "Carlos Marques",
+        "Lisandro Zambenedetti Granville",
+        "Moisés R. N. Ribeiro"
+      ]
+    },
+    {
+      "comunidade": 11,
+      "tamanho": 2114,
+      "n_docentes_capes": 55,
+      "ies": [
+        [
+          "UPE",
+          0.334
+        ],
+        [
+          "UFPE",
+          0.224
+        ],
+        [
+          "UTFPR",
+          0.152
+        ]
+      ],
+      "subareas": [
+        [
+          "Artificial Intelligence",
+          432
+        ],
+        [
+          "Information Systems",
+          304
+        ],
+        [
+          "Computer Vision and Pattern Recognition",
+          193
+        ]
+      ],
+      "topicos": [
+        [
+          "Software Engineering Techniques and Practices",
+          183
+        ],
+        [
+          "Metaheuristic Optimization Algorithms Research",
+          116
+        ],
+        [
+          "Online Learning and Analytics",
+          51
+        ]
+      ],
+      "autores_centrais": [
+        "Hugo Valadares Siqueira",
+        "Carmelo J. A. Bastos-Filho",
+        "Bruno Fernandes",
+        "Sérgio Luiz Stevan",
+        "Marcella Scoczynski Ribeiro Martins"
+      ]
+    },
+    {
+      "comunidade": 12,
+      "tamanho": 2083,
+      "n_docentes_capes": 52,
+      "ies": [
+        [
+          "UNICAMP",
+          0.447
+        ],
+        [
+          "UNESP-SÃO JOSÉ DO RIO PRETO",
+          0.189
+        ],
+        [
+          "USP",
+          0.064
+        ]
+      ],
+      "subareas": [
+        [
+          "Computer Vision and Pattern Recognition",
+          526
+        ],
+        [
+          "Artificial Intelligence",
+          470
+        ],
+        [
+          "Information Systems",
+          213
+        ]
+      ],
+      "topicos": [
+        [
+          "Parallel Computing and Optimization Techniques",
+          140
+        ],
+        [
+          "Advanced Neural Network Applications",
+          69
+        ],
+        [
+          "Cloud Computing and Resource Management",
+          65
+        ]
+      ],
+      "autores_centrais": [
+        "João Paulo Papa",
+        "Anderson De Rezende Rocha",
+        "Hélio Pedrini",
+        "Ricardo da Silva Torres",
+        "Zanoni Dias"
+      ]
+    },
+    {
+      "comunidade": 13,
+      "tamanho": 2072,
+      "n_docentes_capes": 73,
+      "ies": [
+        [
+          "UFRGS",
+          0.283
+        ],
+        [
+          "PUCRS",
+          0.203
+        ],
+        [
+          "UFPEL",
+          0.12
+        ]
+      ],
+      "subareas": [
+        [
+          "Hardware and Architecture",
+          730
+        ],
+        [
+          "Electrical and Electronic Engineering",
+          593
+        ],
+        [
+          "Computer Networks and Communications",
+          344
+        ]
+      ],
+      "topicos": [
+        [
+          "Parallel Computing and Optimization Techniques",
+          499
+        ],
+        [
+          "Radiation Effects in Electronics",
+          275
+        ],
+        [
+          "Video Coding and Compression Technologies",
+          269
+        ]
+      ],
+      "autores_centrais": [
+        "Luciano Volcan Agostini",
+        "Sérgio Bampi",
+        "Bruno Zatt",
+        "Antonio Carlos Schneider Beck",
+        "Ricardo A. L. Reis"
+      ]
+    },
+    {
+      "comunidade": 14,
+      "tamanho": 1793,
+      "n_docentes_capes": 63,
+      "ies": [
+        [
+          "UFU",
+          0.233
+        ],
+        [
+          "USP",
+          0.13
+        ],
+        [
+          "UNESP-SÃO JOSÉ DO RIO PRETO",
+          0.106
+        ]
+      ],
+      "subareas": [
+        [
+          "Artificial Intelligence",
+          579
+        ],
+        [
+          "Information Systems",
+          193
+        ],
+        [
+          "Computer Vision and Pattern Recognition",
+          139
+        ]
+      ],
+      "topicos": [
+        [
+          "AI in cancer detection",
+          62
+        ],
+        [
+          "Machine Learning and Data Classification",
+          59
+        ],
+        [
+          "Data Stream Mining Techniques",
+          52
+        ]
+      ],
+      "autores_centrais": [
+        "André C. P. L. F. de Carvalho",
+        "Marcelo Zanchetta do Nascimento",
+        "Leandro Alves Neves",
+        "Sylvio Barbon",
+        "Tháına A. A. Tosta"
+      ]
+    }
+  ],
+  "corte_tamanho": {
+    "tamanho_minimo": 10,
+    "n_comunidades": 240,
+    "frac_autores_cobertos": 0.8910864564761527,
+    "frac_docentes_cobertos": 0.992091388400703
+  }
+}

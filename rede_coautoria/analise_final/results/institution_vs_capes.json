@@ -1,0 +1,461 @@
+{
+  "definicoes": {
+    "programa": "publicações dos docentes CAPES identificados, nos anos em que estão no programa; cada publicação uma vez por programa",
+    "elegivel": ">= 5 docentes identificados, cobertura >= 50%, >= 30 publicações",
+    "ies": "IES principal dos autores (etapa 3.4); nota máxima e média dos programas da IES"
+  },
+  "programas": {
+    "n_programas": 87,
+    "n_elegiveis": 82,
+    "cobertura_docentes_mediana": 0.9411764705882353,
+    "spearman_nota": {
+      "obras_por_docente": {
+        "rho": 0.674781203473274,
+        "p_valor": 3.6232525352246852e-12,
+        "n": 82
+      },
+      "citacoes_por_docente": {
+        "rho": 0.5708583687922761,
+        "p_valor": 2.1461678265510607e-08,
+        "n": 82
+      },
+      "citacoes_por_docente_sem_obra_top": {
+        "rho": 0.5941832282858932,
+        "p_valor": 3.986760241343236e-09,
+        "n": 82
+      },
+      "citacoes_por_obra": {
+        "rho": 0.2807143439931523,
+        "p_valor": 0.010632870424464883,
+        "n": 82
+      },
+      "mncs": {
+        "rho": 0.23089117473467774,
+        "p_valor": 0.03688815241097051,
+        "n": 82
+      },
+      "fwci_medio": {
+        "rho": 0.2706953081368076,
+        "p_valor": 0.013904200227158305,
+        "n": 82
+      },
+      "fwci_mediano": {
+        "rho": 0.40478711863291705,
+        "p_valor": 0.00016192823574018807,
+        "n": 82
+      },
+      "frac_obras_top10pct": {
+        "rho": 0.23189987857089348,
+        "p_valor": 0.036049049372581125,
+        "n": 82
+      },
+      "indice_h_mediano_docentes": {
+        "rho": 0.7215912930061021,
+        "p_valor": 2.0441492258346534e-14,
+        "n": 82
+      },
+      "pagerank_por_docente": {
+        "rho": 0.6431903674746202,
+        "p_valor": 7.218757256646992e-11,
+        "n": 82
+      },
+      "n_docentes_identificados": {
+        "rho": 0.6524768816614605,
+        "p_valor": 3.107118289625612e-11,
+        "n": 82
+      },
+      "n_obras": {
+        "rho": 0.8381525841682808,
+        "p_valor": 9.183168569190293e-23,
+        "n": 82
+      }
+    },
+    "medianas_por_nota": {
+      "2": {
+        "n_docentes_identificados": 11.0,
+        "obras_por_docente": 26.545,
+        "citacoes_por_docente": 300.727,
+        "citacoes_por_obra": 11.329,
+        "fwci_mediano": 0.225,
+        "frac_obras_top10pct": 0.103,
+        "indice_h_mediano_docentes": 5.0,
+        "n_programas": 1
+      },
+      "3": {
+        "n_docentes_identificados": 15.0,
+        "obras_por_docente": 19.79,
+        "citacoes_por_docente": 135.526,
+        "citacoes_por_obra": 8.946,
+        "fwci_mediano": 0.361,
+        "frac_obras_top10pct": 0.094,
+        "indice_h_mediano_docentes": 5.0,
+        "n_programas": 18
+      },
+      "4": {
+        "n_docentes_identificados": 24.5,
+        "obras_por_docente": 26.094,
+        "citacoes_por_docente": 260.45,
+        "citacoes_por_obra": 10.19,
+        "fwci_mediano": 0.363,
+        "frac_obras_top10pct": 0.108,
+        "indice_h_mediano_docentes": 6.5,
+        "n_programas": 32
+      },
+      "5": {
+        "n_docentes_identificados": 32.0,
+        "obras_por_docente": 30.688,
+        "citacoes_por_docente": 394.841,
+        "citacoes_por_obra": 11.34,
+        "fwci_mediano": 0.409,
+        "frac_obras_top10pct": 0.122,
+        "indice_h_mediano_docentes": 8.0,
+        "n_programas": 15
+      },
+      "6": {
+        "n_docentes_identificados": 34.5,
+        "obras_por_docente": 32.985,
+        "citacoes_por_docente": 350.705,
+        "citacoes_por_obra": 11.226,
+        "fwci_mediano": 0.432,
+        "frac_obras_top10pct": 0.113,
+        "indice_h_mediano_docentes": 8.0,
+        "n_programas": 8
+      },
+      "7": {
+        "n_docentes_identificados": 64.0,
+        "obras_por_docente": 38.667,
+        "citacoes_por_docente": 538.126,
+        "citacoes_por_obra": 13.274,
+        "fwci_mediano": 0.499,
+        "frac_obras_top10pct": 0.138,
+        "indice_h_mediano_docentes": 10.5,
+        "n_programas": 8
+      }
+    },
+    "top_fwci_mediano": [
+      {
+        "codigo_programa": "40006018182P6",
+        "sigla_ies": "UTFPR",
+        "nome_programa": "CIÊNCIA DA COMPUTAÇÃO",
+        "nota_final": 3,
+        "n_docentes_identificados": 10,
+        "citacoes_por_docente": 487.3,
+        "fwci_mediano": 1.502,
+        "frac_obras_top10pct": 0.325
+      },
+      {
+        "codigo_programa": "22002014002P1",
+        "sigla_ies": "UNIFOR",
+        "nome_programa": "INFORMÁTICA APLICADA",
+        "nota_final": 4,
+        "n_docentes_identificados": 17,
+        "citacoes_por_docente": 1276.706,
+        "fwci_mediano": 1.133,
+        "frac_obras_top10pct": 0.32
+      },
+      {
+        "codigo_programa": "40002012033P5",
+        "sigla_ies": "UEL",
+        "nome_programa": "CIÊNCIA DA COMPUTAÇÃO",
+        "nota_final": 4,
+        "n_docentes_identificados": 15,
+        "citacoes_por_docente": 422.733,
+        "fwci_mediano": 0.71,
+        "frac_obras_top10pct": 0.235
+      },
+      {
+        "codigo_programa": "33002045004P1",
+        "sigla_ies": "USP-SÃO CARLOS",
+        "nome_programa": "CIÊNCIAS DA COMPUTAÇÃO E MATEMÁTICA COMPUTACIONAL",
+        "nota_final": 7,
+        "n_docentes_identificados": 79,
+        "citacoes_por_docente": 631.899,
+        "fwci_mediano": 0.625,
+        "frac_obras_top10pct": 0.152
+      },
+      {
+        "codigo_programa": "32001010004P6",
+        "sigla_ies": "UFMG",
+        "nome_programa": "CIÊNCIAS DA COMPUTAÇÃO",
+        "nota_final": 7,
+        "n_docentes_identificados": 69,
+        "citacoes_por_docente": 649.188,
+        "fwci_mediano": 0.576,
+        "frac_obras_top10pct": 0.141
+      },
+      {
+        "codigo_programa": "51001012012P2",
+        "sigla_ies": "UFMS",
+        "nome_programa": "CIÊNCIA DA COMPUTAÇÃO",
+        "nota_final": 4,
+        "n_docentes_identificados": 31,
+        "citacoes_por_docente": 437.129,
+        "fwci_mediano": 0.543,
+        "frac_obras_top10pct": 0.203
+      },
+      {
+        "codigo_programa": "40004015019P5",
+        "sigla_ies": "UEM",
+        "nome_programa": "CIÊNCIA DA COMPUTAÇÃO",
+        "nota_final": 4,
+        "n_docentes_identificados": 20,
+        "citacoes_por_docente": 474.05,
+        "fwci_mediano": 0.542,
+        "frac_obras_top10pct": 0.182
+      },
+      {
+        "codigo_programa": "32004010027P9",
+        "sigla_ies": "UFLA",
+        "nome_programa": "Ciência da Computação",
+        "nota_final": 4,
+        "n_docentes_identificados": 21,
+        "citacoes_por_docente": 310.0,
+        "fwci_mediano": 0.538,
+        "frac_obras_top10pct": 0.143
+      },
+      {
+        "codigo_programa": "40003019004P1",
+        "sigla_ies": "PUCPR",
+        "nome_programa": "Informática",
+        "nota_final": 5,
+        "n_docentes_identificados": 19,
+        "citacoes_por_docente": 440.684,
+        "fwci_mediano": 0.538,
+        "frac_obras_top10pct": 0.157
+      },
+      {
+        "codigo_programa": "12001015012P2",
+        "sigla_ies": "UFAM",
+        "nome_programa": "INFORMÁTICA",
+        "nota_final": 6,
+        "n_docentes_identificados": 33,
+        "citacoes_por_docente": 383.091,
+        "fwci_mediano": 0.536,
+        "frac_obras_top10pct": 0.118
+      }
+    ],
+    "top_citacoes_por_docente": [
+      {
+        "codigo_programa": "22002014002P1",
+        "sigla_ies": "UNIFOR",
+        "nome_programa": "INFORMÁTICA APLICADA",
+        "nota_final": 4,
+        "n_docentes_identificados": 17,
+        "citacoes_por_docente": 1276.706,
+        "fwci_mediano": 1.133,
+        "frac_obras_top10pct": 0.32
+      },
+      {
+        "codigo_programa": "42007011006P5",
+        "sigla_ies": "UNISINOS",
+        "nome_programa": "COMPUTAÇÃO APLICADA",
+        "nota_final": 5,
+        "n_docentes_identificados": 17,
+        "citacoes_por_docente": 1229.529,
+        "fwci_mediano": 0.491,
+        "frac_obras_top10pct": 0.178
+      },
+      {
+        "codigo_programa": "32001010004P6",
+        "sigla_ies": "UFMG",
+        "nome_programa": "CIÊNCIAS DA COMPUTAÇÃO",
+        "nota_final": 7,
+        "n_docentes_identificados": 69,
+        "citacoes_por_docente": 649.188,
+        "fwci_mediano": 0.576,
+        "frac_obras_top10pct": 0.141
+      },
+      {
+        "codigo_programa": "33002045004P1",
+        "sigla_ies": "USP-SÃO CARLOS",
+        "nome_programa": "CIÊNCIAS DA COMPUTAÇÃO E MATEMÁTICA COMPUTACIONAL",
+        "nota_final": 7,
+        "n_docentes_identificados": 79,
+        "citacoes_por_docente": 631.899,
+        "fwci_mediano": 0.625,
+        "frac_obras_top10pct": 0.152
+      },
+      {
+        "codigo_programa": "33002029052P5",
+        "sigla_ies": "USP-RIBEIRÃO PRETO",
+        "nome_programa": "COMPUTAÇÃO APLICADA",
+        "nota_final": 3,
+        "n_docentes_identificados": 12,
+        "citacoes_por_docente": 590.333,
+        "fwci_mediano": 0.475,
+        "frac_obras_top10pct": 0.159
+      },
+      {
+        "codigo_programa": "31005012004P9",
+        "sigla_ies": "PUC-RIO",
+        "nome_programa": "INFORMÁTICA",
+        "nota_final": 7,
+        "n_docentes_identificados": 29,
+        "citacoes_por_docente": 587.793,
+        "fwci_mediano": 0.468,
+        "frac_obras_top10pct": 0.157
+      },
+      {
+        "codigo_programa": "15001016047P9",
+        "sigla_ies": "UFPA",
+        "nome_programa": "Computação",
+        "nota_final": 6,
+        "n_docentes_identificados": 29,
+        "citacoes_por_docente": 578.621,
+        "fwci_mediano": 0.508,
+        "frac_obras_top10pct": 0.132
+      },
+      {
+        "codigo_programa": "42005019016P8",
+        "sigla_ies": "PUCRS",
+        "nome_programa": "CIÊNCIA DA COMPUTAÇÃO",
+        "nota_final": 7,
+        "n_docentes_identificados": 24,
+        "citacoes_por_docente": 562.208,
+        "fwci_mediano": 0.514,
+        "frac_obras_top10pct": 0.107
+      },
+      {
+        "codigo_programa": "22008012004P2",
+        "sigla_ies": "IFCE",
+        "nome_programa": "Ciência da Computação",
+        "nota_final": 4,
+        "n_docentes_identificados": 22,
+        "citacoes_por_docente": 531.818,
+        "fwci_mediano": 0.349,
+        "frac_obras_top10pct": 0.146
+      },
+      {
+        "codigo_programa": "53001010054P6",
+        "sigla_ies": "UNB",
+        "nome_programa": "INFORMÁTICA",
+        "nota_final": 6,
+        "n_docentes_identificados": 33,
+        "citacoes_por_docente": 516.697,
+        "fwci_mediano": 0.504,
+        "frac_obras_top10pct": 0.122
+      }
+    ],
+    "nao_elegiveis": [
+      {
+        "codigo_programa": "23002018002P4*",
+        "sigla_ies": "UERN",
+        "nota_final": 3,
+        "n_docentes_identificados": 0,
+        "cobertura_docentes": NaN,
+        "n_obras": 0
+      },
+      {
+        "codigo_programa": "20001010049P6*",
+        "sigla_ies": "UFMA",
+        "nota_final": 4,
+        "n_docentes_identificados": 0,
+        "cobertura_docentes": NaN,
+        "n_obras": 0
+      },
+      {
+        "codigo_programa": "33149011002P1",
+        "sigla_ies": "UNIFACCAMP",
+        "nota_final": 2,
+        "n_docentes_identificados": 3,
+        "cobertura_docentes": 0.231,
+        "n_obras": 33
+      },
+      {
+        "codigo_programa": "40015017173P2*",
+        "sigla_ies": "UNIOESTE",
+        "nota_final": 3,
+        "n_docentes_identificados": 0,
+        "cobertura_docentes": NaN,
+        "n_obras": 0
+      },
+      {
+        "codigo_programa": "25019015001P0",
+        "sigla_ies": "FCE",
+        "nota_final": 3,
+        "n_docentes_identificados": 29,
+        "cobertura_docentes": 0.46,
+        "n_obras": 463
+      }
+    ]
+  },
+  "ies": {
+    "n_ies": 72,
+    "spearman": {
+      "nota_maxima": {
+        "citacoes_total": {
+          "rho": 0.750035302265002,
+          "p_valor": 3.3929444183235916e-14,
+          "n": 72
+        },
+        "citacoes_por_membro": {
+          "rho": 0.2839353696908714,
+          "p_valor": 0.015645658426816377,
+          "n": 72
+        },
+        "citacoes_por_membro_sem_obra_top": {
+          "rho": 0.3578775686261443,
+          "p_valor": 0.002025545058272428,
+          "n": 72
+        },
+        "citacoes_por_docente": {
+          "rho": 0.5492819066922001,
+          "p_valor": 8.475026390625972e-07,
+          "n": 70
+        },
+        "mncs": {
+          "rho": 0.24908693280568972,
+          "p_valor": 0.034861642641555994,
+          "n": 72
+        },
+        "fwci_mediano": {
+          "rho": 0.4823123948180761,
+          "p_valor": 1.7853207809673962e-05,
+          "n": 72
+        },
+        "frac_obras_top10pct": {
+          "rho": 0.3024877749390976,
+          "p_valor": 0.009806483240621893,
+          "n": 72
+        }
+      },
+      "nota_media": {
+        "citacoes_total": {
+          "rho": 0.6831027806028722,
+          "p_valor": 3.825813000927382e-11,
+          "n": 72
+        },
+        "citacoes_por_membro": {
+          "rho": 0.2961640243419164,
+          "p_valor": 0.011536981559304023,
+          "n": 72
+        },
+        "citacoes_por_membro_sem_obra_top": {
+          "rho": 0.36099835536728725,
+          "p_valor": 0.0018373434894241238,
+          "n": 72
+        },
+        "citacoes_por_docente": {
+          "rho": 0.5586542369389565,
+          "p_valor": 5.013741321158135e-07,
+          "n": 70
+        },
+        "mncs": {
+          "rho": 0.24113236409127384,
+          "p_valor": 0.04130231670609968,
+          "n": 72
+        },
+        "fwci_mediano": {
+          "rho": 0.4545405079472193,
+          "p_valor": 6.048206663069071e-05,
+          "n": 72
+        },
+        "frac_obras_top10pct": {
+          "rho": 0.2805431016957934,
+          "p_valor": 0.016987678861637837,
+          "n": 72
+        }
+      }
+    }
+  }
+}

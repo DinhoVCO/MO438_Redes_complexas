@@ -1,0 +1,246 @@
+{
+ "12": [
+  [
+   "Genome Rearrangement Algorithms",
+   63
+  ],
+  [
+   "Parallel Computing and Optimization Techniques",
+   52
+  ],
+  [
+   "Cryptography and Data Security",
+   51
+  ]
+ ],
+ "3": [
+  [
+   "IoT and Edge/Fog Computing",
+   55
+  ],
+  [
+   "Vehicular Ad Hoc Networks (VANETs)",
+   52
+  ],
+  [
+   "Innovative Human-Technology Interaction",
+   44
+  ]
+ ],
+ "41": [
+  [
+   "Medical Image Segmentation Techniques",
+   40
+  ],
+  [
+   "Parasitic Infections and Diagnostics",
+   15
+  ],
+  [
+   "Advanced Neural Network Applications",
+   7
+  ]
+ ],
+ "8": [
+  [
+   "Software Testing and Debugging Techniques",
+   10
+  ],
+  [
+   "Safety Systems Engineering in Autonomy",
+   6
+  ],
+  [
+   "Petri Nets in System Modeling",
+   4
+  ]
+ ],
+ "31": [
+  [
+   "Vehicle Routing Optimization Methods",
+   25
+  ],
+  [
+   "Optimal Power Flow Distribution",
+   5
+  ],
+  [
+   "Transportation and Mobility Innovations",
+   4
+  ]
+ ],
+ "10": [
+  [
+   "Advanced Optical Network Technologies",
+   27
+  ],
+  [
+   "IoT and Edge/Fog Computing",
+   17
+  ],
+  [
+   "Software-Defined Networks and 5G",
+   17
+  ]
+ ],
+ "6": [
+  [
+   "Advanced Malware Detection Techniques",
+   25
+  ],
+  [
+   "Security and Verification in Computing",
+   8
+  ],
+  [
+   "Electronic Health Records Systems",
+   1
+  ]
+ ],
+ "14": [
+  [
+   "Complex Network Analysis Techniques",
+   9
+  ],
+  [
+   "Political Conflict and Governance",
+   4
+  ],
+  [
+   "Misinformation and Its Impacts",
+   3
+  ]
+ ],
+ "34": [
+  [
+   "Advanced Multi-Objective Optimization Algorithms",
+   4
+  ],
+  [
+   "Explainable Artificial Intelligence (XAI)",
+   2
+  ],
+  [
+   "Advanced Neural Network Applications",
+   1
+  ]
+ ],
+ "32": [
+  [
+   "Low-power high-performance VLSI design",
+   18
+  ],
+  [
+   "Teaching and Learning Programming",
+   14
+  ],
+  [
+   "Parallel Computing and Optimization Techniques",
+   14
+  ]
+ ],
+ "2": [
+  [
+   "Optimization and Packing Problems",
+   35
+  ],
+  [
+   "Complexity and Algorithms in Graphs",
+   30
+  ],
+  [
+   "Advanced Graph Theory Research",
+   29
+  ]
+ ],
+ "0": [
+  [
+   "Software Engineering Techniques and Practices",
+   13
+  ],
+  [
+   "Advanced Software Engineering Methodologies",
+   7
+  ],
+  [
+   "Software Testing and Debugging Techniques",
+   5
+  ]
+ ],
+ "4": [
+  [
+   "IoT and Edge/Fog Computing",
+   4
+  ],
+  [
+   "Teaching and Learning Programming",
+   2
+  ],
+  [
+   "Sustainability in Higher Education",
+   2
+  ]
+ ],
+ "50": [
+  [
+   "Semantic Web and Ontologies",
+   6
+  ],
+  [
+   "Research Data Management Practices",
+   3
+  ],
+  [
+   "Scientific Computing and Data Management",
+   3
+  ]
+ ],
+ "67": [
+  [
+   "Gene Regulatory Network Analysis",
+   4
+  ],
+  [
+   "Trypanosoma species research and implications",
+   3
+  ],
+  [
+   "Data Mining Algorithms and Applications",
+   2
+  ]
+ ],
+ "5": [
+  [
+   "Computational Geometry and Mesh Generation",
+   2
+  ],
+  [
+   "Ultrasound in Clinical Applications",
+   2
+  ],
+  [
+   "Topic Modeling",
+   1
+  ]
+ ],
+ "44": [
+  [
+   "Algorithms and Data Compression",
+   15
+  ],
+  [
+   "Genomics and Phylogenetic Studies",
+   5
+  ],
+  [
+   "Advanced Proteomics Techniques and Applications",
+   4
+  ]
+ ],
+ "1830": [
+  [
+   "Handwritten Text Recognition Techniques",
+   1
+  ]
+ ]
+}

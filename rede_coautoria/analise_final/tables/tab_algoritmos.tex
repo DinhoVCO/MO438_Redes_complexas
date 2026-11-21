@@ -1,0 +1,19 @@
+% Gerado por analise_final/08_report_assets.py — não editar à mão
+\begin{table}[htbp]
+\centering
+\small
+\caption{Algoritmos de comunidades. Componente gigante da coautoria (94\,179 vértices, ponderada): modularidade $Q$, nº de comunidades, tempo e concordância com a IES principal (NMI/ARI). Subgrafo de docentes de USP, UFPE e UTFPR (320 vértices, sem pesos): $Q$ e nº de comunidades.}
+\label{tab:algoritmos}
+\begin{tabular}{lrrrrrrr}
+\hline
+Algoritmo & $Q$ & Com. & Tempo & NMI IES & ARI IES & $Q$ sub. & Com. sub. \\
+\hline
+Louvain (50 sementes) & 0{,}923 & 122 & 3{,}3 s & 0{,}41 & 0{,}12 & 0{,}696 & 11 \\
+Leiden & 0{,}926 & 124 & 9{,}4 s & 0{,}43 & 0{,}15 & 0{,}702 & 11 \\
+Fast-Greedy (CNM) & 0{,}903 & 143 & 179{,}1 s & 0{,}35 & 0{,}08 & 0{,}672 & 11 \\
+Label Propagation & 0{,}820 & 4\,867 & 10{,}8 s & 0{,}57 & 0{,}04 & 0{,}615 & 28 \\
+Fluid ($k$ = 122) & 0{,}841 & 122 & 137{,}1 s & 0{,}38 & 0{,}08 & 0{,}621 & 11 \\
+Girvan--Newman & --- & --- & --- & --- & --- & 0{,}675 & 23 \\
+\hline
+\end{tabular}
+\end{table}

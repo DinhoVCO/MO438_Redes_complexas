@@ -1,0 +1,8 @@
+{
+  "n_vertices": 84676,
+  "n_arestas": 101117,
+  "n_obras_com_referencias": 84676,
+  "n_mencoes_externas": 1949955,
+  "direcao": "A->B significa que A cita B",
+  "arestas": "somente entre publicações do corpus"
+}

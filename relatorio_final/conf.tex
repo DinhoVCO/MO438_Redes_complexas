@@ -1,0 +1,62 @@
+%%%%%%%%%% Arquivo de configuração do projeto
+%% Insira seus dados e modifique o modelo com suas preferências
+%% Comente/descomente linhas para modificar o modelo
+%% Aviso! O modelo não segue uma norma específica
+
+%%%%%%%%%%%%%% Informações do projeto
+\tipo{Relatório Final}
+\titulo{Impacto Científico dos Programas de Pós-Graduação em Ciência da Computação no Brasil}
+\aluno{Ronaldinho Vega Centeno Olivera (RA 183585)}
+% \emailaluno{r183585@dac.unicamp.br}
+%\orientador{Nome do Orientador}
+%\emailorientador{orientador@universidade.br}
+%\palavraschave{Projeto, IC, Redes Complexas, Redes de Colaboração, Redes de Citações}
+%\data{\today}
+
+%%%%%%%%%%%%%% Pacotes extras
+%\usepackage{fullpage} % Uniformiza as margens (1,5 cm) 
+
+%%%%%%%%%%%%%% Bibliografia
+%% Para referências estilo ABNT tire o comentário de uma das linhas 
+%% Manual do pacote de referências: https://www.abntex.net.br/
+
+%\usepackage[num]{abntex2cite}	% Referências numéricas padrão ABNT
+%\usepackage[alf]{abntex2cite}  % Referências alfabéticas padrão ABNT
+
+%% A bibliografia é chamada no main.tex, antes dos apêndices (e não com \AtEndDocument),
+%% para que os apêndices fiquem depois das referências.
+
+%% Para adicionar backrefs tire o comentário da linha abaixo,
+%% backrefs listam as paginas em que uma referência foi citada
+%\usepackage[brazilian,hyperpageref]{backref} % Adiciona backrefs
+
+%%%%%%%%%%%%%% Confs
+\AtBeginDocument{
+    \maketitle % Gera cabeçalho
+    \pagestyle{plain} % Efetivamente, insere a numeração
+}
+
+%%%%%%%%%%%%%%%% Comandos úteis para matemática
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\trans}{^\intercal}
+
+\DeclareMathOperator{\posto}{posto}
+\DeclareMathOperator{\capacidade}{cap}
+\DeclareMathOperator{\valor}{val}
+\DeclareMathOperator{\mdc}{mdc}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\cone}{cone}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newtheorem{teorema}{Teorema}
+\newtheorem{definicao}{Definição}
+\newtheorem{lema}{Lema}
+\newtheorem{proposicao}{Proposição}
+\newtheorem{corolario}{Corolário}
+\newtheorem{fato}{Fato}
+\theoremstyle{definition}

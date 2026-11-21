@@ -1,0 +1,148 @@
+{
+  "doi": {
+    "dois_no_corpus": 75721,
+    "por_subtipo": {
+      "ARTIGO_PERIODICO": {
+        "registros_capes": 22152,
+        "registros_com_doi": 16279,
+        "fracao_com_doi": 0.7349,
+        "dois_distintos": 13220,
+        "dois_no_corpus": 11580,
+        "fracao_no_corpus": 0.8759,
+        "por_ano": {
+          "2018": {
+            "dois": 1726,
+            "no_corpus": 1319
+          },
+          "2019": {
+            "dois": 1530,
+            "no_corpus": 1374
+          },
+          "2020": {
+            "dois": 1947,
+            "no_corpus": 1771
+          },
+          "2021": {
+            "dois": 2176,
+            "no_corpus": 1992
+          },
+          "2022": {
+            "dois": 2151,
+            "no_corpus": 1928
+          },
+          "2023": {
+            "dois": 2019,
+            "no_corpus": 1814
+          },
+          "2024": {
+            "dois": 2096,
+            "no_corpus": 1799
+          }
+        },
+        "ausentes_por_motivo": {
+          "topico_principal_fora_de_cs": 935,
+          "ano_fora_2018_2024": 340,
+          "nao_esta_na_openalex": 332,
+          "sem_afiliacao_ies_escopo": 31,
+          "doi_nao_consultavel": 2
+        },
+        "ausentes_campo_principal_top10": {
+          "Engineering": 218,
+          "Medicine": 96,
+          "Mathematics": 82,
+          "Social Sciences": 78,
+          "Physics and Astronomy": 70,
+          "Neuroscience": 48,
+          "Biochemistry, Genetics and Molecular Biology": 47,
+          "Agricultural and Biological Sciences": 34,
+          "Business, Management and Accounting": 32,
+          "Environmental Science": 29
+        }
+      },
+      "TRABALHO_ANAIS": {
+        "registros_capes": 37679,
+        "registros_com_doi": 7720,
+        "fracao_com_doi": 0.2049,
+        "dois_distintos": 7168,
+        "dois_no_corpus": 6564,
+        "fracao_no_corpus": 0.9157,
+        "por_ano": {
+          "2018": {
+            "dois": 679,
+            "no_corpus": 622
+          },
+          "2019": {
+            "dois": 1003,
+            "no_corpus": 919
+          },
+          "2020": {
+            "dois": 952,
+            "no_corpus": 894
+          },
+          "2021": {
+            "dois": 935,
+            "no_corpus": 850
+          },
+          "2022": {
+            "dois": 967,
+            "no_corpus": 893
+          },
+          "2023": {
+            "dois": 1188,
+            "no_corpus": 1089
+          },
+          "2024": {
+            "dois": 1456,
+            "no_corpus": 1308
+          }
+        },
+        "ausentes_por_motivo": {
+          "topico_principal_fora_de_cs": 247,
+          "nao_esta_na_openalex": 235,
+          "sem_afiliacao_ies_escopo": 85,
+          "ano_fora_2018_2024": 36,
+          "doi_nao_consultavel": 1
+        },
+        "ausentes_campo_principal_top10": {
+          "Engineering": 62,
+          "Social Sciences": 53,
+          "Medicine": 27,
+          "Psychology": 20,
+          "Business, Management and Accounting": 14,
+          "Mathematics": 12,
+          "Decision Sciences": 11,
+          "Physics and Astronomy": 8,
+          "Agricultural and Biological Sciences": 8,
+          "Health Professions": 6
+        }
+      }
+    }
+  },
+  "docentes": {
+    "docentes_distintos": 2491,
+    "docentes_identificados": 2276,
+    "fracao_identificados": 0.9137,
+    "por_nivel": {
+      "estrito": 2179,
+      "flexivel": 97
+    },
+    "por_categoria": {
+      "COLABORADOR": {
+        "docentes": 489,
+        "identificados": 416
+      },
+      "PERMANENTE": {
+        "docentes": 1985,
+        "identificados": 1851
+      },
+      "VISITANTE": {
+        "docentes": 17,
+        "identificados": 9
+      }
+    },
+    "autores_escopo": 62905,
+    "autores_escopo_docentes": 2276,
+    "fracao_autores_escopo_docentes": 0.0362,
+    "fracao_autorias_escopo_de_docentes": 0.3324
+  }
+}

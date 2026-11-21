@@ -1,0 +1,1404 @@
+{
+  "definicoes": {
+    "direcao": "A -> B = A cita B; PageRank e autoridade premiam quem é citado",
+    "coautoria": "componente gigante, sem pesos; proximidade e intermediação estimadas com 1000 fontes amostradas",
+    "citacao_autores": "peso fracionário (weight_frac)",
+    "validacao": "só autores com afiliacao_escopo=True"
+  },
+  "tempos_coautoria_s": {
+    "grau_knn_kcore_autovetor": 2.38672549999319,
+    "proximidade": 31.9045256000245,
+    "intermediacao": 48.49714440002572
+  },
+  "publicacoes": {
+    "spearman_grau_entrada_x_cited_by": 0.6280574052714968,
+    "spearman_pagerank_x_cited_by": 0.6171121732575868,
+    "spearman_pagerank_x_cited_by_so_citadas_no_corpus": 0.4495479479665424,
+    "frac_citadas_no_corpus": 0.3650384996929472,
+    "razao_mediana_grau_entrada_sobre_cited_by": 0.3333333333333333,
+    "jaccard_top50_pagerank_x_cited_by": 0.06382978723404255,
+    "top_pagerank": [
+      {
+        "work_id": "W4399452770",
+        "titulo": "Engenharia de Software",
+        "ano": 2018,
+        "grau_entrada": 193,
+        "pagerank": 0.001149,
+        "cited_by_count": 1338
+      },
+      {
+        "work_id": "W2799461297",
+        "titulo": "CodeMaster - Automatic Assessment and Grading of App Inventor and Snap! Programs",
+        "ano": 2018,
+        "grau_entrada": 37,
+        "pagerank": 0.000996,
+        "cited_by_count": 107
+      },
+      {
+        "work_id": "W2941647495",
+        "titulo": "Approaches to Assess Computational Thinking Competences Based on Code Analysis in K-12 Education: A Systematic Mapping S",
+        "ano": 2019,
+        "grau_entrada": 19,
+        "pagerank": 0.000934,
+        "cited_by_count": 81
+      },
+      {
+        "work_id": "W2890655382",
+        "titulo": "Data Augmentation for Skin Lesion Analysis",
+        "ano": 2018,
+        "grau_entrada": 21,
+        "pagerank": 0.00091,
+        "cited_by_count": 269
+      },
+      {
+        "work_id": "W3096266342",
+        "titulo": "BERTimbau: Pretrained BERT Models for Brazilian Portuguese",
+        "ano": 2020,
+        "grau_entrada": 305,
+        "pagerank": 0.000903,
+        "cited_by_count": 1015
+      },
+      {
+        "work_id": "W2811138176",
+        "titulo": "The Role of Rapid Reviews in Supporting Decision-Making in Software Engineering Practice",
+        "ano": 2018,
+        "grau_entrada": 53,
+        "pagerank": 0.000825,
+        "cited_by_count": 143
+      },
+      {
+        "work_id": "W2782347812",
+        "titulo": "Towards a model to transfer knowledge from software engineering research to practice",
+        "ano": 2018,
+        "grau_entrada": 7,
+        "pagerank": 0.000752,
+        "cited_by_count": 23
+      },
+      {
+        "work_id": "W2967759511",
+        "titulo": "Data, depth, and design: Learning reliable models for skin lesion analysis",
+        "ano": 2019,
+        "grau_entrada": 20,
+        "pagerank": 0.000669,
+        "cited_by_count": 76
+      },
+      {
+        "work_id": "W3003257820",
+        "titulo": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+        "ano": 2020,
+        "grau_entrada": 117,
+        "pagerank": 0.000556,
+        "cited_by_count": 53670
+      },
+      {
+        "work_id": "W2806073060",
+        "titulo": "A tertiary study on technical debt: Types, management strategies, research trends, and base information for practitioner",
+        "ano": 2018,
+        "grau_entrada": 96,
+        "pagerank": 0.000522,
+        "cited_by_count": 270
+      }
+    ],
+    "top_grau_entrada": [
+      {
+        "work_id": "W3096266342",
+        "titulo": "BERTimbau: Pretrained BERT Models for Brazilian Portuguese",
+        "ano": 2020,
+        "grau_entrada": 305,
+        "pagerank": 0.000903,
+        "cited_by_count": 1015
+      },
+      {
+        "work_id": "W4399452770",
+        "titulo": "Engenharia de Software",
+        "ano": 2018,
+        "grau_entrada": 193,
+        "pagerank": 0.001149,
+        "cited_by_count": 1338
+      },
+      {
+        "work_id": "W3003257820",
+        "titulo": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+        "ano": 2020,
+        "grau_entrada": 117,
+        "pagerank": 0.000556,
+        "cited_by_count": 53670
+      },
+      {
+        "work_id": "W2806073060",
+        "titulo": "A tertiary study on technical debt: Types, management strategies, research trends, and base information for practitioner",
+        "ano": 2018,
+        "grau_entrada": 96,
+        "pagerank": 0.000522,
+        "cited_by_count": 270
+      },
+      {
+        "work_id": "W2806758205",
+        "titulo": "The brWaC Corpus: A New Open Resource for Brazilian Portuguese",
+        "ano": 2018,
+        "grau_entrada": 91,
+        "pagerank": 0.000443,
+        "cited_by_count": 206
+      },
+      {
+        "work_id": "W2807795618",
+        "titulo": "Multidimensional Projection for Visual Analytics: Linking Techniques with Distortions, Tasks, and Layout Enrichment",
+        "ano": 2018,
+        "grau_entrada": 74,
+        "pagerank": 0.000304,
+        "cited_by_count": 309
+      },
+      {
+        "work_id": "W2890432166",
+        "titulo": "What’s in a GitHub Star? Understanding Repository Starring Practices in a Social Coding Platform",
+        "ano": 2018,
+        "grau_entrada": 68,
+        "pagerank": 0.000311,
+        "cited_by_count": 433
+      },
+      {
+        "work_id": "W4237795961",
+        "titulo": "MEEGA+: Um Modelo para a Avaliação de Jogos Educacionais para o ensino de Computação",
+        "ano": 2019,
+        "grau_entrada": 65,
+        "pagerank": 0.000205,
+        "cited_by_count": 229
+      },
+      {
+        "work_id": "W4288079797",
+        "titulo": "Pandemic programming: How COVID-19 affects software developers and how their organizations can help",
+        "ano": 2020,
+        "grau_entrada": 62,
+        "pagerank": 0.000245,
+        "cited_by_count": 377
+      },
+      {
+        "work_id": "W3034650940",
+        "titulo": "Tailored gamification: A review of literature",
+        "ano": 2020,
+        "grau_entrada": 62,
+        "pagerank": 0.000131,
+        "cited_by_count": 547
+      }
+    ],
+    "top_cited_by_count": [
+      {
+        "work_id": "W3003257820",
+        "titulo": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+        "ano": 2020,
+        "grau_entrada": 117,
+        "pagerank": 0.000556,
+        "cited_by_count": 53670
+      },
+      {
+        "work_id": "W2888532099",
+        "titulo": "The Astropy Project: Building an Open-science Project and Status of the v2.0 Core Package *",
+        "ano": 2018,
+        "grau_entrada": 3,
+        "pagerank": 0.00049,
+        "cited_by_count": 13011
+      },
+      {
+        "work_id": "W2916106175",
+        "titulo": "Simplifying Graph Convolutional Networks",
+        "ano": 2019,
+        "grau_entrada": 23,
+        "pagerank": 9.6e-05,
+        "cited_by_count": 4334
+      },
+      {
+        "work_id": "W3155263273",
+        "titulo": "Ethics of AI in Education: Towards a Community-Wide Framework",
+        "ano": 2021,
+        "grau_entrada": 8,
+        "pagerank": 2.5e-05,
+        "cited_by_count": 2666
+      },
+      {
+        "work_id": "W2972137370",
+        "titulo": "A systematic literature review of machine learning methods applied to predictive maintenance",
+        "ano": 2019,
+        "grau_entrada": 16,
+        "pagerank": 0.000114,
+        "cited_by_count": 2405
+      },
+      {
+        "work_id": "W3008003211",
+        "titulo": "Author Correction: SciPy 1.0: fundamental algorithms for scientific computing in Python",
+        "ano": 2020,
+        "grau_entrada": 5,
+        "pagerank": 2.7e-05,
+        "cited_by_count": 2184
+      },
+      {
+        "work_id": "W3043995050",
+        "titulo": "A Survey on Performance Metrics for Object-Detection Algorithms",
+        "ano": 2020,
+        "grau_entrada": 37,
+        "pagerank": 0.000206,
+        "cited_by_count": 2144
+      },
+      {
+        "work_id": "W3092012490",
+        "titulo": "Predictive maintenance in the Industry 4.0: A systematic literature review",
+        "ano": 2020,
+        "grau_entrada": 11,
+        "pagerank": 4.7e-05,
+        "cited_by_count": 1927
+      },
+      {
+        "work_id": "W4243367342",
+        "titulo": "Learning from Imbalanced Data Sets",
+        "ano": 2018,
+        "grau_entrada": 56,
+        "pagerank": 0.000224,
+        "cited_by_count": 1829
+      },
+      {
+        "work_id": "W2909676666",
+        "titulo": "Self-driving cars: A survey",
+        "ano": 2020,
+        "grau_entrada": 25,
+        "pagerank": 0.000121,
+        "cited_by_count": 1587
+      }
+    ]
+  },
+  "spearman_ap3_coautoria": {
+    "grau": {
+      "grau": 1.0,
+      "grau_medio_vizinhos": 0.162,
+      "k_core": 0.963,
+      "proximidade": 0.346,
+      "intermediacao": 0.447,
+      "autovetor": 0.373
+    },
+    "grau_medio_vizinhos": {
+      "grau": 0.162,
+      "grau_medio_vizinhos": 1.0,
+      "k_core": 0.205,
+      "proximidade": 0.588,
+      "intermediacao": -0.046,
+      "autovetor": 0.526
+    },
+    "k_core": {
+      "grau": 0.963,
+      "grau_medio_vizinhos": 0.205,
+      "k_core": 1.0,
+      "proximidade": 0.309,
+      "intermediacao": 0.263,
+      "autovetor": 0.351
+    },
+    "proximidade": {
+      "grau": 0.346,
+      "grau_medio_vizinhos": 0.588,
+      "k_core": 0.309,
+      "proximidade": 1.0,
+      "intermediacao": 0.39,
+      "autovetor": 0.78
+    },
+    "intermediacao": {
+      "grau": 0.447,
+      "grau_medio_vizinhos": -0.046,
+      "k_core": 0.263,
+      "proximidade": 0.39,
+      "intermediacao": 1.0,
+      "autovetor": 0.286
+    },
+    "autovetor": {
+      "grau": 0.373,
+      "grau_medio_vizinhos": 0.526,
+      "k_core": 0.351,
+      "proximidade": 0.78,
+      "intermediacao": 0.286,
+      "autovetor": 1.0
+    }
+  },
+  "spearman_conjunto_escopo": {
+    "grau": {
+      "grau": 1.0,
+      "intermediacao": 0.671,
+      "autovetor": 0.417,
+      "cit_forca_entrada": 0.385,
+      "cit_pagerank": 0.414,
+      "cit_autoridade": 0.373,
+      "cit_hub": 0.338,
+      "citacoes_total": 0.57,
+      "indice_h": 0.566,
+      "n_publicacoes_corpus": 0.578
+    },
+    "intermediacao": {
+      "grau": 0.671,
+      "intermediacao": 1.0,
+      "autovetor": 0.364,
+      "cit_forca_entrada": 0.534,
+      "cit_pagerank": 0.539,
+      "cit_autoridade": 0.488,
+      "cit_hub": 0.454,
+      "citacoes_total": 0.574,
+      "indice_h": 0.68,
+      "n_publicacoes_corpus": 0.807
+    },
+    "autovetor": {
+      "grau": 0.417,
+      "intermediacao": 0.364,
+      "autovetor": 1.0,
+      "cit_forca_entrada": 0.321,
+      "cit_pagerank": 0.313,
+      "cit_autoridade": 0.359,
+      "cit_hub": 0.368,
+      "citacoes_total": 0.321,
+      "indice_h": 0.33,
+      "n_publicacoes_corpus": 0.332
+    },
+    "cit_forca_entrada": {
+      "grau": 0.385,
+      "intermediacao": 0.534,
+      "autovetor": 0.321,
+      "cit_forca_entrada": 1.0,
+      "cit_pagerank": 0.977,
+      "cit_autoridade": 0.945,
+      "cit_hub": 0.522,
+      "citacoes_total": 0.71,
+      "indice_h": 0.726,
+      "n_publicacoes_corpus": 0.643
+    },
+    "cit_pagerank": {
+      "grau": 0.414,
+      "intermediacao": 0.539,
+      "autovetor": 0.313,
+      "cit_forca_entrada": 0.977,
+      "cit_pagerank": 1.0,
+      "cit_autoridade": 0.918,
+      "cit_hub": 0.494,
+      "citacoes_total": 0.723,
+      "indice_h": 0.73,
+      "n_publicacoes_corpus": 0.645
+    },
+    "cit_autoridade": {
+      "grau": 0.373,
+      "intermediacao": 0.488,
+      "autovetor": 0.359,
+      "cit_forca_entrada": 0.945,
+      "cit_pagerank": 0.918,
+      "cit_autoridade": 1.0,
+      "cit_hub": 0.535,
+      "citacoes_total": 0.663,
+      "indice_h": 0.669,
+      "n_publicacoes_corpus": 0.581
+    },
+    "cit_hub": {
+      "grau": 0.338,
+      "intermediacao": 0.454,
+      "autovetor": 0.368,
+      "cit_forca_entrada": 0.522,
+      "cit_pagerank": 0.494,
+      "cit_autoridade": 0.535,
+      "cit_hub": 1.0,
+      "citacoes_total": 0.455,
+      "indice_h": 0.533,
+      "n_publicacoes_corpus": 0.543
+    },
+    "citacoes_total": {
+      "grau": 0.57,
+      "intermediacao": 0.574,
+      "autovetor": 0.321,
+      "cit_forca_entrada": 0.71,
+      "cit_pagerank": 0.723,
+      "cit_autoridade": 0.663,
+      "cit_hub": 0.455,
+      "citacoes_total": 1.0,
+      "indice_h": 0.852,
+      "n_publicacoes_corpus": 0.639
+    },
+    "indice_h": {
+      "grau": 0.566,
+      "intermediacao": 0.68,
+      "autovetor": 0.33,
+      "cit_forca_entrada": 0.726,
+      "cit_pagerank": 0.73,
+      "cit_autoridade": 0.669,
+      "cit_hub": 0.533,
+      "citacoes_total": 0.852,
+      "indice_h": 1.0,
+      "n_publicacoes_corpus": 0.786
+    },
+    "n_publicacoes_corpus": {
+      "grau": 0.578,
+      "intermediacao": 0.807,
+      "autovetor": 0.332,
+      "cit_forca_entrada": 0.643,
+      "cit_pagerank": 0.645,
+      "cit_autoridade": 0.581,
+      "cit_hub": 0.543,
+      "citacoes_total": 0.639,
+      "indice_h": 0.786,
+      "n_publicacoes_corpus": 1.0
+    }
+  },
+  "validacao_escopo": {
+    "cit_forca_entrada": {
+      "n": 62905,
+      "spearman_citacoes": 0.7107060916462044,
+      "kendall_citacoes": 0.5765198574178522,
+      "spearman_indice_h": 0.7184277642418981,
+      "kendall_indice_h": 0.6324769644159497,
+      "jaccard_top50_citacoes": 0.21951219512195122,
+      "jaccard_top50_indice_h": 0.3157894736842105
+    },
+    "cit_pagerank": {
+      "n": 62905,
+      "spearman_citacoes": 0.7207432117120862,
+      "kendall_citacoes": 0.5893166294923963,
+      "spearman_indice_h": 0.7216594776637764,
+      "kendall_indice_h": 0.6359710081935607,
+      "jaccard_top50_citacoes": 0.20481927710843373,
+      "jaccard_top50_indice_h": 0.26582278481012656
+    },
+    "cit_autoridade": {
+      "n": 62905,
+      "spearman_citacoes": 0.6804557492539778,
+      "kendall_citacoes": 0.5360007785391779,
+      "spearman_indice_h": 0.6811112457200649,
+      "kendall_indice_h": 0.5818104250738856,
+      "jaccard_top50_citacoes": 0.02040816326530612,
+      "jaccard_top50_indice_h": 0.05263157894736842
+    },
+    "cit_hub": {
+      "n": 62905,
+      "spearman_citacoes": 0.4683187384644347,
+      "kendall_citacoes": 0.3574085885858715,
+      "spearman_indice_h": 0.5300427523163844,
+      "kendall_indice_h": 0.44089575120916574,
+      "jaccard_top50_citacoes": 0.02040816326530612,
+      "jaccard_top50_indice_h": 0.041666666666666664
+    },
+    "grau": {
+      "n": 52788,
+      "spearman_citacoes": 0.5703318047802345,
+      "kendall_citacoes": 0.4284498901681586,
+      "spearman_indice_h": 0.565860614297787,
+      "kendall_indice_h": 0.46153103242238547,
+      "jaccard_top50_citacoes": 0.26582278481012656,
+      "jaccard_top50_indice_h": 0.35135135135135137
+    },
+    "intermediacao": {
+      "n": 52788,
+      "spearman_citacoes": 0.573672577124645,
+      "kendall_citacoes": 0.4544221353239697,
+      "spearman_indice_h": 0.6796314385741465,
+      "kendall_indice_h": 0.5908128406697061,
+      "jaccard_top50_citacoes": 0.14942528735632185,
+      "jaccard_top50_indice_h": 0.19047619047619047
+    },
+    "autovetor": {
+      "n": 52788,
+      "spearman_citacoes": 0.3213955496237127,
+      "kendall_citacoes": 0.22324210554490864,
+      "spearman_indice_h": 0.3299183565458806,
+      "kendall_indice_h": 0.24957105134638455,
+      "jaccard_top50_citacoes": 0.010101010101010102,
+      "jaccard_top50_indice_h": 0.010101010101010102
+    },
+    "proximidade": {
+      "n": 52788,
+      "spearman_citacoes": 0.39187767861088746,
+      "kendall_citacoes": 0.2759937421487373,
+      "spearman_indice_h": 0.40828603103236005,
+      "kendall_indice_h": 0.31335839690131967,
+      "jaccard_top50_citacoes": 0.06382978723404255,
+      "jaccard_top50_indice_h": 0.0989010989010989
+    },
+    "k_core": {
+      "n": 52788,
+      "spearman_citacoes": 0.4797344802041385,
+      "kendall_citacoes": 0.3546450965319495,
+      "spearman_indice_h": 0.43781116237314516,
+      "kendall_indice_h": 0.35087381057399825,
+      "jaccard_top50_citacoes": 0.010101010101010102,
+      "jaccard_top50_indice_h": 0.010101010101010102
+    }
+  },
+  "top_autores_escopo": {
+    "cit_pagerank": [
+      {
+        "nome": "Victor Hugo C. de Albuquerque",
+        "ies_principal": "UNIFOR",
+        "docente_capes": true,
+        "cit_pagerank": 0.001425,
+        "citacoes_total": 22758,
+        "indice_h": 80,
+        "grau": 762.0
+      },
+      {
+        "nome": "Jair Cavalcanti Leite",
+        "ies_principal": "UFRN",
+        "docente_capes": false,
+        "cit_pagerank": 0.001271,
+        "citacoes_total": 1379,
+        "indice_h": 4,
+        "grau": 15.0
+      },
+      {
+        "nome": "Joel J. P. C. Rodrigues",
+        "ies_principal": "UFPI",
+        "docente_capes": false,
+        "cit_pagerank": 0.001197,
+        "citacoes_total": 21118,
+        "indice_h": 76,
+        "grau": 785.0
+      },
+      {
+        "nome": "Roberto Lotufo",
+        "ies_principal": "UNICAMP",
+        "docente_capes": false,
+        "cit_pagerank": 0.001193,
+        "citacoes_total": 2635,
+        "indice_h": 19,
+        "grau": 65.0
+      },
+      {
+        "nome": "Giancarlo Guizzardi",
+        "ies_principal": "UFES",
+        "docente_capes": true,
+        "cit_pagerank": 0.001068,
+        "citacoes_total": 3714,
+        "indice_h": 29,
+        "grau": 297.0
+      },
+      {
+        "nome": "Rodrigo Frassetto Nogueira",
+        "ies_principal": "UNICAMP",
+        "docente_capes": false,
+        "cit_pagerank": 0.001025,
+        "citacoes_total": 3049,
+        "indice_h": 18,
+        "grau": 59.0
+      },
+      {
+        "nome": "Moacir Antonelli Ponti",
+        "ies_principal": "USP",
+        "docente_capes": true,
+        "cit_pagerank": 0.000866,
+        "citacoes_total": 2366,
+        "indice_h": 25,
+        "grau": 102.0
+      },
+      {
+        "nome": "Gustavo Pinto",
+        "ies_principal": "UFPA",
+        "docente_capes": true,
+        "cit_pagerank": 0.00084,
+        "citacoes_total": 3040,
+        "indice_h": 33,
+        "grau": 167.0
+      },
+      {
+        "nome": "João Paulo Papa",
+        "ies_principal": "UNESP-SÃO JOSÉ DO RIO PRETO",
+        "docente_capes": true,
+        "cit_pagerank": 0.000793,
+        "citacoes_total": 7333,
+        "indice_h": 43,
+        "grau": 317.0
+      },
+      {
+        "nome": "Fábio Souza",
+        "ies_principal": "UNICAMP",
+        "docente_capes": false,
+        "cit_pagerank": 0.000792,
+        "citacoes_total": 1404,
+        "indice_h": 2,
+        "grau": 2.0
+      }
+    ],
+    "cit_autoridade": [
+      {
+        "nome": "Marcos dos Santos",
+        "ies_principal": "IME",
+        "docente_capes": true,
+        "cit_autoridade": 1.0,
+        "citacoes_total": 4605,
+        "indice_h": 41,
+        "grau": 523.0
+      },
+      {
+        "nome": "Carlos Francısco Sımões Gomes",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_autoridade": 0.907582,
+        "citacoes_total": 3431,
+        "indice_h": 37,
+        "grau": 228.0
+      },
+      {
+        "nome": "Igor Pınheıro de Araújo Costa",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_autoridade": 0.727711,
+        "citacoes_total": 2281,
+        "indice_h": 29,
+        "grau": 104.0
+      },
+      {
+        "nome": "Miguel Ângelo Lellis Moreira",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_autoridade": 0.51884,
+        "citacoes_total": 1967,
+        "indice_h": 27,
+        "grau": 131.0
+      },
+      {
+        "nome": "Sérgio Mitihiro do Nascimento Maêda",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_autoridade": 0.296089,
+        "citacoes_total": 657,
+        "indice_h": 10,
+        "grau": 26.0
+      },
+      {
+        "nome": "Márcio Pereira Basílio",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_autoridade": 0.245696,
+        "citacoes_total": 816,
+        "indice_h": 11,
+        "grau": 27.0
+      },
+      {
+        "nome": "Arthur Pinheiro de Araújo Costa",
+        "ies_principal": "IME",
+        "docente_capes": false,
+        "cit_autoridade": 0.221536,
+        "citacoes_total": 607,
+        "indice_h": 12,
+        "grau": 47.0
+      },
+      {
+        "nome": "Luiz Frederico Horácio de S. de B. Teixeira",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_autoridade": 0.185331,
+        "citacoes_total": 370,
+        "indice_h": 7,
+        "grau": 32.0
+      },
+      {
+        "nome": "Claudio de Souza Rocha",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_autoridade": 0.16711,
+        "citacoes_total": 544,
+        "indice_h": 11,
+        "grau": 71.0
+      },
+      {
+        "nome": "Rafael Ris-Ala José Jardim",
+        "ies_principal": "UFRJ",
+        "docente_capes": false,
+        "cit_autoridade": 0.148495,
+        "citacoes_total": 259,
+        "indice_h": 7,
+        "grau": 28.0
+      }
+    ],
+    "cit_forca_entrada": [
+      {
+        "nome": "Marcos dos Santos",
+        "ies_principal": "IME",
+        "docente_capes": true,
+        "cit_forca_entrada": 324.573008,
+        "citacoes_total": 4605,
+        "indice_h": 41,
+        "grau": 523.0
+      },
+      {
+        "nome": "Carlos Francısco Sımões Gomes",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_forca_entrada": 257.810712,
+        "citacoes_total": 3431,
+        "indice_h": 37,
+        "grau": 228.0
+      },
+      {
+        "nome": "Jair Cavalcanti Leite",
+        "ies_principal": "UFRN",
+        "docente_capes": false,
+        "cit_forca_entrada": 194.825393,
+        "citacoes_total": 1379,
+        "indice_h": 4,
+        "grau": 15.0
+      },
+      {
+        "nome": "Igor Pınheıro de Araújo Costa",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_forca_entrada": 187.121957,
+        "citacoes_total": 2281,
+        "indice_h": 29,
+        "grau": 104.0
+      },
+      {
+        "nome": "Seiji Isotani",
+        "ies_principal": "USP",
+        "docente_capes": true,
+        "cit_forca_entrada": 168.072644,
+        "citacoes_total": 6488,
+        "indice_h": 35,
+        "grau": 271.0
+      },
+      {
+        "nome": "Giancarlo Guizzardi",
+        "ies_principal": "UFES",
+        "docente_capes": true,
+        "cit_forca_entrada": 155.265912,
+        "citacoes_total": 3714,
+        "indice_h": 29,
+        "grau": 297.0
+      },
+      {
+        "nome": "Adiel Teixeira de Almeida",
+        "ies_principal": "UFPE",
+        "docente_capes": true,
+        "cit_forca_entrada": 154.816031,
+        "citacoes_total": 3243,
+        "indice_h": 31,
+        "grau": 147.0
+      },
+      {
+        "nome": "Victor Hugo C. de Albuquerque",
+        "ies_principal": "UNIFOR",
+        "docente_capes": true,
+        "cit_forca_entrada": 154.282291,
+        "citacoes_total": 22758,
+        "indice_h": 80,
+        "grau": 762.0
+      },
+      {
+        "nome": "Miguel Ângelo Lellis Moreira",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "cit_forca_entrada": 150.129885,
+        "citacoes_total": 1967,
+        "indice_h": 27,
+        "grau": 131.0
+      },
+      {
+        "nome": "Roberto Lotufo",
+        "ies_principal": "UNICAMP",
+        "docente_capes": false,
+        "cit_forca_entrada": 143.574303,
+        "citacoes_total": 2635,
+        "indice_h": 19,
+        "grau": 65.0
+      }
+    ],
+    "intermediacao": [
+      {
+        "nome": "André C. P. L. F. de Carvalho",
+        "ies_principal": "USP",
+        "docente_capes": true,
+        "intermediacao": 0.038134,
+        "citacoes_total": 4331,
+        "indice_h": 36,
+        "grau": 403.0
+      },
+      {
+        "nome": "João Paulo Gomes",
+        "ies_principal": "UFC",
+        "docente_capes": true,
+        "intermediacao": 0.029364,
+        "citacoes_total": 5151,
+        "indice_h": 31,
+        "grau": 1219.0
+      },
+      {
+        "nome": "Joel J. P. C. Rodrigues",
+        "ies_principal": "UFPI",
+        "docente_capes": false,
+        "intermediacao": 0.028864,
+        "citacoes_total": 21118,
+        "indice_h": 76,
+        "grau": 785.0
+      },
+      {
+        "nome": "Victor Hugo C. de Albuquerque",
+        "ies_principal": "UNIFOR",
+        "docente_capes": true,
+        "intermediacao": 0.024453,
+        "citacoes_total": 22758,
+        "indice_h": 80,
+        "grau": 762.0
+      },
+      {
+        "nome": "Rodrigo Pereira dos Santos",
+        "ies_principal": "UNIRIO",
+        "docente_capes": true,
+        "intermediacao": 0.02401,
+        "citacoes_total": 1550,
+        "indice_h": 18,
+        "grau": 379.0
+      },
+      {
+        "nome": "João Paulo Papa",
+        "ies_principal": "UNESP-SÃO JOSÉ DO RIO PRETO",
+        "docente_capes": true,
+        "intermediacao": 0.016824,
+        "citacoes_total": 7333,
+        "indice_h": 43,
+        "grau": 317.0
+      },
+      {
+        "nome": "Gustavo Pessin",
+        "ies_principal": "UFOP",
+        "docente_capes": true,
+        "intermediacao": 0.01593,
+        "citacoes_total": 2375,
+        "indice_h": 23,
+        "grau": 297.0
+      },
+      {
+        "nome": "Esteban Clua",
+        "ies_principal": "UFF",
+        "docente_capes": true,
+        "intermediacao": 0.015603,
+        "citacoes_total": 1029,
+        "indice_h": 17,
+        "grau": 216.0
+      },
+      {
+        "nome": "Daniel de Oliveira",
+        "ies_principal": "UFF",
+        "docente_capes": true,
+        "intermediacao": 0.015235,
+        "citacoes_total": 1392,
+        "indice_h": 19,
+        "grau": 392.0
+      },
+      {
+        "nome": "Hélio Pedrini",
+        "ies_principal": "UNICAMP",
+        "docente_capes": true,
+        "intermediacao": 0.014334,
+        "citacoes_total": 2181,
+        "indice_h": 25,
+        "grau": 292.0
+      }
+    ],
+    "grau": [
+      {
+        "nome": "João Paulo Gomes",
+        "ies_principal": "UFC",
+        "docente_capes": true,
+        "grau": 1219.0,
+        "citacoes_total": 5151,
+        "indice_h": 31
+      },
+      {
+        "nome": "Joel J. P. C. Rodrigues",
+        "ies_principal": "UFPI",
+        "docente_capes": false,
+        "grau": 785.0,
+        "citacoes_total": 21118,
+        "indice_h": 76
+      },
+      {
+        "nome": "Victor Hugo C. de Albuquerque",
+        "ies_principal": "UNIFOR",
+        "docente_capes": true,
+        "grau": 762.0,
+        "citacoes_total": 22758,
+        "indice_h": 80
+      },
+      {
+        "nome": "José de Souza",
+        "ies_principal": "UFC",
+        "docente_capes": true,
+        "grau": 533.0,
+        "citacoes_total": 4020,
+        "indice_h": 17
+      },
+      {
+        "nome": "Marcos dos Santos",
+        "ies_principal": "IME",
+        "docente_capes": true,
+        "grau": 523.0,
+        "citacoes_total": 4605,
+        "indice_h": 41
+      },
+      {
+        "nome": "Moacyr Cunha Filho",
+        "ies_principal": "UFRPE",
+        "docente_capes": true,
+        "grau": 475.0,
+        "citacoes_total": 642,
+        "indice_h": 12
+      },
+      {
+        "nome": "André C. P. L. F. de Carvalho",
+        "ies_principal": "USP",
+        "docente_capes": true,
+        "grau": 403.0,
+        "citacoes_total": 4331,
+        "indice_h": 36
+      },
+      {
+        "nome": "Wagner Meira",
+        "ies_principal": "UFMG",
+        "docente_capes": true,
+        "grau": 401.0,
+        "citacoes_total": 7160,
+        "indice_h": 28
+      },
+      {
+        "nome": "Daniel de Oliveira",
+        "ies_principal": "UFF",
+        "docente_capes": true,
+        "grau": 392.0,
+        "citacoes_total": 1392,
+        "indice_h": 19
+      },
+      {
+        "nome": "Rodrigo Pereira dos Santos",
+        "ies_principal": "UNIRIO",
+        "docente_capes": true,
+        "grau": 379.0,
+        "citacoes_total": 1550,
+        "indice_h": 18
+      }
+    ],
+    "autovetor": [
+      {
+        "nome": "Thomas Fahringer",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "autovetor": 0.89371,
+        "citacoes_total": 137,
+        "indice_h": 4,
+        "grau": 178.0
+      },
+      {
+        "nome": "Daniel Rosendo",
+        "ies_principal": "UFPE",
+        "docente_capes": false,
+        "autovetor": 0.8626,
+        "citacoes_total": 268,
+        "indice_h": 9,
+        "grau": 179.0
+      },
+      {
+        "nome": "Iacopo Colonnelli",
+        "ies_principal": "UFF",
+        "docente_capes": false,
+        "autovetor": 0.858189,
+        "citacoes_total": 103,
+        "indice_h": 3,
+        "grau": 157.0
+      },
+      {
+        "nome": "Kelly Rosa Braghetto",
+        "ies_principal": "USP",
+        "docente_capes": true,
+        "autovetor": 0.614789,
+        "citacoes_total": 294,
+        "indice_h": 9,
+        "grau": 187.0
+      },
+      {
+        "nome": "Daniel de Oliveira",
+        "ies_principal": "UFF",
+        "docente_capes": true,
+        "autovetor": 0.524445,
+        "citacoes_total": 1392,
+        "indice_h": 19,
+        "grau": 392.0
+      },
+      {
+        "nome": "Liliane Kunstmann",
+        "ies_principal": "UFRJ",
+        "docente_capes": false,
+        "autovetor": 0.510506,
+        "citacoes_total": 126,
+        "indice_h": 5,
+        "grau": 111.0
+      },
+      {
+        "nome": "Marcos Amarís",
+        "ies_principal": "UFPA",
+        "docente_capes": true,
+        "autovetor": 0.507585,
+        "citacoes_total": 112,
+        "indice_h": 5,
+        "grau": 117.0
+      },
+      {
+        "nome": "Anderson Andrei Da Silva",
+        "ies_principal": "USP",
+        "docente_capes": false,
+        "autovetor": 0.506989,
+        "citacoes_total": 45,
+        "indice_h": 2,
+        "grau": 103.0
+      },
+      {
+        "nome": "Sehrish Kanwal",
+        "ies_principal": "UFRJ",
+        "docente_capes": false,
+        "autovetor": 0.506313,
+        "citacoes_total": 40,
+        "indice_h": 1,
+        "grau": 90.0
+      },
+      {
+        "nome": "Marta Mattoso",
+        "ies_principal": "UFRJ",
+        "docente_capes": true,
+        "autovetor": 0.255082,
+        "citacoes_total": 708,
+        "indice_h": 15,
+        "grau": 152.0
+      }
+    ],
+    "citacoes_total": [
+      {
+        "nome": "Anne M. Archibald",
+        "ies_principal": "UFMG",
+        "docente_capes": false,
+        "citacoes_total": 55854,
+        "indice_h": 2,
+        "grau": 54.0
+      },
+      {
+        "nome": "José Vinícius de Miranda Cardoso",
+        "ies_principal": "UFCG",
+        "docente_capes": false,
+        "citacoes_total": 53670,
+        "indice_h": 1,
+        "grau": 35.0
+      },
+      {
+        "nome": "Victor Hugo C. de Albuquerque",
+        "ies_principal": "UNIFOR",
+        "docente_capes": true,
+        "citacoes_total": 22758,
+        "indice_h": 80,
+        "grau": 762.0
+      },
+      {
+        "nome": "Joel J. P. C. Rodrigues",
+        "ies_principal": "UFPI",
+        "docente_capes": false,
+        "citacoes_total": 21118,
+        "indice_h": 76,
+        "grau": 785.0
+      },
+      {
+        "nome": "Mihai Cara",
+        "ies_principal": "UFCG",
+        "docente_capes": false,
+        "citacoes_total": 13011,
+        "indice_h": 1,
+        "grau": 91.0
+      },
+      {
+        "nome": "J. V. M. Cardoso",
+        "ies_principal": "UFCG",
+        "docente_capes": false,
+        "citacoes_total": 13011,
+        "indice_h": 1,
+        "grau": 91.0
+      },
+      {
+        "nome": "S. Fabbro",
+        "ies_principal": "FURG",
+        "docente_capes": false,
+        "citacoes_total": 13011,
+        "indice_h": 1,
+        "grau": 91.0
+      },
+      {
+        "nome": "Cristiano André da Costa",
+        "ies_principal": "UNISINOS",
+        "docente_capes": true,
+        "citacoes_total": 8400,
+        "indice_h": 41,
+        "grau": 282.0
+      },
+      {
+        "nome": "Rodrigo da Rosa Righi",
+        "ies_principal": "UNISINOS",
+        "docente_capes": true,
+        "citacoes_total": 8121,
+        "indice_h": 38,
+        "grau": 307.0
+      },
+      {
+        "nome": "João Paulo Papa",
+        "ies_principal": "UNESP-SÃO JOSÉ DO RIO PRETO",
+        "docente_capes": true,
+        "citacoes_total": 7333,
+        "indice_h": 43,
+        "grau": 317.0
+      }
+    ],
+    "indice_h": [
+      {
+        "nome": "Victor Hugo C. de Albuquerque",
+        "ies_principal": "UNIFOR",
+        "docente_capes": true,
+        "indice_h": 80,
+        "citacoes_total": 22758,
+        "grau": 762.0
+      },
+      {
+        "nome": "Joel J. P. C. Rodrigues",
+        "ies_principal": "UFPI",
+        "docente_capes": false,
+        "indice_h": 76,
+        "citacoes_total": 21118,
+        "grau": 785.0
+      },
+      {
+        "nome": "Anselmo Frizera",
+        "ies_principal": "UFES",
+        "docente_capes": true,
+        "indice_h": 49,
+        "citacoes_total": 6692,
+        "grau": 267.0
+      },
+      {
+        "nome": "João Paulo Papa",
+        "ies_principal": "UNESP-SÃO JOSÉ DO RIO PRETO",
+        "docente_capes": true,
+        "indice_h": 43,
+        "citacoes_total": 7333,
+        "grau": 317.0
+      },
+      {
+        "nome": "Arnaldo Gomes Leal Junior",
+        "ies_principal": "UFES",
+        "docente_capes": false,
+        "indice_h": 42,
+        "citacoes_total": 5318,
+        "grau": 104.0
+      },
+      {
+        "nome": "Carlos Marques",
+        "ies_principal": "UFES",
+        "docente_capes": false,
+        "indice_h": 42,
+        "citacoes_total": 4989,
+        "grau": 85.0
+      },
+      {
+        "nome": "Marcos dos Santos",
+        "ies_principal": "IME",
+        "docente_capes": true,
+        "indice_h": 41,
+        "citacoes_total": 4605,
+        "grau": 523.0
+      },
+      {
+        "nome": "Cristiano André da Costa",
+        "ies_principal": "UNISINOS",
+        "docente_capes": true,
+        "indice_h": 41,
+        "citacoes_total": 8400,
+        "grau": 282.0
+      },
+      {
+        "nome": "José Marcato",
+        "ies_principal": "UFMS",
+        "docente_capes": false,
+        "indice_h": 39,
+        "citacoes_total": 6129,
+        "grau": 300.0
+      },
+      {
+        "nome": "Wesley Nunes Gonçalves",
+        "ies_principal": "UFMS",
+        "docente_capes": true,
+        "indice_h": 38,
+        "citacoes_total": 5898,
+        "grau": 273.0
+      }
+    ]
+  },
+  "autores_ponte": [
+    {
+      "nome": "Ítalo de Pontes Oliveira",
+      "ies_principal": "UFAC",
+      "docente_capes": false,
+      "grau": 7.0,
+      "intermediacao": 0.002412504246822627,
+      "comunidade": 45
+    },
+    {
+      "nome": "Patrícia Ferreira Ponciano Ferraz",
+      "ies_principal": "UFLA",
+      "docente_capes": false,
+      "grau": 11.0,
+      "intermediacao": 0.002097609802747661,
+      "comunidade": 80
+    },
+    {
+      "nome": "Sérgio E. Gouvêa da Costa",
+      "ies_principal": "UTFPR",
+      "docente_capes": false,
+      "grau": 14.0,
+      "intermediacao": 0.0020638888845635702,
+      "comunidade": 35
+    },
+    {
+      "nome": "Eduardo Sany Laber",
+      "ies_principal": "PUC-RIO",
+      "docente_capes": true,
+      "grau": 15.0,
+      "intermediacao": 0.0024337410799812765,
+      "comunidade": 112
+    },
+    {
+      "nome": "Guilherme Apolinário Silva Novaes",
+      "ies_principal": "USP",
+      "docente_capes": false,
+      "grau": 15.0,
+      "intermediacao": 0.0022115613314754815,
+      "comunidade": 117
+    },
+    {
+      "nome": "Germano Fenner",
+      "ies_principal": "UFC",
+      "docente_capes": false,
+      "grau": 16.0,
+      "intermediacao": 0.0021563868765976392,
+      "comunidade": 57
+    },
+    {
+      "nome": "Carlos Alberto Oliveira de Freitas",
+      "ies_principal": "UFAM",
+      "docente_capes": false,
+      "grau": 23.0,
+      "intermediacao": 0.0021696325877214504,
+      "comunidade": 42
+    },
+    {
+      "nome": "Alberto Nogueira de Castro Júnior",
+      "ies_principal": "UFAM",
+      "docente_capes": true,
+      "grau": 28.0,
+      "intermediacao": 0.001998636829766973,
+      "comunidade": 0
+    },
+    {
+      "nome": "Berenice Santos Gonçalves",
+      "ies_principal": "UFSC",
+      "docente_capes": false,
+      "grau": 31.0,
+      "intermediacao": 0.003012023308043334,
+      "comunidade": 65
+    },
+    {
+      "nome": "Fagner Cunha",
+      "ies_principal": "UFAM",
+      "docente_capes": false,
+      "grau": 34.0,
+      "intermediacao": 0.0024340960017193557,
+      "comunidade": 42
+    }
+  ],
+  "top_docentes_por_pagerank": [
+    {
+      "nome": "Victor Hugo C. de Albuquerque",
+      "ies_principal": "UNIFOR",
+      "docente_capes": true,
+      "cit_pagerank": 0.001425,
+      "citacoes_total": 22758,
+      "indice_h": 80,
+      "grau": 762.0
+    },
+    {
+      "nome": "Giancarlo Guizzardi",
+      "ies_principal": "UFES",
+      "docente_capes": true,
+      "cit_pagerank": 0.001068,
+      "citacoes_total": 3714,
+      "indice_h": 29,
+      "grau": 297.0
+    },
+    {
+      "nome": "Moacir Antonelli Ponti",
+      "ies_principal": "USP",
+      "docente_capes": true,
+      "cit_pagerank": 0.000866,
+      "citacoes_total": 2366,
+      "indice_h": 25,
+      "grau": 102.0
+    },
+    {
+      "nome": "Gustavo Pinto",
+      "ies_principal": "UFPA",
+      "docente_capes": true,
+      "cit_pagerank": 0.00084,
+      "citacoes_total": 3040,
+      "indice_h": 33,
+      "grau": 167.0
+    },
+    {
+      "nome": "João Paulo Papa",
+      "ies_principal": "UNESP-SÃO JOSÉ DO RIO PRETO",
+      "docente_capes": true,
+      "cit_pagerank": 0.000793,
+      "citacoes_total": 7333,
+      "indice_h": 43,
+      "grau": 317.0
+    },
+    {
+      "nome": "Seiji Isotani",
+      "ies_principal": "USP",
+      "docente_capes": true,
+      "cit_pagerank": 0.00079,
+      "citacoes_total": 6488,
+      "indice_h": 35,
+      "grau": 271.0
+    },
+    {
+      "nome": "Igor Steinmacher",
+      "ies_principal": "UTFPR",
+      "docente_capes": true,
+      "cit_pagerank": 0.00078,
+      "citacoes_total": 4123,
+      "indice_h": 38,
+      "grau": 238.0
+    },
+    {
+      "nome": "Christiane Gresse von Wangenheim",
+      "ies_principal": "UFSC",
+      "docente_capes": true,
+      "cit_pagerank": 0.000779,
+      "citacoes_total": 1995,
+      "indice_h": 22,
+      "grau": 71.0
+    },
+    {
+      "nome": "Guilherme Horta Travassos",
+      "ies_principal": "UFRJ",
+      "docente_capes": true,
+      "cit_pagerank": 0.000764,
+      "citacoes_total": 1093,
+      "indice_h": 18,
+      "grau": 89.0
+    },
+    {
+      "nome": "M. Cecília C. Baranauskas",
+      "ies_principal": "UNICAMP",
+      "docente_capes": true,
+      "cit_pagerank": 0.000734,
+      "citacoes_total": 1032,
+      "indice_h": 17,
+      "grau": 92.0
+    }
+  ]
+}
