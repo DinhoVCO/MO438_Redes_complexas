@@ -11,6 +11,8 @@ Perguntas de pesquisa:
 
 Relatório final: `relatorio_final/main.pdf` (fonte LaTeX na mesma pasta).
 
+Dashboard com as principais conclusões: https://dinhovco.github.io/MO438_Redes_complexas/ (código em `docs/`, gerado por `analise_final/11_dashboard.py`).
+
 ## Redes
 
 | Rede | Arquivo | Vértices | Arestas |
@@ -36,8 +38,9 @@ rede_coautoria/            pipeline de coleta e construção das redes
   data/                    escopo CAPES, mapeamento IES, docentes (o corpus fica fora do git)
   output/                  redes em GraphML
   analise_f1/              métricas da entrega parcial, recalculadas no corpus final
-  analise_final/           análises da entrega final (scripts 00–10, results/, figures/, tables/, mapas/)
+  analise_final/           análises da entrega final (scripts 00–11, results/, figures/, tables/, mapas/)
 relatorio_final/           relatório final (LaTeX e PDF)
+docs/                      dashboard publicado pelo GitHub Pages
 data/                      planilha da Avaliação Quadrienal CAPES 2025
 ```
 
@@ -74,6 +77,7 @@ python 07_structural_properties.py
 python 08_report_assets.py                     # figuras e tabelas finais do relatório
 python 09_maps.py                              # mapas do Brasil (PNG) e mapa interativo (mapas/mapa_interativo.html)
 python 10_institution_network.py --ies UNICAMP # rede de coautoria entre os docentes de uma IES, por comunidade
+python 11_dashboard.py                         # dashboard com as conclusões principais (docs/, GitHub Pages)
 ```
 
 Cada script grava números em `analise_final/results/` e figuras em `analise_final/figures/`; `analise_final/FIGURAS_E_TABELAS.md` diz qual figura e tabela entra em cada seção do relatório.

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computação no Brasil em redes</title>
+<meta name="description" content="Principais conclusões da análise de redes de coautoria e citação dos programas de pós-graduação em Computação no Brasil (CAPES + OpenAlex, 2018–2024).">
+<!-- Gerado por analise_final/11_dashboard.py a partir de dashboard/template_dashboard.html; não editar o arquivo gerado -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-0: #f4f3f0;
+    --surface-1: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #77766f;
+    --rule: #dcdbd5;
+    --grid: #e8e7e2;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --muted-mark: #b9b8b2;
+    --focus: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-0: #121211;
+      --surface-1: #1a1a19;
+      --text-primary: #f0efec;
+      --text-secondary: #c3c2b7;
+      --text-muted: #9a998f;
+      --rule: #3a3a37;
+      --grid: #2a2a28;
+      --series-1: #3987e5;
+      --series-2: #d95926;
+      --muted-mark: #5c5b56;
+      --focus: #3987e5;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #9a998f;
+    --rule: #3a3a37;
+    --grid: #2a2a28;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --muted-mark: #5c5b56;
+    --focus: #3987e5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface-0);
+    color: var(--text-primary);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 1080px; margin: 0 auto; padding: 40px 16px 64px; }
+  header h1 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .lede { color: var(--text-secondary); font-size: 1.05rem; max-width: 68ch; margin: 0 0 28px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+  @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { background: var(--surface-1); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .kpi b { display: block; font-size: 1.8rem; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .kpi span { color: var(--text-secondary); font-size: 0.9rem; }
+  section.card {
+    background: var(--surface-1); border: 1px solid var(--rule); border-radius: 16px;
+    padding: 24px; margin-bottom: 24px;
+  }
+  .eyebrow { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; }
+  section.card h2 { font-size: 1.35rem; line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .explain { color: var(--text-secondary); margin: 0 0 18px; max-width: 75ch; }
+  .layout { display: grid; grid-template-columns: 1fr 240px; gap: 24px; align-items: start; }
+  @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+  .chart { position: relative; height: 360px; }
+  .chart.tall { height: 420px; }
+  .facts { display: flex; flex-direction: column; gap: 12px; }
+  .fact { border-left: 3px solid var(--rule); padding: 2px 0 2px 12px; }
+  .fact b { display: block; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+  .fact span { color: var(--text-secondary); font-size: 0.9rem; }
+  .fact.accent { border-left-color: var(--series-1); }
+  .fact.accent-2 { border-left-color: var(--series-2); }
+  .howto { color: var(--text-muted); font-size: 0.85rem; margin: 12px 0 0; }
+  .toggle { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin: 0 0 14px; }
+  .toggle button {
+    font: inherit; font-size: 0.9rem; padding: 6px 14px; border: 0; cursor: pointer;
+    background: var(--surface-1); color: var(--text-secondary);
+  }
+  .toggle button[aria-pressed="true"] { background: var(--text-primary); color: var(--surface-1); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .map-frame { width: 100%; height: 720px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface-1); }
+  @media (max-width: 600px) { .map-frame { height: 560px; } }
+  a { color: var(--series-1); }
+  footer { color: var(--text-muted); font-size: 0.85rem; margin-top: 32px; }
+  footer p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Redes complexas · pós-graduação em Computação no Brasil · 2018–2024</p>
+    <h1>Quem colabora, quem cita e quem tem impacto</h1>
+    <p class="lede">Analisamos a produção dos 87 programas de pós-graduação em Computação avaliados pela CAPES, com redes de coautoria e de citação montadas a partir da OpenAlex. Estas são as cinco conclusões principais.</p>
+    <div class="kpis" id="kpis"></div>
+  </header>
+
+  <section class="card" aria-labelledby="c1">
+    <p class="eyebrow">Conclusão 1 · grupos de pesquisa</p>
+    <h2 id="c1">Os grupos de pesquisa são temáticos e atravessam instituições</h2>
+    <p class="explain">Detectamos as comunidades da rede de coautoria (algoritmo de Louvain). Em cada uma das maiores, a instituição com mais membros reúne só uma pequena parte do grupo: os pesquisadores se agrupam por tema, não por universidade.</p>
+    <div class="layout">
+      <div class="chart tall"><canvas id="chart-c1" aria-label="Barras: fração dos membros na instituição dominante, para as 12 maiores comunidades"></canvas></div>
+      <div class="facts" id="facts-c1"></div>
+    </div>
+    <p class="howto">Cada barra é uma comunidade; o comprimento é a fração dos membros que está na instituição dominante. Passe o cursor para ver o tema e as instituições.</p>
+  </section>
+
+  <section class="card" aria-labelledby="c2">
+    <p class="eyebrow">Conclusão 2 · fluxo de citações</p>
+    <h2 id="c2">A citação fica dentro do próprio grupo</h2>
+    <p class="explain">Agregamos as citações entre publicações por grupo. A fração das citações que fica dentro do grupo é muitas vezes maior do que a esperada se os grupos citassem uns aos outros ao acaso.</p>
+    <div class="layout">
+      <div class="chart"><canvas id="chart-c2" aria-label="Barras: citação interna observada e esperada, para comunidades e instituições"></canvas></div>
+      <div class="facts" id="facts-c2"></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="c3">
+    <p class="eyebrow">Conclusão 3 · centralidade</p>
+    <h2 id="c3">O PageRank é a medida de rede que mais acompanha as citações</h2>
+    <p class="explain">Comparamos medidas de centralidade dos autores com o total de citações (correlação de Spearman). O PageRank na rede de citação entre autores concorda mais; medidas da rede de coautoria refletem colaboração, não impacto.</p>
+    <div class="layout">
+      <div class="chart"><canvas id="chart-c3" aria-label="Barras: correlação de cada centralidade com as citações totais"></canvas></div>
+      <div class="facts" id="facts-c3"></div>
+    </div>
+    <p class="howto">ρ = 1 seria concordância perfeita de ordem; ρ = 0, nenhuma relação.</p>
+  </section>
+
+  <section class="card" aria-labelledby="c4">
+    <p class="eyebrow">Conclusão 4 · tamanho e impacto</p>
+    <h2 id="c4">Grupos maiores somam mais citações, mas não são mais citados por artigo</h2>
+    <p class="explain">Cada ponto é uma comunidade. Com as citações totais, o tamanho explica quase tudo. Com o FWCI (citações normalizadas por campo, tipo e ano), a relação desaparece.</p>
+    <div class="toggle" role="group" aria-label="Métrica do eixo vertical" id="toggle-c4">
+      <button type="button" data-metric="citacoes_total" aria-pressed="true">Citações totais</button>
+      <button type="button" data-metric="fwci_mediano" aria-pressed="false">FWCI mediano (por artigo)</button>
+    </div>
+    <div class="layout">
+      <div class="chart tall"><canvas id="chart-c4" aria-label="Dispersão: tamanho da comunidade e impacto"></canvas></div>
+      <div class="facts" id="facts-c4"></div>
+    </div>
+    <p class="howto">Eixos em escala logarítmica. Passe o cursor num ponto para ver a comunidade.</p>
+  </section>
+
+  <section class="card" aria-labelledby="c5">
+    <p class="eyebrow">Conclusão 5 · avaliação CAPES</p>
+    <h2 id="c5">A nota CAPES acompanha o volume mais do que o impacto por artigo</h2>
+    <p class="explain">Cada ponto é um programa, medido pelas publicações dos seus docentes. O número de publicações cresce claramente com a nota; o impacto por artigo (FWCI) cresce pouco.</p>
+    <div class="toggle" role="group" aria-label="Métrica do eixo vertical" id="toggle-c5">
+      <button type="button" data-metric="n_obras" aria-pressed="true">Nº de publicações</button>
+      <button type="button" data-metric="fwci_mediano" aria-pressed="false">FWCI mediano (por artigo)</button>
+    </div>
+    <div class="layout">
+      <div class="chart tall"><canvas id="chart-c5" aria-label="Dispersão: nota CAPES e impacto dos programas"></canvas></div>
+      <div class="facts" id="facts-c5"></div>
+    </div>
+    <p class="howto">A linha liga as medianas de cada nota. Passe o cursor num ponto para ver o programa.</p>
+  </section>
+
+  <section class="card" aria-labelledby="mapa">
+    <p class="eyebrow">Explore</p>
+    <h2 id="mapa">Mapa das instituições</h2>
+    <p class="explain">Coautoria e citação entre as instituições, e onde estão os membros das maiores comunidades. <a href="mapa.html" target="_blank" rel="noopener">Abrir o mapa em tela cheia</a>.</p>
+    <iframe class="map-frame" src="mapa.html" title="Mapa interativo das instituições" loading="lazy"></iframe>
+  </section>
+
+  <footer>
+    <p>Dados: OpenAlex (publicações 2018–2024, citações, FWCI) e CAPES (Avaliação Quadrienal 2025, docentes e produção). Comunidades com pelo menos 10 membros; programas com dados suficientes.</p>
+    <p>Relatório completo e código: <a id="repo-link" href="#">repositório no GitHub</a>.</p>
+  </footer>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const fmtInt = v => Math.round(v).toLocaleString("pt-BR");
+const fmtDec = (v, d = 2) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmtPct = (v, d = 0) => (100 * v).toLocaleString("pt-BR", { maximumFractionDigits: d }) + "%";
+
+document.getElementById("repo-link").href = DATA.repo;
+
+// Cartões de números
+document.getElementById("kpis").innerHTML = DATA.kpis.map(k =>
+  `<div class="kpi"><b>${fmtInt(k.valor)}</b><span>${k.rotulo}</span></div>`).join("");
+
+function facts(id, items) {
+  document.getElementById(id).innerHTML = items.map(f =>
+    `<div class="fact ${f.cls || ""}"><b>${f.valor}</b><span>${f.texto}</span></div>`).join("");
+}
+
+function baseOptions() {
+  Chart.defaults.color = css("--text-secondary");
+  Chart.defaults.borderColor = css("--grid");
+  Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+  return {
+    responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+    plugins: {
+      legend: { labels: { color: css("--text-secondary"), boxWidth: 12, boxHeight: 12 } },
+      tooltip: {
+        backgroundColor: css("--surface-1"), titleColor: css("--text-primary"), bodyColor: css("--text-secondary"),
+        borderColor: css("--rule"), borderWidth: 1, padding: 10, displayColors: false,
+      },
+    },
+  };
+}
+
+const charts = {};
+
+function renderC1() {
+  const d = DATA.c1.comunidades;
+  const opts = baseOptions();
+  opts.indexAxis = "y";
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { min: 0, max: 1, ticks: { callback: v => fmtPct(v) }, title: { display: true, text: "Membros na instituição dominante" } },
+    y: { grid: { display: false }, ticks: { color: css("--text-primary") } },
+  };
+  opts.plugins.tooltip.callbacks = {
+    title: items => d[items[0].dataIndex].rotulo,
+    label: item => {
+      const c = d[item.dataIndex];
+      return [`Tema: ${c.topico}`, `${fmtInt(c.tamanho)} membros em ${c.n_ies} instituições`,
+              `Instituição dominante: ${c.ies} (${fmtPct(c.pureza)})`];
+    },
+  };
+  charts.c1 = new Chart(document.getElementById("chart-c1"), {
+    type: "bar",
+    data: { labels: d.map(c => c.rotulo), datasets: [{ data: d.map(c => c.pureza), backgroundColor: css("--series-1"), borderRadius: 4, barPercentage: 0.7 }] },
+    options: opts,
+  });
+  facts("facts-c1", [
+    { valor: fmtPct(DATA.c1.pureza_media), texto: "dos membros de uma comunidade típica estão na instituição dominante", cls: "accent" },
+    { valor: fmtInt(DATA.c1.n_ies_mediana), texto: "instituições numa comunidade típica (mediana)" },
+    { valor: fmtPct(DATA.c1.coautoria_mesma_ies), texto: "das ligações de coautoria são dentro da mesma instituição: o vínculo direto é local, o grupo é nacional", cls: "accent-2" },
+  ]);
+}
+
+function renderC2() {
+  const d = DATA.c2;
+  const opts = baseOptions();
+  opts.scales = {
+    y: { min: 0, max: 1, ticks: { callback: v => fmtPct(v) }, title: { display: true, text: "Citações que ficam dentro do grupo" } },
+    x: { grid: { display: false }, ticks: { color: css("--text-primary") } },
+  };
+  opts.plugins.tooltip.callbacks = { label: item => `${item.dataset.label}: ${fmtPct(item.raw, 1)}` };
+  charts.c2 = new Chart(document.getElementById("chart-c2"), {
+    type: "bar",
+    data: {
+      labels: ["Comunidades de coautoria", "Instituições"],
+      datasets: [
+        { label: "Observado", data: [d.comunidades.observado, d.ies.observado], backgroundColor: css("--series-1"), borderRadius: 4 },
+        { label: "Esperado ao acaso", data: [d.comunidades.esperado, d.ies.esperado], backgroundColor: css("--muted-mark"), borderRadius: 4 },
+      ],
+    },
+    options: opts,
+  });
+  facts("facts-c2", [
+    { valor: fmtDec(d.comunidades.observado / d.comunidades.esperado, 0) + "×", texto: "mais citação interna nas comunidades do que o esperado ao acaso", cls: "accent" },
+    { valor: fmtPct(d.mesma_comunidade), texto: "das citações ficam na mesma comunidade, contra " + fmtPct(d.mesma_ies) + " na mesma instituição" },
+  ]);
+}
+
+function renderC3() {
+  const d = DATA.c3.medidas;
+  const opts = baseOptions();
+  opts.indexAxis = "y";
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { min: 0, max: 1, title: { display: true, text: "Correlação com as citações totais (Spearman ρ)" } },
+    y: { grid: { display: false }, ticks: { color: css("--text-primary") } },
+  };
+  opts.plugins.tooltip.callbacks = { label: item => `ρ = ${fmtDec(item.raw)} (${d[item.dataIndex].rede})` };
+  charts.c3 = new Chart(document.getElementById("chart-c3"), {
+    type: "bar",
+    data: {
+      labels: d.map(m => m.nome),
+      datasets: [{ data: d.map(m => m.rho), backgroundColor: d.map(m => m.rede === "citação" ? css("--series-1") : css("--muted-mark")), borderRadius: 4, barPercentage: 0.7 }],
+    },
+    options: opts,
+  });
+  facts("facts-c3", [
+    { valor: "ρ = " + fmtDec(DATA.c3.pagerank_rho), texto: "PageRank de citação × citações totais", cls: "accent" },
+    { valor: fmtDec(DATA.c3.jaccard_top50), texto: "sobreposição (Jaccard) entre os 50 primeiros por PageRank e por citações: a ordem geral concorda, os primeiros lugares não" },
+  ]);
+  const legend = document.createElement("p");
+  legend.className = "howto";
+  legend.innerHTML = `<span style="color:${css("--series-1")}">■</span> rede de citação &nbsp; <span style="color:${css("--muted-mark")}">■</span> rede de coautoria`;
+  document.getElementById("chart-c3").parentElement.after(legend);
+}
+
+let c4Metric = "citacoes_total";
+function renderC4() {
+  const d = DATA.c4.comunidades;
+  const label = c4Metric === "citacoes_total" ? "Citações totais" : "FWCI mediano das publicações";
+  const opts = baseOptions();
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { type: "logarithmic", title: { display: true, text: "Membros da comunidade" }, ticks: { callback: v => [10, 30, 100, 300, 1000, 3000].includes(v) ? fmtInt(v) : "" } },
+    y: { type: "logarithmic", title: { display: true, text: label }, ticks: { callback: v => (Math.log10(v) % 1 === 0 ? fmtDec(v, v < 1 ? 1 : 0) : "") } },
+  };
+  opts.plugins.tooltip.callbacks = {
+    label: item => {
+      const c = d[item.dataIndex];
+      return [`C${c.id} · ${c.topico}`, `${c.ies} · ${fmtInt(c.membros)} membros`,
+              `Citações totais: ${fmtInt(c.citacoes_total)}`, `FWCI mediano: ${fmtDec(c.fwci_mediano)}`];
+    },
+  };
+  const points = d.map(c => ({ x: c.membros, y: Math.max(c[c4Metric], c4Metric === "fwci_mediano" ? 0.05 : 1) }));
+  if (charts.c4) charts.c4.destroy();
+  charts.c4 = new Chart(document.getElementById("chart-c4"), {
+    type: "scatter",
+    data: { datasets: [{ data: points, backgroundColor: css("--series-1") + "b3", borderColor: css("--surface-1"), borderWidth: 1, pointRadius: 5, pointHoverRadius: 7 }] },
+    options: opts,
+  });
+  const rho = DATA.c4.rho[c4Metric];
+  facts("facts-c4", [
+    { valor: "ρ = " + fmtDec(rho), texto: `correlação entre tamanho e ${c4Metric === "citacoes_total" ? "citações totais" : "FWCI mediano"} (${d.length} comunidades da componente principal)`, cls: c4Metric === "citacoes_total" ? "accent-2" : "accent" },
+    { valor: "ρ = " + fmtDec(DATA.c4.rho[c4Metric === "citacoes_total" ? "fwci_mediano" : "citacoes_total"]), texto: `com ${c4Metric === "citacoes_total" ? "o FWCI mediano" : "as citações totais"}, para comparar` },
+  ]);
+}
+
+let c5Metric = "n_obras";
+function renderC5() {
+  const d = DATA.c5.programas;
+  const label = c5Metric === "n_obras" ? "Nº de publicações dos docentes" : "FWCI mediano das publicações";
+  const opts = baseOptions();
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { type: "linear", min: 1.5, max: 7.5, ticks: { stepSize: 1, callback: v => Number.isInteger(v) ? "nota " + v : "" }, title: { display: true, text: "Nota do programa na CAPES" } },
+    y: { type: c5Metric === "n_obras" ? "logarithmic" : "linear", min: c5Metric === "n_obras" ? undefined : 0, title: { display: true, text: label },
+         ticks: { callback: v => c5Metric === "n_obras" ? ([10, 30, 100, 300, 1000, 3000].includes(v) ? fmtInt(v) : "") : fmtDec(v, 1) } },
+  };
+  opts.plugins.tooltip.callbacks = {
+    label: item => {
+      if (item.datasetIndex === 1) return `Mediana da nota ${item.raw.x}: ${c5Metric === "n_obras" ? fmtInt(item.raw.y) : fmtDec(item.raw.y)}`;
+      const p = d[item.dataIndex];
+      return [`${p.ies} · ${p.nome}`, `Nota ${p.nota}`, `Publicações: ${fmtInt(p.n_obras)}`, `FWCI mediano: ${fmtDec(p.fwci_mediano)}`];
+    },
+  };
+  const medians = DATA.c5.medianas.map(m => ({ x: m.nota, y: m[c5Metric] }));
+  if (charts.c5) charts.c5.destroy();
+  charts.c5 = new Chart(document.getElementById("chart-c5"), {
+    data: {
+      datasets: [
+        { type: "scatter", data: d.map(p => ({ x: p.nota + p.jitter, y: p[c5Metric] })), backgroundColor: css("--series-1") + "99", borderColor: css("--surface-1"), borderWidth: 1, pointRadius: 5, pointHoverRadius: 7 },
+        { type: "line", data: medians, borderColor: css("--series-2"), backgroundColor: css("--series-2"), borderWidth: 2, pointRadius: 5, pointStyle: "rectRot" },
+      ],
+    },
+    options: opts,
+  });
+  facts("facts-c5", [
+    { valor: "ρ = " + fmtDec(DATA.c5.rho.n_obras), texto: "nota × nº de publicações", cls: "accent-2" },
+    { valor: "ρ = " + fmtDec(DATA.c5.rho.fwci_mediano), texto: "nota × FWCI mediano (impacto por artigo)", cls: "accent" },
+    { valor: fmtDec(DATA.c5.fwci_nota3) + " → " + fmtDec(DATA.c5.fwci_nota7), texto: "FWCI mediano da nota 3 à nota 7: cresce pouco" },
+  ]);
+}
+
+function wireToggle(id, setter, render) {
+  document.querySelectorAll(`#${id} button`).forEach(btn => btn.addEventListener("click", () => {
+    setter(btn.dataset.metric);
+    document.querySelectorAll(`#${id} button`).forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+    render();
+  }));
+}
+wireToggle("toggle-c4", m => { c4Metric = m; }, renderC4);
+wireToggle("toggle-c5", m => { c5Metric = m; }, renderC5);
+
+renderC1(); renderC2(); renderC3(); renderC4(); renderC5();
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => location.reload());
+</script>
+</body>
+</html>

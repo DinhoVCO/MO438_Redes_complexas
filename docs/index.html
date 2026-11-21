@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computação no Brasil em redes</title>
+<meta name="description" content="Principais conclusões da análise de redes de coautoria e citação dos programas de pós-graduação em Computação no Brasil (CAPES + OpenAlex, 2018–2024).">
+<!-- Gerado por analise_final/11_dashboard.py a partir de dashboard/template_dashboard.html; não editar o arquivo gerado -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-0: #f4f3f0;
+    --surface-1: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #77766f;
+    --rule: #dcdbd5;
+    --grid: #e8e7e2;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --muted-mark: #b9b8b2;
+    --focus: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-0: #121211;
+      --surface-1: #1a1a19;
+      --text-primary: #f0efec;
+      --text-secondary: #c3c2b7;
+      --text-muted: #9a998f;
+      --rule: #3a3a37;
+      --grid: #2a2a28;
+      --series-1: #3987e5;
+      --series-2: #d95926;
+      --muted-mark: #5c5b56;
+      --focus: #3987e5;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #9a998f;
+    --rule: #3a3a37;
+    --grid: #2a2a28;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --muted-mark: #5c5b56;
+    --focus: #3987e5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface-0);
+    color: var(--text-primary);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 1080px; margin: 0 auto; padding: 40px 16px 64px; }
+  header h1 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .lede { color: var(--text-secondary); font-size: 1.05rem; max-width: 68ch; margin: 0 0 28px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+  @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { background: var(--surface-1); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; }
+  .kpi b { display: block; font-size: 1.8rem; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .kpi span { color: var(--text-secondary); font-size: 0.9rem; }
+  section.card {
+    background: var(--surface-1); border: 1px solid var(--rule); border-radius: 16px;
+    padding: 24px; margin-bottom: 24px;
+  }
+  .eyebrow { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; }
+  section.card h2 { font-size: 1.35rem; line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .explain { color: var(--text-secondary); margin: 0 0 18px; max-width: 75ch; }
+  .layout { display: grid; grid-template-columns: 1fr 240px; gap: 24px; align-items: start; }
+  @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+  .chart { position: relative; height: 360px; }
+  .chart.tall { height: 420px; }
+  .facts { display: flex; flex-direction: column; gap: 12px; }
+  .fact { border-left: 3px solid var(--rule); padding: 2px 0 2px 12px; }
+  .fact b { display: block; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+  .fact span { color: var(--text-secondary); font-size: 0.9rem; }
+  .fact.accent { border-left-color: var(--series-1); }
+  .fact.accent-2 { border-left-color: var(--series-2); }
+  .howto { color: var(--text-muted); font-size: 0.85rem; margin: 12px 0 0; }
+  .toggle { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin: 0 0 14px; }
+  .toggle button {
+    font: inherit; font-size: 0.9rem; padding: 6px 14px; border: 0; cursor: pointer;
+    background: var(--surface-1); color: var(--text-secondary);
+  }
+  .toggle button[aria-pressed="true"] { background: var(--text-primary); color: var(--surface-1); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .map-frame { width: 100%; height: 720px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface-1); }
+  @media (max-width: 600px) { .map-frame { height: 560px; } }
+  a { color: var(--series-1); }
+  footer { color: var(--text-muted); font-size: 0.85rem; margin-top: 32px; }
+  footer p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Redes complexas · pós-graduação em Computação no Brasil · 2018–2024</p>
+    <h1>Quem colabora, quem cita e quem tem impacto</h1>
+    <p class="lede">Analisamos a produção dos 87 programas de pós-graduação em Computação avaliados pela CAPES, com redes de coautoria e de citação montadas a partir da OpenAlex. Estas são as cinco conclusões principais.</p>
+    <div class="kpis" id="kpis"></div>
+  </header>
+
+  <section class="card" aria-labelledby="c1">
+    <p class="eyebrow">Conclusão 1 · grupos de pesquisa</p>
+    <h2 id="c1">Os grupos de pesquisa são temáticos e atravessam instituições</h2>
+    <p class="explain">Detectamos as comunidades da rede de coautoria (algoritmo de Louvain). Em cada uma das maiores, a instituição com mais membros reúne só uma pequena parte do grupo: os pesquisadores se agrupam por tema, não por universidade.</p>
+    <div class="layout">
+      <div class="chart tall"><canvas id="chart-c1" aria-label="Barras: fração dos membros na instituição dominante, para as 12 maiores comunidades"></canvas></div>
+      <div class="facts" id="facts-c1"></div>
+    </div>
+    <p class="howto">Cada barra é uma comunidade; o comprimento é a fração dos membros que está na instituição dominante. Passe o cursor para ver o tema e as instituições.</p>
+  </section>
+
+  <section class="card" aria-labelledby="c2">
+    <p class="eyebrow">Conclusão 2 · fluxo de citações</p>
+    <h2 id="c2">A citação fica dentro do próprio grupo</h2>
+    <p class="explain">Agregamos as citações entre publicações por grupo. A fração das citações que fica dentro do grupo é muitas vezes maior do que a esperada se os grupos citassem uns aos outros ao acaso.</p>
+    <div class="layout">
+      <div class="chart"><canvas id="chart-c2" aria-label="Barras: citação interna observada e esperada, para comunidades e instituições"></canvas></div>
+      <div class="facts" id="facts-c2"></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="c3">
+    <p class="eyebrow">Conclusão 3 · centralidade</p>
+    <h2 id="c3">O PageRank é a medida de rede que mais acompanha as citações</h2>
+    <p class="explain">Comparamos medidas de centralidade dos autores com o total de citações (correlação de Spearman). O PageRank na rede de citação entre autores concorda mais; medidas da rede de coautoria refletem colaboração, não impacto.</p>
+    <div class="layout">
+      <div class="chart"><canvas id="chart-c3" aria-label="Barras: correlação de cada centralidade com as citações totais"></canvas></div>
+      <div class="facts" id="facts-c3"></div>
+    </div>
+    <p class="howto">ρ = 1 seria concordância perfeita de ordem; ρ = 0, nenhuma relação.</p>
+  </section>
+
+  <section class="card" aria-labelledby="c4">
+    <p class="eyebrow">Conclusão 4 · tamanho e impacto</p>
+    <h2 id="c4">Grupos maiores somam mais citações, mas não são mais citados por artigo</h2>
+    <p class="explain">Cada ponto é uma comunidade. Com as citações totais, o tamanho explica quase tudo. Com o FWCI (citações normalizadas por campo, tipo e ano), a relação desaparece.</p>
+    <div class="toggle" role="group" aria-label="Métrica do eixo vertical" id="toggle-c4">
+      <button type="button" data-metric="citacoes_total" aria-pressed="true">Citações totais</button>
+      <button type="button" data-metric="fwci_mediano" aria-pressed="false">FWCI mediano (por artigo)</button>
+    </div>
+    <div class="layout">
+      <div class="chart tall"><canvas id="chart-c4" aria-label="Dispersão: tamanho da comunidade e impacto"></canvas></div>
+      <div class="facts" id="facts-c4"></div>
+    </div>
+    <p class="howto">Eixos em escala logarítmica. Passe o cursor num ponto para ver a comunidade.</p>
+  </section>
+
+  <section class="card" aria-labelledby="c5">
+    <p class="eyebrow">Conclusão 5 · avaliação CAPES</p>
+    <h2 id="c5">A nota CAPES acompanha o volume mais do que o impacto por artigo</h2>
+    <p class="explain">Cada ponto é um programa, medido pelas publicações dos seus docentes. O número de publicações cresce claramente com a nota; o impacto por artigo (FWCI) cresce pouco.</p>
+    <div class="toggle" role="group" aria-label="Métrica do eixo vertical" id="toggle-c5">
+      <button type="button" data-metric="n_obras" aria-pressed="true">Nº de publicações</button>
+      <button type="button" data-metric="fwci_mediano" aria-pressed="false">FWCI mediano (por artigo)</button>
+    </div>
+    <div class="layout">
+      <div class="chart tall"><canvas id="chart-c5" aria-label="Dispersão: nota CAPES e impacto dos programas"></canvas></div>
+      <div class="facts" id="facts-c5"></div>
+    </div>
+    <p class="howto">A linha liga as medianas de cada nota. Passe o cursor num ponto para ver o programa.</p>
+  </section>
+
+  <section class="card" aria-labelledby="mapa">
+    <p class="eyebrow">Explore</p>
+    <h2 id="mapa">Mapa das instituições</h2>
+    <p class="explain">Coautoria e citação entre as instituições, e onde estão os membros das maiores comunidades. <a href="mapa.html" target="_blank" rel="noopener">Abrir o mapa em tela cheia</a>.</p>
+    <iframe class="map-frame" src="mapa.html" title="Mapa interativo das instituições" loading="lazy"></iframe>
+  </section>
+
+  <footer>
+    <p>Dados: OpenAlex (publicações 2018–2024, citações, FWCI) e CAPES (Avaliação Quadrienal 2025, docentes e produção). Comunidades com pelo menos 10 membros; programas com dados suficientes.</p>
+    <p>Relatório completo e código: <a id="repo-link" href="#">repositório no GitHub</a>.</p>
+  </footer>
+</main>
+
+<script>
+const DATA = {"repo": "https://github.com/DinhoVCO/MO438_Redes_complexas", "kpis": [{"valor": 87, "rotulo": "programas de pós-graduação"}, {"valor": 84676, "rotulo": "publicações (2018–2024)"}, {"valor": 108251, "rotulo": "autores na rede de coautoria"}, {"valor": 240, "rotulo": "comunidades de pesquisa"}], "c1": {"comunidades": [{"rotulo": "C0 · Software Engineering Techniqu…", "topico": "Software Engineering Techniques and Practices", "tamanho": 5778, "n_ies": 68, "ies": "USP", "pureza": 0.0956}, {"rotulo": "C1 · IoT and Edge/Fog Computing", "topico": "IoT and Edge/Fog Computing", "tamanho": 4110, "n_ies": 52, "ies": "UFC", "pureza": 0.3293}, {"rotulo": "C2 · Advanced Graph Theory Research", "topico": "Advanced Graph Theory Research", "tamanho": 3231, "n_ies": 54, "ies": "CEFET-RJ", "pureza": 0.175}, {"rotulo": "C3 · Vehicular Ad Hoc Networks (VA…", "topico": "Vehicular Ad Hoc Networks (VANETs)", "tamanho": 2974, "n_ies": 47, "ies": "UFOP", "pureza": 0.1687}, {"rotulo": "C4 · Teaching and Learning Program…", "topico": "Teaching and Learning Programming", "tamanho": 2547, "n_ies": 52, "ies": "UFF", "pureza": 0.2918}, {"rotulo": "C5 · Natural Language Processing T…", "topico": "Natural Language Processing Techniques", "tamanho": 2487, "n_ies": 52, "ies": "UFMG", "pureza": 0.3845}, {"rotulo": "C6 · Teaching and Learning Program…", "topico": "Teaching and Learning Programming", "tamanho": 2434, "n_ies": 41, "ies": "UTFPR", "pureza": 0.2346}, {"rotulo": "C7 · Software Engineering Techniqu…", "topico": "Software Engineering Techniques and Practices", "tamanho": 2415, "n_ies": 41, "ies": "UNB", "pureza": 0.7487}, {"rotulo": "C8 · Teaching and Learning Program…", "topico": "Teaching and Learning Programming", "tamanho": 2361, "n_ies": 53, "ies": "UFAL", "pureza": 0.1303}, {"rotulo": "C9 · Cloud Computing and Resource…", "topico": "Cloud Computing and Resource Management", "tamanho": 2172, "n_ies": 45, "ies": "UNISINOS", "pureza": 0.3141}, {"rotulo": "C10 · Software-Defined Networks and…", "topico": "Software-Defined Networks and 5G", "tamanho": 2142, "n_ies": 48, "ies": "UFES", "pureza": 0.2388}, {"rotulo": "C11 · Software Engineering Techniqu…", "topico": "Software Engineering Techniques and Practices", "tamanho": 2114, "n_ies": 44, "ies": "UPE", "pureza": 0.3341}], "pureza_media": 0.35258329858610366, "n_ies_mediana": 22.0, "coautoria_mesma_ies": 0.692867147027556}, "c2": {"comunidades": {"observado": 0.667265527250012, "esperado": 0.03291442215859786}, "ies": {"observado": 0.4747554949662062, "esperado": 0.03090133229426646}, "mesma_comunidade": 0.6550095668080221, "mesma_ies": 0.48029168359559793}, "c3": {"medidas": [{"nome": "PageRank", "rede": "citação", "rho": 0.721}, {"nome": "Citações recebidas de autores", "rede": "citação", "rho": 0.711}, {"nome": "Autoridade (HITS)", "rede": "citação", "rho": 0.68}, {"nome": "Intermediação", "rede": "coautoria", "rho": 0.574}, {"nome": "Nº de coautores", "rede": "coautoria", "rho": 0.57}, {"nome": "k-core", "rede": "coautoria", "rho": 0.48}, {"nome": "Hub (HITS)", "rede": "citação", "rho": 0.468}, {"nome": "Proximidade", "rede": "coautoria", "rho": 0.392}, {"nome": "Autovetor", "rede": "coautoria", "rho": 0.321}], "pagerank_rho": 0.7207432117120862, "jaccard_top50": 0.20481927710843373}, "c4": {"comunidades": [{"id": 0, "topico": "Software Engineering Techniques and Practices", "ies": "USP", "membros": 5778, "citacoes_total": 79417.0, "fwci_mediano": 0.4515}, {"id": 1, "topico": "IoT and Edge/Fog Computing", "ies": "UFC", "membros": 4110, "citacoes_total": 66962.0, "fwci_mediano": 0.4498}, {"id": 2, "topico": "Advanced Graph Theory Research", "ies": "CEFET-RJ", "membros": 3231, "citacoes_total": 32851.0, "fwci_mediano": 0.3025}, {"id": 3, "topico": "Vehicular Ad Hoc Networks (VANETs)", "ies": "UFOP", "membros": 2974, "citacoes_total": 44447.0, "fwci_mediano": 0.4102}, {"id": 4, "topico": "Teaching and Learning Programming", "ies": "UFF", "membros": 2547, "citacoes_total": 29215.0, "fwci_mediano": 0.3684}, {"id": 5, "topico": "Natural Language Processing Techniques", "ies": "UFMG", "membros": 2487, "citacoes_total": 36725.0, "fwci_mediano": 0.4491}, {"id": 6, "topico": "Teaching and Learning Programming", "ies": "UTFPR", "membros": 2434, "citacoes_total": 28797.0, "fwci_mediano": 0.3019}, {"id": 7, "topico": "Software Engineering Techniques and Practices", "ies": "UNB", "membros": 2415, "citacoes_total": 25256.0, "fwci_mediano": 0.3643}, {"id": 8, "topico": "Teaching and Learning Programming", "ies": "UFAL", "membros": 2361, "citacoes_total": 36339.0, "fwci_mediano": 0.4376}, {"id": 9, "topico": "Cloud Computing and Resource Management", "ies": "UNISINOS", "membros": 2172, "citacoes_total": 36458.0, "fwci_mediano": 0.3649}, {"id": 10, "topico": "Software-Defined Networks and 5G", "ies": "UFES", "membros": 2142, "citacoes_total": 32969.0, "fwci_mediano": 0.4738}, {"id": 11, "topico": "Software Engineering Techniques and Practices", "ies": "UPE", "membros": 2114, "citacoes_total": 21944.0, "fwci_mediano": 0.278}, {"id": 12, "topico": "Parallel Computing and Optimization Techniqu…", "ies": "UNICAMP", "membros": 2083, "citacoes_total": 37894.0, "fwci_mediano": 0.3879}, {"id": 13, "topico": "Parallel Computing and Optimization Techniqu…", "ies": "UFRGS", "membros": 2072, "citacoes_total": 27810.0, "fwci_mediano": 0.3651}, {"id": 14, "topico": "AI in cancer detection", "ies": "UFU", "membros": 1793, "citacoes_total": 25227.0, "fwci_mediano": 0.4034}, {"id": 15, "topico": "Advanced Algebra and Logic", "ies": "FURG", "membros": 1766, "citacoes_total": 15886.0, "fwci_mediano": 0.2248}, {"id": 16, "topico": "Recommender Systems and Techniques", "ies": "USP", "membros": 1554, "citacoes_total": 17038.0, "fwci_mediano": 0.3235}, {"id": 17, "topico": "Teaching and Learning Programming", "ies": "UFMA", "membros": 1506, "citacoes_total": 13534.0, "fwci_mediano": 0.3205}, {"id": 18, "topico": "Remote-Sensing Image Classification", "ies": "UFMS", "membros": 1493, "citacoes_total": 19661.0, "fwci_mediano": 0.358}, {"id": 19, "topico": "Semantic Web and Ontologies", "ies": "UFRJ", "membros": 1457, "citacoes_total": 13404.0, "fwci_mediano": 0.3239}, {"id": 21, "topico": "Cloud Computing and Resource Management", "ies": "UFJF", "membros": 1325, "citacoes_total": 18101.0, "fwci_mediano": 0.4506}, {"id": 20, "topico": "Blockchain Technology Applications and Secur…", "ies": "UFSC", "membros": 1325, "citacoes_total": 10250.0, "fwci_mediano": 0.2414}, {"id": 22, "topico": "IoT and Edge/Fog Computing", "ies": "UFRJ", "membros": 1323, "citacoes_total": 18639.0, "fwci_mediano": 0.4159}, {"id": 23, "topico": "Multi-Agent Systems and Negotiation", "ies": "UFRGS", "membros": 1263, "citacoes_total": 10760.0, "fwci_mediano": 0.2259}, {"id": 24, "topico": "Safety Systems Engineering in Autonomy", "ies": "ITA", "membros": 1174, "citacoes_total": 13342.0, "fwci_mediano": 0.273}, {"id": 25, "topico": "Data Visualization and Analytics", "ies": "UFRGS", "membros": 1159, "citacoes_total": 12159.0, "fwci_mediano": 0.4341}, {"id": 26, "topico": "Software-Defined Networks and 5G", "ies": "UFPA", "membros": 1078, "citacoes_total": 13914.0, "fwci_mediano": 0.4068}, {"id": 27, "topico": "SARS-CoV-2 and COVID-19 Research", "ies": "UFC", "membros": 1027, "citacoes_total": 10451.0, "fwci_mediano": 0.538}, {"id": 28, "topico": "Multi-Criteria Decision Making", "ies": "IME", "membros": 999, "citacoes_total": 7635.0, "fwci_mediano": 0.1668}, {"id": 29, "topico": "Online Learning and Analytics", "ies": "MACKENZIE", "membros": 986, "citacoes_total": 8674.0, "fwci_mediano": 0.3789}, {"id": 30, "topico": "Software Engineering Techniques and Practices", "ies": "USP", "membros": 969, "citacoes_total": 10212.0, "fwci_mediano": 0.3992}, {"id": 31, "topico": "Vehicle Routing Optimization Methods", "ies": "IFES", "membros": 948, "citacoes_total": 9210.0, "fwci_mediano": 0.1655}, {"id": 32, "topico": "Advanced Multi-Objective Optimization Algori…", "ies": "UNIFEI", "membros": 947, "citacoes_total": 10409.0, "fwci_mediano": 0.3901}, {"id": 33, "topico": "Protein Structure and Dynamics", "ies": "UFPA", "membros": 943, "citacoes_total": 5010.0, "fwci_mediano": 0.5245}, {"id": 34, "topico": "Optimization and Variational Analysis", "ies": "USP", "membros": 910, "citacoes_total": 16041.0, "fwci_mediano": 0.7164}, {"id": 35, "topico": "Multi-Criteria Decision Making", "ies": "UFPE", "membros": 871, "citacoes_total": 10149.0, "fwci_mediano": 0.3476}, {"id": 36, "topico": "RFID technology advancements", "ies": "UEMA", "membros": 867, "citacoes_total": 4082.0, "fwci_mediano": 0.1637}, {"id": 37, "topico": "Educational Games and Gamification", "ies": "UFABC", "membros": 858, "citacoes_total": 14088.0, "fwci_mediano": 0.4209}, {"id": 38, "topico": "Educational Games and Gamification", "ies": "UFG", "membros": 834, "citacoes_total": 9156.0, "fwci_mediano": 0.2729}, {"id": 39, "topico": "Library Science and Information Systems", "ies": "USP", "membros": 815, "citacoes_total": 5155.0, "fwci_mediano": 0.2871}, {"id": 40, "topico": "Advanced Clustering Algorithms Research", "ies": "UFS", "membros": 811, "citacoes_total": 3272.0, "fwci_mediano": 0.1753}, {"id": 41, "topico": "Medical Image Segmentation Techniques", "ies": "UNICAMP", "membros": 772, "citacoes_total": 14465.0, "fwci_mediano": 0.4386}, {"id": 42, "topico": "Formal Methods in Verification", "ies": "UFAM", "membros": 756, "citacoes_total": 10401.0, "fwci_mediano": 0.422}, {"id": 43, "topico": "Complex Network Analysis Techniques", "ies": "UFJF", "membros": 732, "citacoes_total": 3177.0, "fwci_mediano": 0.3893}, {"id": 44, "topico": "Data Visualization and Analytics", "ies": "USP", "membros": 723, "citacoes_total": 7957.0, "fwci_mediano": 0.5312}, {"id": 45, "topico": "Remote-Sensing Image Classification", "ies": "UFPB-JOÃO PESSOA", "membros": 709, "citacoes_total": 4332.0, "fwci_mediano": 0.2854}, {"id": 46, "topico": "Metaheuristic Optimization Algorithms Resear…", "ies": "USP", "membros": 682, "citacoes_total": 6161.0, "fwci_mediano": 0.4467}, {"id": 47, "topico": "Quantum Computing Algorithms and Architecture", "ies": "UFRPE", "membros": 666, "citacoes_total": 4330.0, "fwci_mediano": 0.1579}, {"id": 48, "topico": "Educational Games and Gamification", "ies": "UEFS", "membros": 635, "citacoes_total": 4476.0, "fwci_mediano": 0.2209}, {"id": 49, "topico": "Metaheuristic Optimization Algorithms Resear…", "ies": "UCS", "membros": 631, "citacoes_total": 3252.0, "fwci_mediano": 0.2079}, {"id": 50, "topico": "Research Data Management Practices", "ies": "UNIRIO", "membros": 576, "citacoes_total": 3740.0, "fwci_mediano": 0.3884}, {"id": 52, "topico": "Advanced Adaptive Filtering Techniques", "ies": "UFRJ", "membros": 561, "citacoes_total": 7792.0, "fwci_mediano": 0.3662}, {"id": 51, "topico": "Parallel Computing and Optimization Techniqu…", "ies": "PUC MINAS", "membros": 561, "citacoes_total": 5765.0, "fwci_mediano": 0.3405}, {"id": 53, "topico": "Medical Image Segmentation Techniques", "ies": "UFPE", "membros": 553, "citacoes_total": 6168.0, "fwci_mediano": 0.2903}, {"id": 54, "topico": "Recommender Systems and Techniques", "ies": "UFMG", "membros": 544, "citacoes_total": 8144.0, "fwci_mediano": 0.4588}, {"id": 55, "topico": "Medical Image Segmentation Techniques", "ies": "UNICAMP", "membros": 516, "citacoes_total": 6418.0, "fwci_mediano": 0.5409}, {"id": 56, "topico": "Evacuation and Crowd Dynamics", "ies": "UFRGS", "membros": 515, "citacoes_total": 3721.0, "fwci_mediano": 0.4175}, {"id": 57, "topico": "IoT and Edge/Fog Computing", "ies": "UFC", "membros": 512, "citacoes_total": 4483.0, "fwci_mediano": 0.1339}, {"id": 58, "topico": "AI in cancer detection", "ies": "USP", "membros": 483, "citacoes_total": 3142.0, "fwci_mediano": 0.3362}, {"id": 59, "topico": "Educational Games and Gamification", "ies": "UFRN", "membros": 480, "citacoes_total": 1607.0, "fwci_mediano": 0.257}, {"id": 60, "topico": "Blockchain Technology Applications and Secur…", "ies": "UFRJ", "membros": 476, "citacoes_total": 5040.0, "fwci_mediano": 0.4598}, {"id": 61, "topico": "Library Science and Information Systems", "ies": "UNESP-SÃO JOSÉ DO RIO PRETO", "membros": 462, "citacoes_total": 2184.0, "fwci_mediano": 0.1448}, {"id": 62, "topico": "Stability and Control of Uncertain Systems", "ies": "UTFPR", "membros": 452, "citacoes_total": 4015.0, "fwci_mediano": 0.3099}, {"id": 63, "topico": "scientometrics and bibliometrics research", "ies": "UFSJ", "membros": 452, "citacoes_total": 1995.0, "fwci_mediano": 0.2756}, {"id": 64, "topico": "Natural Language Processing Techniques", "ies": "UFSCAR", "membros": 442, "citacoes_total": 5614.0, "fwci_mediano": 0.4675}, {"id": 65, "topico": "Teaching and Learning Programming", "ies": "UFSC", "membros": 424, "citacoes_total": 5487.0, "fwci_mediano": 0.3066}, {"id": 66, "topico": "Financial Reporting and XBRL", "ies": "UNIFACS", "membros": 419, "citacoes_total": 470.0, "fwci_mediano": 0.0}, {"id": 67, "topico": "scientometrics and bibliometrics research", "ies": "USP", "membros": 406, "citacoes_total": 2119.0, "fwci_mediano": 0.3785}, {"id": 68, "topico": "Speech and Audio Processing", "ies": "UTFPR", "membros": 396, "citacoes_total": 2186.0, "fwci_mediano": 0.4771}, {"id": 69, "topico": "Digital Imaging for Blood Diseases", "ies": "UNICAMP", "membros": 384, "citacoes_total": 3117.0, "fwci_mediano": 0.402}, {"id": 70, "topico": "Advanced Adaptive Filtering Techniques", "ies": "UFU", "membros": 355, "citacoes_total": 6541.0, "fwci_mediano": 0.6951}, {"id": 71, "topico": "Dementia and Cognitive Impairment Research", "ies": "UFBA", "membros": 349, "citacoes_total": 3016.0, "fwci_mediano": 0.2999}, {"id": 72, "topico": "Mobile Health and mHealth Applications", "ies": "UPF", "membros": 340, "citacoes_total": 4532.0, "fwci_mediano": 0.3291}, {"id": 73, "topico": "AI in cancer detection", "ies": "USP", "membros": 338, "citacoes_total": 2595.0, "fwci_mediano": 0.6177}, {"id": 74, "topico": "Semantic Web and Ontologies", "ies": "UFES", "membros": 337, "citacoes_total": 4689.0, "fwci_mediano": 0.5553}, {"id": 75, "topico": "Research Data Management Practices", "ies": "UCS", "membros": 336, "citacoes_total": 1973.0, "fwci_mediano": 0.2999}, {"id": 76, "topico": "Remote-Sensing Image Classification", "ies": "UNESP-SÃO JOSÉ DO RIO PRETO", "membros": 336, "citacoes_total": 2584.0, "fwci_mediano": 0.2377}, {"id": 77, "topico": "Gastric Cancer Management and Outcomes", "ies": "USP", "membros": 331, "citacoes_total": 2230.0, "fwci_mediano": 0.7002}, {"id": 78, "topico": "Topic Modeling", "ies": "UFG", "membros": 330, "citacoes_total": 1293.0, "fwci_mediano": 0.6117}, {"id": 79, "topico": "Research Data Management Practices", "ies": "UEM", "membros": 318, "citacoes_total": 553.0, "fwci_mediano": 0.2999}, {"id": 80, "topico": "Emotion and Mood Recognition", "ies": "UFMT", "membros": 269, "citacoes_total": 1509.0, "fwci_mediano": 0.1505}, {"id": 81, "topico": "Metaheuristic Optimization Algorithms Resear…", "ies": "UFPA", "membros": 251, "citacoes_total": 146.0, "fwci_mediano": 0.2397}, {"id": 82, "topico": "Advanced Neural Network Applications", "ies": "USP", "membros": 241, "citacoes_total": 2001.0, "fwci_mediano": 0.4386}, {"id": 83, "topico": "Quantum Computing Algorithms and Architecture", "ies": "UFSCAR", "membros": 221, "citacoes_total": 2904.0, "fwci_mediano": 0.455}, {"id": 84, "topico": "Artificial Intelligence in Games", "ies": "USP", "membros": 204, "citacoes_total": 2136.0, "fwci_mediano": 0.3387}, {"id": 85, "topico": "Usability and User Interface Design", "ies": "UDESC", "membros": 204, "citacoes_total": 728.0, "fwci_mediano": 0.1022}, {"id": 86, "topico": "Smart Agriculture and AI", "ies": "UFMG", "membros": 204, "citacoes_total": 1080.0, "fwci_mediano": 0.3283}, {"id": 87, "topico": "AI in cancer detection", "ies": "UFAM", "membros": 201, "citacoes_total": 1625.0, "fwci_mediano": 0.3337}, {"id": 88, "topico": "Parallel Computing and Optimization Techniqu…", "ies": "MACKENZIE", "membros": 194, "citacoes_total": 1129.0, "fwci_mediano": 0.2751}, {"id": 89, "topico": "Biometric Identification and Security", "ies": "UFOP", "membros": 187, "citacoes_total": 1583.0, "fwci_mediano": 0.3244}, {"id": 90, "topico": "Topic Modeling", "ies": "UFSCAR", "membros": 176, "citacoes_total": 2360.0, "fwci_mediano": 0.4527}, {"id": 91, "topico": "Research Data Management Practices", "ies": "USP", "membros": 173, "citacoes_total": 670.0, "fwci_mediano": 4.1377}, {"id": 92, "topico": "Blockchain Technology Applications and Secur…", "ies": "UFPA", "membros": 156, "citacoes_total": 726.0, "fwci_mediano": 0.1681}, {"id": 93, "topico": "Marine and fisheries research", "ies": "UNIVALI", "membros": 152, "citacoes_total": 425.0, "fwci_mediano": 0.4395}, {"id": 94, "topico": "Industrial Automation and Control Systems", "ies": "USP", "membros": 150, "citacoes_total": 187.0, "fwci_mediano": 0.6947}, {"id": 95, "topico": "Petri Nets in System Modeling", "ies": "UFLA", "membros": 146, "citacoes_total": 560.0, "fwci_mediano": 0.2375}, {"id": 96, "topico": "Graph theory and applications", "ies": "UFMG", "membros": 143, "citacoes_total": 496.0, "fwci_mediano": 0.624}, {"id": 97, "topico": "Computational Physics and Python Applications", "ies": "UFCG", "membros": 142, "citacoes_total": 68977.0, "fwci_mediano": 19.7944}, {"id": 98, "topico": "Educational Games and Gamification", "ies": "IFCE", "membros": 136, "citacoes_total": 1101.0, "fwci_mediano": 0.3468}, {"id": 99, "topico": "Autism Spectrum Disorder Research", "ies": "UNIFEI", "membros": 131, "citacoes_total": 1740.0, "fwci_mediano": 0.6648}, {"id": 100, "topico": "Medical Image Segmentation Techniques", "ies": "PUCRS", "membros": 110, "citacoes_total": 53900.0, "fwci_mediano": 2.2434}, {"id": 101, "topico": "Asphalt Pavement Performance Evaluation", "ies": "UFF", "membros": 110, "citacoes_total": 570.0, "fwci_mediano": 0.4718}, {"id": 102, "topico": "Literature, Culture, and Criticism", "ies": NaN, "membros": 97, "citacoes_total": 0.0, "fwci_mediano": 0.0}, {"id": 103, "topico": "Metaheuristic Optimization Algorithms Resear…", "ies": "UFU", "membros": 96, "citacoes_total": 207.0, "fwci_mediano": 0.0945}, {"id": 104, "topico": "Medical Image Segmentation Techniques", "ies": "USP", "membros": 94, "citacoes_total": 289.0, "fwci_mediano": 0.1766}, {"id": 106, "topico": "Generative Adversarial Networks and Image Sy…", "ies": NaN, "membros": 92, "citacoes_total": 201.0, "fwci_mediano": 0.853}, {"id": 105, "topico": "Research Data Management Practices", "ies": "USP", "membros": 92, "citacoes_total": 70.0, "fwci_mediano": 4.0392}, {"id": 107, "topico": "3D Shape Modeling and Analysis", "ies": "USP", "membros": 79, "citacoes_total": 334.0, "fwci_mediano": 0.1294}, {"id": 108, "topico": "Research Data Management Practices", "ies": "UFPR", "membros": 73, "citacoes_total": 135.0, "fwci_mediano": 1.6724}, {"id": 109, "topico": "Artificial Immune Systems Applications", "ies": "UNESP-SÃO JOSÉ DO RIO PRETO", "membros": 71, "citacoes_total": 231.0, "fwci_mediano": 0.2682}, {"id": 110, "topico": "Educational Technology and E-Learning", "ies": "UFPE", "membros": 69, "citacoes_total": 29.0, "fwci_mediano": 0.1734}, {"id": 111, "topico": "Educational Games and Gamification", "ies": "UFPA", "membros": 46, "citacoes_total": 46.0, "fwci_mediano": 0.2237}, {"id": 112, "topico": "Complexity and Algorithms in Graphs", "ies": "PUC-RIO", "membros": 42, "citacoes_total": 773.0, "fwci_mediano": 1.1381}, {"id": 113, "topico": "COVID-19 epidemiological studies", "ies": "UFRJ", "membros": 41, "citacoes_total": 593.0, "fwci_mediano": 0.1506}, {"id": 114, "topico": "Research Data Management Practices", "ies": "UFPEL", "membros": 39, "citacoes_total": 63.0, "fwci_mediano": 0.1339}, {"id": 115, "topico": "Research Data Management Practices", "ies": "UFOP", "membros": 31, "citacoes_total": 131.0, "fwci_mediano": 3.7762}, {"id": 116, "topico": "Augmented Reality Applications", "ies": "UFBA", "membros": 25, "citacoes_total": 177.0, "fwci_mediano": 0.162}, {"id": 117, "topico": "AI in cancer detection", "ies": "USP", "membros": 21, "citacoes_total": 172.0, "fwci_mediano": 0.5148}, {"id": 118, "topico": "Internet Traffic Analysis and Secure E-voting", "ies": "UFMG", "membros": 20, "citacoes_total": 39.0, "fwci_mediano": 0.456}, {"id": 119, "topico": "Energy Efficient Wireless Sensor Networks", "ies": "UFSC", "membros": 18, "citacoes_total": 68.0, "fwci_mediano": 0.3901}, {"id": 120, "topico": "Distributed systems and fault tolerance", "ies": "UFSCAR", "membros": 13, "citacoes_total": 5.0, "fwci_mediano": 0.0}], "rho": {"citacoes_total": 0.8891052891345671, "fwci_mediano": -0.0018290855080565266}}, "c5": {"programas": [{"ies": "CEFET-RJ", "nome": "Ciência da computação", "nota": 4, "jitter": 0.049, "n_obras": 527, "fwci_mediano": 0.3601}, {"ies": "FURG", "nome": "Computação", "nota": 4, "jitter": -0.083, "n_obras": 1019, "fwci_mediano": 0.3299}, {"ies": "IFCE", "nome": "Ciência da computação", "nota": 4, "jitter": -0.165, "n_obras": 424, "fwci_mediano": 0.3491}, {"ies": "IME", "nome": "Sistemas e computação", "nota": 4, "jitter": -0.174, "n_obras": 740, "fwci_mediano": 0.2259}, {"ies": "PUC MINAS", "nome": "Informática", "nota": 5, "jitter": 0.113, "n_obras": 491, "fwci_mediano": 0.3398}, {"ies": "PUCPR", "nome": "Informática", "nota": 5, "jitter": 0.149, "n_obras": 536, "fwci_mediano": 0.5382}, {"ies": "PUC-RIO", "nome": "Informática", "nota": 7, "jitter": 0.038, "n_obras": 1126, "fwci_mediano": 0.4678}, {"ies": "PUCRS", "nome": "Ciência da computação", "nota": 7, "jitter": 0.083, "n_obras": 1218, "fwci_mediano": 0.5145}, {"ies": "UDESC", "nome": "Computação aplicada", "nota": 4, "jitter": 0.016, "n_obras": 622, "fwci_mediano": 0.2056}, {"ies": "UECE", "nome": "Ciência da computação", "nota": 4, "jitter": 0.157, "n_obras": 425, "fwci_mediano": 0.2388}, {"ies": "UEFS", "nome": "Ciência da computação ", "nota": 3, "jitter": 0.114, "n_obras": 376, "fwci_mediano": 0.4609}, {"ies": "UEL", "nome": "Ciência da computação", "nota": 4, "jitter": -0.179, "n_obras": 315, "fwci_mediano": 0.7105}, {"ies": "UEM", "nome": "Ciência da computação", "nota": 4, "jitter": 0.129, "n_obras": 674, "fwci_mediano": 0.5422}, {"ies": "UFABC", "nome": "Ciência da computação", "nota": 4, "jitter": -0.168, "n_obras": 869, "fwci_mediano": 0.4495}, {"ies": "UFAC", "nome": "Ciência da computação", "nota": 3, "jitter": 0.083, "n_obras": 57, "fwci_mediano": 0.3347}, {"ies": "UFAL", "nome": "Informática", "nota": 4, "jitter": -0.117, "n_obras": 525, "fwci_mediano": 0.4289}, {"ies": "UFAM", "nome": "Informática", "nota": 6, "jitter": 0.131, "n_obras": 1077, "fwci_mediano": 0.5364}, {"ies": "UFBA", "nome": "Ciência da computação", "nota": 6, "jitter": 0.015, "n_obras": 1129, "fwci_mediano": 0.4252}, {"ies": "UFC", "nome": "Ciências da computação", "nota": 5, "jitter": -0.072, "n_obras": 1246, "fwci_mediano": 0.3319}, {"ies": "UFC", "nome": "Computação", "nota": 3, "jitter": -0.028, "n_obras": 410, "fwci_mediano": 0.3867}, {"ies": "UFCG", "nome": "Ciência da computação", "nota": 4, "jitter": -0.17, "n_obras": 898, "fwci_mediano": 0.4636}, {"ies": "UFES", "nome": "Informática", "nota": 5, "jitter": -0.135, "n_obras": 981, "fwci_mediano": 0.5049}, {"ies": "UFF", "nome": "Computação", "nota": 7, "jitter": 0.061, "n_obras": 1887, "fwci_mediano": 0.4143}, {"ies": "UFG", "nome": "Ciência da computação", "nota": 5, "jitter": 0.053, "n_obras": 1215, "fwci_mediano": 0.3247}, {"ies": "UFJF", "nome": "Ciência da computação", "nota": 4, "jitter": 0.042, "n_obras": 739, "fwci_mediano": 0.2999}, {"ies": "UFLA", "nome": "Ciência da computação", "nota": 4, "jitter": -0.042, "n_obras": 490, "fwci_mediano": 0.5384}, {"ies": "UFMA", "nome": "Ciência da computação", "nota": 4, "jitter": 0.179, "n_obras": 664, "fwci_mediano": 0.3481}, {"ies": "UFMG", "nome": "Ciências da computação", "nota": 7, "jitter": 0.173, "n_obras": 2832, "fwci_mediano": 0.5758}, {"ies": "UFMS", "nome": "Ciência da computação", "nota": 4, "jitter": 0.067, "n_obras": 674, "fwci_mediano": 0.5428}, {"ies": "UFMT", "nome": "Computação aplicada", "nota": 3, "jitter": 0.054, "n_obras": 109, "fwci_mediano": 0.4117}, {"ies": "UFOP", "nome": "Ciência da computação", "nota": 5, "jitter": 0.068, "n_obras": 928, "fwci_mediano": 0.4077}, {"ies": "UFPA", "nome": "Computação", "nota": 6, "jitter": -0.04, "n_obras": 1480, "fwci_mediano": 0.5083}, {"ies": "UFPB-JOÃO PESSOA", "nome": "Informática", "nota": 4, "jitter": -0.131, "n_obras": 614, "fwci_mediano": 0.349}, {"ies": "UFPE", "nome": "Ciências da computação", "nota": 7, "jitter": 0.08, "n_obras": 2707, "fwci_mediano": 0.4808}, {"ies": "UFPEL", "nome": "Computação", "nota": 6, "jitter": 0.009, "n_obras": 1049, "fwci_mediano": 0.3379}, {"ies": "UFPI", "nome": "Ciência da computação", "nota": 4, "jitter": -0.068, "n_obras": 575, "fwci_mediano": 0.3909}, {"ies": "UFPR", "nome": "Informática", "nota": 6, "jitter": -0.005, "n_obras": 1873, "fwci_mediano": 0.4387}, {"ies": "UFRGS", "nome": "Computação", "nota": 7, "jitter": 0.14, "n_obras": 2657, "fwci_mediano": 0.5067}, {"ies": "UFRJ", "nome": "Engenharia de sistemas e computação", "nota": 6, "jitter": 0.156, "n_obras": 1346, "fwci_mediano": 0.4129}, {"ies": "UFRJ", "nome": "Informática", "nota": 4, "jitter": -0.051, "n_obras": 1047, "fwci_mediano": 0.3622}, {"ies": "UFRN", "nome": "Sistemas e computação", "nota": 4, "jitter": 0.026, "n_obras": 921, "fwci_mediano": 0.44}, {"ies": "UFRPE", "nome": "Informática aplicada", "nota": 4, "jitter": -0.064, "n_obras": 1092, "fwci_mediano": 0.3596}, {"ies": "UFS", "nome": "Ciência da computação", "nota": 4, "jitter": 0.034, "n_obras": 664, "fwci_mediano": 0.2771}, {"ies": "UFSC", "nome": "Ciências da computação", "nota": 6, "jitter": -0.058, "n_obras": 1200, "fwci_mediano": 0.3481}, {"ies": "UFSCAR", "nome": "Ciência da computação", "nota": 5, "jitter": -0.039, "n_obras": 1514, "fwci_mediano": 0.3779}, {"ies": "UFSJ", "nome": "Ciência da computação", "nota": 4, "jitter": 0.14, "n_obras": 495, "fwci_mediano": 0.4093}, {"ies": "UFSM", "nome": "Ciência da computação", "nota": 3, "jitter": -0.098, "n_obras": 542, "fwci_mediano": 0.2119}, {"ies": "UFU", "nome": "Ciência da computação", "nota": 5, "jitter": 0.044, "n_obras": 990, "fwci_mediano": 0.4091}, {"ies": "UFV", "nome": "Ciência da computação", "nota": 5, "jitter": -0.15, "n_obras": 745, "fwci_mediano": 0.4608}, {"ies": "UNB", "nome": "Informática", "nota": 6, "jitter": 0.12, "n_obras": 1376, "fwci_mediano": 0.5035}, {"ies": "UNESP-SÃO JOSÉ DO RIO PRETO", "nome": "Ciência da computação", "nota": 5, "jitter": 0.103, "n_obras": 1011, "fwci_mediano": 0.4196}, {"ies": "UNICAMP", "nome": "Ciência da computação", "nota": 7, "jitter": -0.094, "n_obras": 2229, "fwci_mediano": 0.4908}, {"ies": "UNIFACS", "nome": "Sistemas e computação", "nota": 2, "jitter": 0.136, "n_obras": 292, "fwci_mediano": 0.2253}, {"ies": "UNIFEI", "nome": "Ciência e tecnologia da computação", "nota": 3, "jitter": -0.159, "n_obras": 373, "fwci_mediano": 0.2404}, {"ies": "UNIFESP", "nome": "Ciência da computação", "nota": 4, "jitter": -0.059, "n_obras": 800, "fwci_mediano": 0.4123}, {"ies": "UNIFOR", "nome": "Informática aplicada", "nota": 4, "jitter": -0.126, "n_obras": 475, "fwci_mediano": 1.1328}, {"ies": "UNIRIO", "nome": "Informática", "nota": 5, "jitter": -0.018, "n_obras": 939, "fwci_mediano": 0.4157}, {"ies": "UNISINOS", "nome": "Computação aplicada", "nota": 5, "jitter": 0.107, "n_obras": 966, "fwci_mediano": 0.4912}, {"ies": "UNIVALI", "nome": "Computação", "nota": 4, "jitter": -0.097, "n_obras": 486, "fwci_mediano": 0.3644}, {"ies": "UPE", "nome": "Engenharia da computação", "nota": 5, "jitter": -0.161, "n_obras": 1258, "fwci_mediano": 0.3473}, {"ies": "USP", "nome": "Ciência da computação", "nota": 5, "jitter": -0.034, "n_obras": 1351, "fwci_mediano": 0.5223}, {"ies": "USP", "nome": "Sistemas de informação", "nota": 5, "jitter": -0.109, "n_obras": 873, "fwci_mediano": 0.3124}, {"ies": "USP-RIBEIRÃO PRETO", "nome": "Computação aplicada", "nota": 3, "jitter": -0.147, "n_obras": 491, "fwci_mediano": 0.4751}, {"ies": "USP-SÃO CARLOS", "nome": "Ciências da computação e matemática computacional", "nota": 7, "jitter": 0.029, "n_obras": 3157, "fwci_mediano": 0.6254}, {"ies": "UTFPR", "nome": "Ciência da computação", "nota": 3, "jitter": -0.072, "n_obras": 367, "fwci_mediano": 0.3888}, {"ies": "UTFPR", "nome": "Ciência da computação", "nota": 3, "jitter": 0.062, "n_obras": 231, "fwci_mediano": 1.5021}, {"ies": "IFES", "nome": "Computação aplicada", "nota": 3, "jitter": -0.108, "n_obras": 335, "fwci_mediano": 0.283}, {"ies": "IFPB", "nome": "Tecnologia da informação ", "nota": 4, "jitter": 0.159, "n_obras": 278, "fwci_mediano": 0.2922}, {"ies": "IPT", "nome": "Computação aplicada", "nota": 3, "jitter": -0.049, "n_obras": 334, "fwci_mediano": 0.5137}, {"ies": "ITA", "nome": "Computação de missão crítica", "nota": 3, "jitter": -0.142, "n_obras": 352, "fwci_mediano": 0.4017}, {"ies": "MACKENZIE", "nome": "Computação aplicada", "nota": 3, "jitter": 0.046, "n_obras": 231, "fwci_mediano": 0.2972}, {"ies": "UCS", "nome": "Computação aplicada", "nota": 3, "jitter": 0.154, "n_obras": 36, "fwci_mediano": 0.0}, {"ies": "UEMA", "nome": "Engenharia de  computação e sistemas", "nota": 3, "jitter": -0.021, "n_obras": 334, "fwci_mediano": 0.1527}, {"ies": "UFMS", "nome": "Computação aplicada", "nota": 3, "jitter": 0.164, "n_obras": 361, "fwci_mediano": 0.3298}, {"ies": "UFPA", "nome": "Computação aplicada", "nota": 3, "jitter": -0.0, "n_obras": 366, "fwci_mediano": 0.1967}, {"ies": "UFPE", "nome": "Ciências da computação", "nota": 4, "jitter": -0.027, "n_obras": 2203, "fwci_mediano": 0.4952}, {"ies": "UFRN", "nome": "Tecnologia da informação", "nota": 4, "jitter": 0.043, "n_obras": 398, "fwci_mediano": 0.451}, {"ies": "UNB", "nome": "Computação aplicada", "nota": 4, "jitter": 0.178, "n_obras": 1129, "fwci_mediano": 0.467}, {"ies": "UNIPAMPA", "nome": "Engenharia de software", "nota": 4, "jitter": 0.162, "n_obras": 535, "fwci_mediano": 0.2324}, {"ies": "UPF", "nome": "Computação aplicada", "nota": 4, "jitter": -0.014, "n_obras": 216, "fwci_mediano": 0.3205}, {"ies": "UTFPR", "nome": "Computação aplicada", "nota": 3, "jitter": 0.093, "n_obras": 559, "fwci_mediano": 0.3915}, {"ies": "UTFPR", "nome": "Informática", "nota": 4, "jitter": -0.001, "n_obras": 477, "fwci_mediano": 0.316}], "medianas": [{"nota": 2, "n_obras": 292.0, "fwci_mediano": 0.2253}, {"nota": 3, "n_obras": 356.5, "fwci_mediano": 0.3607}, {"nota": 4, "n_obras": 618.0, "fwci_mediano": 0.3633}, {"nota": 5, "n_obras": 981.0, "fwci_mediano": 0.4091}, {"nota": 6, "n_obras": 1273.0, "fwci_mediano": 0.432}, {"nota": 7, "n_obras": 2443.0, "fwci_mediano": 0.4987}], "rho": {"n_obras": 0.8381525841682808, "fwci_mediano": 0.40478711863291705}, "fwci_nota3": 0.3607, "fwci_nota7": 0.49872500000000003}};
+
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const fmtInt = v => Math.round(v).toLocaleString("pt-BR");
+const fmtDec = (v, d = 2) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const fmtPct = (v, d = 0) => (100 * v).toLocaleString("pt-BR", { maximumFractionDigits: d }) + "%";
+
+document.getElementById("repo-link").href = DATA.repo;
+
+// Cartões de números
+document.getElementById("kpis").innerHTML = DATA.kpis.map(k =>
+  `<div class="kpi"><b>${fmtInt(k.valor)}</b><span>${k.rotulo}</span></div>`).join("");
+
+function facts(id, items) {
+  document.getElementById(id).innerHTML = items.map(f =>
+    `<div class="fact ${f.cls || ""}"><b>${f.valor}</b><span>${f.texto}</span></div>`).join("");
+}
+
+function baseOptions() {
+  Chart.defaults.color = css("--text-secondary");
+  Chart.defaults.borderColor = css("--grid");
+  Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+  return {
+    responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+    plugins: {
+      legend: { labels: { color: css("--text-secondary"), boxWidth: 12, boxHeight: 12 } },
+      tooltip: {
+        backgroundColor: css("--surface-1"), titleColor: css("--text-primary"), bodyColor: css("--text-secondary"),
+        borderColor: css("--rule"), borderWidth: 1, padding: 10, displayColors: false,
+      },
+    },
+  };
+}
+
+const charts = {};
+
+function renderC1() {
+  const d = DATA.c1.comunidades;
+  const opts = baseOptions();
+  opts.indexAxis = "y";
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { min: 0, max: 1, ticks: { callback: v => fmtPct(v) }, title: { display: true, text: "Membros na instituição dominante" } },
+    y: { grid: { display: false }, ticks: { color: css("--text-primary") } },
+  };
+  opts.plugins.tooltip.callbacks = {
+    title: items => d[items[0].dataIndex].rotulo,
+    label: item => {
+      const c = d[item.dataIndex];
+      return [`Tema: ${c.topico}`, `${fmtInt(c.tamanho)} membros em ${c.n_ies} instituições`,
+              `Instituição dominante: ${c.ies} (${fmtPct(c.pureza)})`];
+    },
+  };
+  charts.c1 = new Chart(document.getElementById("chart-c1"), {
+    type: "bar",
+    data: { labels: d.map(c => c.rotulo), datasets: [{ data: d.map(c => c.pureza), backgroundColor: css("--series-1"), borderRadius: 4, barPercentage: 0.7 }] },
+    options: opts,
+  });
+  facts("facts-c1", [
+    { valor: fmtPct(DATA.c1.pureza_media), texto: "dos membros de uma comunidade típica estão na instituição dominante", cls: "accent" },
+    { valor: fmtInt(DATA.c1.n_ies_mediana), texto: "instituições numa comunidade típica (mediana)" },
+    { valor: fmtPct(DATA.c1.coautoria_mesma_ies), texto: "das ligações de coautoria são dentro da mesma instituição: o vínculo direto é local, o grupo é nacional", cls: "accent-2" },
+  ]);
+}
+
+function renderC2() {
+  const d = DATA.c2;
+  const opts = baseOptions();
+  opts.scales = {
+    y: { min: 0, max: 1, ticks: { callback: v => fmtPct(v) }, title: { display: true, text: "Citações que ficam dentro do grupo" } },
+    x: { grid: { display: false }, ticks: { color: css("--text-primary") } },
+  };
+  opts.plugins.tooltip.callbacks = { label: item => `${item.dataset.label}: ${fmtPct(item.raw, 1)}` };
+  charts.c2 = new Chart(document.getElementById("chart-c2"), {
+    type: "bar",
+    data: {
+      labels: ["Comunidades de coautoria", "Instituições"],
+      datasets: [
+        { label: "Observado", data: [d.comunidades.observado, d.ies.observado], backgroundColor: css("--series-1"), borderRadius: 4 },
+        { label: "Esperado ao acaso", data: [d.comunidades.esperado, d.ies.esperado], backgroundColor: css("--muted-mark"), borderRadius: 4 },
+      ],
+    },
+    options: opts,
+  });
+  facts("facts-c2", [
+    { valor: fmtDec(d.comunidades.observado / d.comunidades.esperado, 0) + "×", texto: "mais citação interna nas comunidades do que o esperado ao acaso", cls: "accent" },
+    { valor: fmtPct(d.mesma_comunidade), texto: "das citações ficam na mesma comunidade, contra " + fmtPct(d.mesma_ies) + " na mesma instituição" },
+  ]);
+}
+
+function renderC3() {
+  const d = DATA.c3.medidas;
+  const opts = baseOptions();
+  opts.indexAxis = "y";
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { min: 0, max: 1, title: { display: true, text: "Correlação com as citações totais (Spearman ρ)" } },
+    y: { grid: { display: false }, ticks: { color: css("--text-primary") } },
+  };
+  opts.plugins.tooltip.callbacks = { label: item => `ρ = ${fmtDec(item.raw)} (${d[item.dataIndex].rede})` };
+  charts.c3 = new Chart(document.getElementById("chart-c3"), {
+    type: "bar",
+    data: {
+      labels: d.map(m => m.nome),
+      datasets: [{ data: d.map(m => m.rho), backgroundColor: d.map(m => m.rede === "citação" ? css("--series-1") : css("--muted-mark")), borderRadius: 4, barPercentage: 0.7 }],
+    },
+    options: opts,
+  });
+  facts("facts-c3", [
+    { valor: "ρ = " + fmtDec(DATA.c3.pagerank_rho), texto: "PageRank de citação × citações totais", cls: "accent" },
+    { valor: fmtDec(DATA.c3.jaccard_top50), texto: "sobreposição (Jaccard) entre os 50 primeiros por PageRank e por citações: a ordem geral concorda, os primeiros lugares não" },
+  ]);
+  const legend = document.createElement("p");
+  legend.className = "howto";
+  legend.innerHTML = `<span style="color:${css("--series-1")}">■</span> rede de citação &nbsp; <span style="color:${css("--muted-mark")}">■</span> rede de coautoria`;
+  document.getElementById("chart-c3").parentElement.after(legend);
+}
+
+let c4Metric = "citacoes_total";
+function renderC4() {
+  const d = DATA.c4.comunidades;
+  const label = c4Metric === "citacoes_total" ? "Citações totais" : "FWCI mediano das publicações";
+  const opts = baseOptions();
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { type: "logarithmic", title: { display: true, text: "Membros da comunidade" }, ticks: { callback: v => [10, 30, 100, 300, 1000, 3000].includes(v) ? fmtInt(v) : "" } },
+    y: { type: "logarithmic", title: { display: true, text: label }, ticks: { callback: v => (Math.log10(v) % 1 === 0 ? fmtDec(v, v < 1 ? 1 : 0) : "") } },
+  };
+  opts.plugins.tooltip.callbacks = {
+    label: item => {
+      const c = d[item.dataIndex];
+      return [`C${c.id} · ${c.topico}`, `${c.ies} · ${fmtInt(c.membros)} membros`,
+              `Citações totais: ${fmtInt(c.citacoes_total)}`, `FWCI mediano: ${fmtDec(c.fwci_mediano)}`];
+    },
+  };
+  const points = d.map(c => ({ x: c.membros, y: Math.max(c[c4Metric], c4Metric === "fwci_mediano" ? 0.05 : 1) }));
+  if (charts.c4) charts.c4.destroy();
+  charts.c4 = new Chart(document.getElementById("chart-c4"), {
+    type: "scatter",
+    data: { datasets: [{ data: points, backgroundColor: css("--series-1") + "b3", borderColor: css("--surface-1"), borderWidth: 1, pointRadius: 5, pointHoverRadius: 7 }] },
+    options: opts,
+  });
+  const rho = DATA.c4.rho[c4Metric];
+  facts("facts-c4", [
+    { valor: "ρ = " + fmtDec(rho), texto: `correlação entre tamanho e ${c4Metric === "citacoes_total" ? "citações totais" : "FWCI mediano"} (${d.length} comunidades da componente principal)`, cls: c4Metric === "citacoes_total" ? "accent-2" : "accent" },
+    { valor: "ρ = " + fmtDec(DATA.c4.rho[c4Metric === "citacoes_total" ? "fwci_mediano" : "citacoes_total"]), texto: `com ${c4Metric === "citacoes_total" ? "o FWCI mediano" : "as citações totais"}, para comparar` },
+  ]);
+}
+
+let c5Metric = "n_obras";
+function renderC5() {
+  const d = DATA.c5.programas;
+  const label = c5Metric === "n_obras" ? "Nº de publicações dos docentes" : "FWCI mediano das publicações";
+  const opts = baseOptions();
+  opts.plugins.legend.display = false;
+  opts.scales = {
+    x: { type: "linear", min: 1.5, max: 7.5, ticks: { stepSize: 1, callback: v => Number.isInteger(v) ? "nota " + v : "" }, title: { display: true, text: "Nota do programa na CAPES" } },
+    y: { type: c5Metric === "n_obras" ? "logarithmic" : "linear", min: c5Metric === "n_obras" ? undefined : 0, title: { display: true, text: label },
+         ticks: { callback: v => c5Metric === "n_obras" ? ([10, 30, 100, 300, 1000, 3000].includes(v) ? fmtInt(v) : "") : fmtDec(v, 1) } },
+  };
+  opts.plugins.tooltip.callbacks = {
+    label: item => {
+      if (item.datasetIndex === 1) return `Mediana da nota ${item.raw.x}: ${c5Metric === "n_obras" ? fmtInt(item.raw.y) : fmtDec(item.raw.y)}`;
+      const p = d[item.dataIndex];
+      return [`${p.ies} · ${p.nome}`, `Nota ${p.nota}`, `Publicações: ${fmtInt(p.n_obras)}`, `FWCI mediano: ${fmtDec(p.fwci_mediano)}`];
+    },
+  };
+  const medians = DATA.c5.medianas.map(m => ({ x: m.nota, y: m[c5Metric] }));
+  if (charts.c5) charts.c5.destroy();
+  charts.c5 = new Chart(document.getElementById("chart-c5"), {
+    data: {
+      datasets: [
+        { type: "scatter", data: d.map(p => ({ x: p.nota + p.jitter, y: p[c5Metric] })), backgroundColor: css("--series-1") + "99", borderColor: css("--surface-1"), borderWidth: 1, pointRadius: 5, pointHoverRadius: 7 },
+        { type: "line", data: medians, borderColor: css("--series-2"), backgroundColor: css("--series-2"), borderWidth: 2, pointRadius: 5, pointStyle: "rectRot" },
+      ],
+    },
+    options: opts,
+  });
+  facts("facts-c5", [
+    { valor: "ρ = " + fmtDec(DATA.c5.rho.n_obras), texto: "nota × nº de publicações", cls: "accent-2" },
+    { valor: "ρ = " + fmtDec(DATA.c5.rho.fwci_mediano), texto: "nota × FWCI mediano (impacto por artigo)", cls: "accent" },
+    { valor: fmtDec(DATA.c5.fwci_nota3) + " → " + fmtDec(DATA.c5.fwci_nota7), texto: "FWCI mediano da nota 3 à nota 7: cresce pouco" },
+  ]);
+}
+
+function wireToggle(id, setter, render) {
+  document.querySelectorAll(`#${id} button`).forEach(btn => btn.addEventListener("click", () => {
+    setter(btn.dataset.metric);
+    document.querySelectorAll(`#${id} button`).forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+    render();
+  }));
+}
+wireToggle("toggle-c4", m => { c4Metric = m; }, renderC4);
+wireToggle("toggle-c5", m => { c5Metric = m; }, renderC5);
+
+renderC1(); renderC2(); renderC3(); renderC4(); renderC5();
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => location.reload());
+</script>
+</body>
+</html>
